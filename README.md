@@ -16,3 +16,8 @@ The app is perfect for groups like roomates, friends, or project teammates who w
 This project is my way of putting that insight into action. CoDecide lets people quietly submit their preferences, then finds a fair group result without anyone having to argue or feel awkward. I wanted to build something simple, useful, and grounded in actual research.
 
 *(1)* *Bang, D. & Frith, C.D. (2021)*. **Making Better Decisions in Groups**. *Philosophical Transactions of the Royal Society B, 376(1824).*[link to article](https://doi.org/10.1098/rstb.2020.0368)
+
+### User Stories
+
+1. As a User I want make a Poll and add Options, Users to it.
+2. As a User I want to be able to Rank these using an aggregate sum of 100 points.
