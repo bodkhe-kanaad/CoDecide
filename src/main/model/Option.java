@@ -67,6 +67,13 @@ public class Option {
     public void addVote(int vote) {
         this.voteTotal += vote;  
     }
+    
+    // MODIFIES this
+    // EFFECT changes the text for this option. 
+    public static void changeOption(String newText, Option o) {
+        o.setValue(newText);
+    }
+
 
     public static final List<Option> testOptionList() {
         List<Option> testOptionList = new ArrayList<>();
