@@ -10,22 +10,21 @@ import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import model.*;
 
-
-
-
 public class PollTest {
-    private Poll testPoll;
-    private User testUser = User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
-    private List<Option> testOptionList = Option.testOptionList();
-
+    Poll testPoll;
+    User testUser = User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
+    List<Option> testOptionList = Option.testOptionList();
 
     @Before
     public void runBefore() {
-        testPoll = new Poll(Poll.getNEXT_POLL_ID(), testUser,User.getEmptyUserList(),testOptionList, false,
-        User.getEmptyUserList());
+        testPoll = new Poll(Poll.getNEXT_POLL_ID(), testUser, User.getEmptyUserList(), testOptionList, false,
+                User.getEmptyUserList());
     }
 
     @Test
+    /*
+     * Compare all the fields between testPoll and newPoll if they match then the method works as intended
+     */
     public void testcreatePoll() {
         Poll newPoll = Poll.createPoll(testUser, testOptionList);
         assertEquals(newPoll.getPollId(), testPoll.getPollId());
@@ -34,7 +33,28 @@ public class PollTest {
         assertEquals(newPoll.getOptions(), testPoll.getOptions());
         assertEquals(newPoll.isCompleted(), testPoll.isCompleted());
         assertEquals(newPoll.getHasVoted(), testPoll.getHasVoted());
+
     }
 
-    
+    @Test
+    /*
+     * Compare the size list since there was 1 option in originally the test option
+     * Since the method add's one option we added another one making a total of 2.
+     */
+    public void testaddOptionToPoll() {
+        Poll.addOptionToPoll(testPoll, "Test String 2");
+        assertEquals(testPoll.getOptions().size(),2);
+    }
+
+    @Test
+    /*
+     * Compare the size list since there was 1 option in originally the owner
+     * Since the method add's one option we added another one making a total of 2.
+     */
+    public void testaddUserToPoll() {
+        Poll.addUserToPoll(testPoll, testUser);
+        assertEquals(testPoll.getUsers().size(),2);
+    }
+
 }
+

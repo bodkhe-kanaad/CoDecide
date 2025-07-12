@@ -62,8 +62,9 @@ public class Option {
 
     public static final List<Option> testOptionList() {
         List<Option> testOptionList = new ArrayList<>();
-        Option test = new Option("Test");
-        testOptionList.add(test);
+        Option testOption = new Option("Test");
+        testOptionList.add(testOption);
         return testOptionList;
     }
 }
+

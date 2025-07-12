@@ -30,7 +30,7 @@ public class Poll {
             List<User> hasVoted) {
         this.pollId = pollId;
         this.owner = owner;
-        this.users = new ArrayList<>(users);
+        this.users = users;
         this.users.add(owner);
         this.options = options;
         this.isCompleted = isCompleted;
@@ -63,7 +63,7 @@ public class Poll {
     public List<Option> getOptions() {
         return options;
     }
-    
+
     public User getOwner() {
         return owner;
     }
@@ -101,22 +101,19 @@ public class Poll {
         this.hasVoted = hasVoted;
     }
 
-    // REQUIRES You have to specify which data type will be used in the options of
-    // this poll
-    // EFFECTS It will create a new poll that the user has requested
+    // EFFECTS It will create a new poll with certain default inital fields.
     public static Poll createPoll(User owner, List<Option> options) {
         return pollInitializer(owner, options);
     }
 
-    // REQUIRES new option to be the same data type as the old ones previously in
-    // the list
+
     // MODIFIES this
     // EFFECTS It adds a new option to the Poll
     // This method calls the helper method from Option to make the actual Option
     // Object since the user will give the value of the option needed to be added
     // not an Object Option.
 
-    public void addOptionToPoll(Poll p1, String newOptionValue) {
+    public static void addOptionToPoll(Poll p1, String newOptionValue) {
         Option newOption = Option.createOption(newOptionValue);
         List<Option> currentList = p1.getOptions();
         currentList.add(newOption);
@@ -128,7 +125,7 @@ public class Poll {
     // Object since the user will impu the details of which User they wish to add in
     // the poll
 
-    public static <A> void addUserToPoll(Poll p1, User u1) {
+    public static void addUserToPoll(Poll p1, User u1) {
         List<User> currentUsersInPoll = p1.getUsers();
         currentUsersInPoll.add(u1);
     }
