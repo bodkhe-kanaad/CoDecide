@@ -59,6 +59,7 @@ public class Option {
     public static Option createOption(String option) {
         return new Option(option);
     }
+    
 
     public static final List<Option> testOptionList() {
         List<Option> testOptionList = new ArrayList<>();

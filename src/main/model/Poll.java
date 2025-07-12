@@ -9,7 +9,6 @@ import java.util.List;
  * it can be started by a user and 
  * has specific users as its members and a uniqueId for each poll
  * Uses java generics so that a poll can be any data type
- * 
  */
 public class Poll {
     private static int NEXT_POLL_ID = 1;
@@ -68,7 +67,6 @@ public class Poll {
         return owner;
     }
 
-
     public boolean isCompleted() {
         return isCompleted;
     }
@@ -105,7 +103,6 @@ public class Poll {
     public static Poll createPoll(User owner, List<Option> options) {
         return pollInitializer(owner, options);
     }
-
 
     // MODIFIES this
     // EFFECTS It adds a new option to the Poll
