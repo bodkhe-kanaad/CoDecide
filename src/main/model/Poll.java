@@ -43,7 +43,7 @@ public class Poll<A> {
         this.users = users;
         this.options = options;
         this.isCompleted = isCompleted;
-        this.hasVoted = User.EMPTY_USERS;
+        this.hasVoted = User.getEmptyUserList();
     }
 
     // Getters and Setters for Poll

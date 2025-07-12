@@ -13,7 +13,8 @@ import java.util.List;
 public class User {
     private static int NEXT_USER_ID = 1;
 
-    private final int userId;
+
+    private int userId;
     private String firstName;
     private String lastName;
     private String username;
@@ -21,21 +22,7 @@ public class User {
     private List<Poll<?>> partOfPoll;
 
     // Constants for the class
-    public static List<User> EMPTY_USERS = new ArrayList<>();
-
-    // To make a new User of the App
-    // It automatically increments the values for userId when new User is made
-    // It assigned the partOfPoll to be empty since a new user will not be part of
-    // any poll
-    public User(String firstName, String lastName, String username, String password) {
-        this.userId = NEXT_USER_ID;
-        NEXT_USER_ID++;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
-        this.partOfPoll = Poll.EMPTY_POLLS;
-    }
+    private static List<User> EMPTY_USERS = new ArrayList<>();
 
     // Constructor for User
     public User(int userId, String firstName, String lastName, String username, String password,
@@ -93,16 +80,27 @@ public class User {
         this.partOfPoll = partOfPoll;
     }
 
-    public static List<User> getEMPTY_USERS() {
+    public static List<User> getEmptyUserList() {
         return EMPTY_USERS;
     }
 
-    public static void setEMPTY_USERS(List<User> emptyUsers) {
-        User.EMPTY_USERS = emptyUsers;
+    public static int getNextUserID() {
+        return NEXT_USER_ID;
+    }
+
+
+    // EFFECTS makes a new user initialized with autoincrementing userID and empty
+    // list of polls the user is part of.
+    private static User userInitalizer(String firstName, String lastName, String username, String password) {
+        int userId = NEXT_USER_ID;
+        NEXT_USER_ID++;
+        List<Poll<?>> partOfPoll = Poll.EMPTY_POLLS;
+        User newUser = new User(userId, firstName, lastName, username, password, partOfPoll);
+        return newUser;
     }
 
     // EFFECTS It will create a new user
     public static User createUser(String firstName, String lastName, String username, String password) {
-        return new User(firstName, lastName, username, password);
+        return userInitalizer(firstName, lastName, username, password);
     }
 }
