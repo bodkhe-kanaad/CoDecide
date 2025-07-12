@@ -59,7 +59,14 @@ public class Option {
     public static Option createOption(String option) {
         return new Option(option);
     }
-    
+
+    // The constraints on how much vote can be passed to this parameter will be handled 
+    // by the method that calls this one
+    // MODIFIES this
+    // EFFECT It adds the vote from this user for this option to this options aggregate vote.
+    public void addVote(int vote) {
+        this.voteTotal += vote;  
+    }
 
     public static final List<Option> testOptionList() {
         List<Option> testOptionList = new ArrayList<>();
@@ -67,5 +74,6 @@ public class Option {
         testOptionList.add(testOption);
         return testOptionList;
     }
-}
 
+
+}
