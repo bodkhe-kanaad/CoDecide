@@ -40,13 +40,14 @@ public class Poll {
     // Automatically increments the values for pollId everytime new poll is created.
     // It assigned the hasVoted to be empty since in a new Poll no one will have
     // voted already.
-    private static Poll pollInitializer(User owner, List<Option> options) {
+    private static Poll pollInitializer(User owner) {
         int pollId = NEXT_POLL_ID;
         NEXT_POLL_ID++;
         List<User> users = User.getEmptyUserList();
         users.add(owner);
         boolean isCompleted = false;
         List<User> hasVoted = User.getEmptyUserList();
+        List<Option> options = new ArrayList<>();
         return new Poll(pollId, owner, users, options, isCompleted, hasVoted);
     }
 
@@ -100,8 +101,8 @@ public class Poll {
     }
 
     // EFFECTS It will create a new poll with certain default inital fields.
-    public static Poll createPoll(User owner, List<Option> options) {
-        return pollInitializer(owner, options);
+    public static Poll createPoll(User owner) {
+        return pollInitializer(owner);
     }
 
     // MODIFIES this
@@ -110,10 +111,9 @@ public class Poll {
     // Object since the user will give the value of the option needed to be added
     // not an Object Option.
 
-    public static void addOptionToPoll(Poll p1, String newOptionValue) {
+    public void addOptionToPoll(String newOptionValue) {
         Option newOption = Option.createOption(newOptionValue);
-        List<Option> currentList = p1.getOptions();
-        currentList.add(newOption);
+         this.getOptions().add(newOption);
     }
 
     // MODIFIES this
@@ -122,9 +122,8 @@ public class Poll {
     // Object since the user will impu the details of which User they wish to add in
     // the poll
 
-    public static void addUserToPoll(Poll p1, User u1) {
-        List<User> currentUsersInPoll = p1.getUsers();
-        currentUsersInPoll.add(u1);
+    public void addUserToPoll(User u1) {
+         this.getUsers().add(u1);
     }
 
 }

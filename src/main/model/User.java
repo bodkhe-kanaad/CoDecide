@@ -13,7 +13,6 @@ import java.util.List;
 public class User {
     private static int NEXT_USER_ID = 1;
 
-
     private int userId;
     private String firstName;
     private String lastName;
@@ -23,6 +22,7 @@ public class User {
 
     // Constants for the class
     private static final List<User> emptyUsers = new ArrayList<>();
+    private static final User testUser = createUser("John", "Doe", "doe.john", "Testpassword@1234");
 
     // Constructor for User
     public User(int userId, String firstName, String lastName, String username, String password,
@@ -88,6 +88,9 @@ public class User {
         return NEXT_USER_ID;
     }
 
+    public static User getTestuser() {
+        return testUser;
+    }
 
     // EFFECTS makes a new user initialized with autoincrementing userID and empty
     // list of polls the user is part of.
