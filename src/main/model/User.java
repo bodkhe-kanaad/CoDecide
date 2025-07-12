@@ -19,14 +19,14 @@ public class User {
     private String lastName;
     private String username;
     private String password;
-    private List<Poll<?>> partOfPoll;
+    private List<Poll> partOfPoll;
 
     // Constants for the class
-    private static List<User> EMPTY_USERS = new ArrayList<>();
+    private static final List<User> emptyUsers = new ArrayList<>();
 
     // Constructor for User
     public User(int userId, String firstName, String lastName, String username, String password,
-            List<Poll<?>> partOfPoll) {
+            List<Poll> partOfPoll) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -72,16 +72,16 @@ public class User {
         this.password = password;
     }
 
-    public List<Poll<?>> getPartOfPoll() {
+    public List<Poll> getPartOfPoll() {
         return partOfPoll;
     }
 
-    public void setPartOfPoll(List<Poll<?>> partOfPoll) {
+    public void setPartOfPoll(List<Poll> partOfPoll) {
         this.partOfPoll = partOfPoll;
     }
 
     public static List<User> getEmptyUserList() {
-        return EMPTY_USERS;
+        return emptyUsers;
     }
 
     public static int getNextUserID() {
@@ -94,7 +94,7 @@ public class User {
     private static User userInitalizer(String firstName, String lastName, String username, String password) {
         int userId = NEXT_USER_ID;
         NEXT_USER_ID++;
-        List<Poll<?>> partOfPoll = Poll.EMPTY_POLLS;
+        List<Poll> partOfPoll = Poll.EMPTY_POLLS;
         User newUser = new User(userId, firstName, lastName, username, password, partOfPoll);
         return newUser;
     }

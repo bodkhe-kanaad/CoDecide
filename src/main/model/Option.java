@@ -1,18 +1,21 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * This class represents a single option in the poll
  * It can hold any type of value for example it can be string or int
  */
-public class Option<A> {
-    private static int NEXT_OPTION_ID = 1;
+public class Option {
+    private int nextOptionId = 1;
     private static final int DEFAULT_VOTE_TOTAL = 0;
 
     private final int optionID; // Unique id for each option made
     private int voteTotal; // This is the aggregated value that this option has received from all users.
-    private A value; // Using Java generics to accept any data type
+    private String value; // Using Java generics to accept any data type
 
-    public Option(int optionID, int voteValue, A value) {
+    public Option(int optionID, int voteValue, String value) {
         this.optionID = optionID;
         this.voteTotal = voteValue;
         this.value = value;
@@ -23,9 +26,9 @@ public class Option<A> {
     // values for optionId everytime Option is created.
     // It assigned the voteTotal to be 0 since for a new Option no one will have
     // voted it
-    public Option(A value) {
-        this.optionID = NEXT_OPTION_ID;
-        NEXT_OPTION_ID++;
+    public Option(String value) {
+        this.optionID = nextOptionId;
+        nextOptionId++;
         this.voteTotal = DEFAULT_VOTE_TOTAL;
         this.value = value;
     }
@@ -42,18 +45,25 @@ public class Option<A> {
         this.voteTotal = voteValue;
     }
 
-    public A getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(A value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
     // REQUIRES You to specify the option is of which data type
     // EFFECTS It creates a new option that can be added to the poll when the user
     // specifies its value
-    public static <A> Option<A> createOption(A option) {
-        return new Option<A>(option);
+    public static Option createOption(String option) {
+        return new Option(option);
+    }
+
+    public static final List<Option> testOptionList() {
+        List<Option> testOptionList = new ArrayList<>();
+        Option test = new Option("Test");
+        testOptionList.add(test);
+        return testOptionList;
     }
 }

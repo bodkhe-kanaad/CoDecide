@@ -11,23 +11,27 @@ import java.util.List;
  * Uses java generics so that a poll can be any data type
  * 
  */
-public class Poll<A> {
+public class Poll {
     private static int NEXT_POLL_ID = 1;
 
-    private final int pollId;
+    private int pollId; // Unique ID for each Poll
+    private User owner; // The User who initated the Poll
     private List<User> users; // The users which are participating in this poll
-    private List<Option<A>> options; // Uses the generic A which can be any primitve data-type or object
+    private List<Option> options; // Uses the generic A which can be any primitve data-type or object
     private boolean isCompleted; // Indicates if this poll has been completed
     private List<User> hasVoted; // Tells us which users have voted already.
 
     // Constants for the class
-    public static final List<Poll<?>> EMPTY_POLLS = new ArrayList<>(); // This is an empty list of Poll , ? means that
-                                                                       // it can be any data type.
+    public static final List<Poll> EMPTY_POLLS = new ArrayList<>(); // This is an empty list of Poll , ? means that
+                                                                    // it can be any data type.
 
     // Constructor for Poll
-    public Poll(int pollId, List<User> users, List<Option<A>> options, boolean isCompleted, List<User> hasVoted) {
+    public Poll(int pollId, User owner, List<User> users, List<Option> options, boolean isCompleted,
+            List<User> hasVoted) {
         this.pollId = pollId;
-        this.users = users;
+        this.owner = owner;
+        this.users = new ArrayList<>(users);
+        this.users.add(owner);
         this.options = options;
         this.isCompleted = isCompleted;
         this.hasVoted = hasVoted;
@@ -37,13 +41,14 @@ public class Poll<A> {
     // Automatically increments the values for pollId everytime new poll is created.
     // It assigned the hasVoted to be empty since in a new Poll no one will have
     // voted already.
-    public Poll(List<User> users, List<Option<A>> options, boolean isCompleted) {
-        this.pollId = NEXT_POLL_ID;
+    private static Poll pollInitializer(User owner, List<Option> options) {
+        int pollId = NEXT_POLL_ID;
         NEXT_POLL_ID++;
-        this.users = users;
-        this.options = options;
-        this.isCompleted = isCompleted;
-        this.hasVoted = User.getEmptyUserList();
+        List<User> users = User.getEmptyUserList();
+        users.add(owner);
+        boolean isCompleted = false;
+        List<User> hasVoted = User.getEmptyUserList();
+        return new Poll(pollId, owner, users, options, isCompleted, hasVoted);
     }
 
     // Getters and Setters for Poll
@@ -55,15 +60,20 @@ public class Poll<A> {
         return users;
     }
 
-    public List<Option<A>> getOptions() {
+    public List<Option> getOptions() {
         return options;
     }
+    
+    public User getOwner() {
+        return owner;
+    }
+
 
     public boolean isCompleted() {
         return isCompleted;
     }
 
-    public void setOptions(List<Option<A>> options) {
+    public void setOptions(List<Option> options) {
         this.options = options;
     }
 
@@ -75,8 +85,8 @@ public class Poll<A> {
         return NEXT_POLL_ID;
     }
 
-    public static void setNEXT_POLL_ID(int nextId) {
-        Poll.NEXT_POLL_ID = nextId;
+    public void setNEXT_POLL_ID(int nextId) {
+        NEXT_POLL_ID = nextId;
     }
 
     public void setCompleted(boolean isCompleted) {
@@ -94,8 +104,8 @@ public class Poll<A> {
     // REQUIRES You have to specify which data type will be used in the options of
     // this poll
     // EFFECTS It will create a new poll that the user has requested
-    public static <A> Poll<A> createPoll(List<User> users, List<Option<A>> options, boolean isCompleted) {
-        return new Poll<A>(users, options, isCompleted);
+    public static Poll createPoll(User owner, List<Option> options) {
+        return pollInitializer(owner, options);
     }
 
     // REQUIRES new option to be the same data type as the old ones previously in
@@ -106,18 +116,19 @@ public class Poll<A> {
     // Object since the user will give the value of the option needed to be added
     // not an Object Option.
 
-    public static <A> void addOptionToPoll(Poll<A> p1, A newOptionValue) {
-        Option<A> newOption = Option.createOption(newOptionValue);
-        List<Option<A>> currentList = p1.getOptions();
+    public void addOptionToPoll(Poll p1, String newOptionValue) {
+        Option newOption = Option.createOption(newOptionValue);
+        List<Option> currentList = p1.getOptions();
         currentList.add(newOption);
     }
 
     // MODIFIES this
     // EFFECTS It adds a new User to the Poll
     // This method calls does not call helper method User to make the actual User
-    // Object since the user will impu the details of which User they wish to add in the poll
+    // Object since the user will impu the details of which User they wish to add in
+    // the poll
 
-    public static <A> void addUserToPoll(Poll<A> p1, User u1) {
+    public static <A> void addUserToPoll(Poll p1, User u1) {
         List<User> currentUsersInPoll = p1.getUsers();
         currentUsersInPoll.add(u1);
     }
