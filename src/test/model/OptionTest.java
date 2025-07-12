@@ -35,7 +35,7 @@ public class OptionTest {
     @Test
     public void testchangeOption() {
         Option newOption = new Option("Test Option");
-        Option.changeOption("Changed Option", newOption);
+        newOption.changeOption("Changed Option");
         assertEquals(newOption.getValue(), "Changed Option");
     }
 

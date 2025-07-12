@@ -65,13 +65,15 @@ public class Option {
     // MODIFIES this
     // EFFECT It adds the vote from this user for this option to this options aggregate vote.
     public void addVote(int vote) {
-        this.voteTotal += vote;  
+        int currentVote = this.getVoteTotal();
+        int newVote = currentVote + vote;
+        this.setVoteTotal(newVote);  
     }
     
     // MODIFIES this
     // EFFECT changes the text for this option. 
-    public static void changeOption(String newText, Option o) {
-        o.setValue(newText);
+    public void changeOption(String newText) {
+        this.setValue(newText);
     }
 
 
