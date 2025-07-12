@@ -32,4 +32,11 @@ public class OptionTest {
         assertEquals(newOption.getVoteTotal(),100);
     }
 
+    @Test
+    public void testchangeOption() {
+        Option newOption = new Option("Test Option");
+        Option.changeOption("Changed Option", newOption);
+        assertEquals(newOption.getValue(), "Changed Option");
+    }
+
 }
