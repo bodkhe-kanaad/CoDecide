@@ -1,5 +1,7 @@
 package ui;
 
+import model.User;
+
 public class Messages {
 
     public static final void welcomeMessage() {
@@ -25,4 +27,7 @@ public class Messages {
         System.out.println("You all should go with" + resultOption);
     }
 
+    public static final void afterEachUserVoting(User user) {
+        System.out.println("Thank you" + user.getFirstName());
+    }
 }
