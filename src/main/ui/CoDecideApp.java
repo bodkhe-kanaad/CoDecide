@@ -5,7 +5,7 @@ import model.*;
 
 public class CoDecideApp {
     private static final Scanner INPUT = new Scanner(System.in);
-    private static final double CURRENT_VERSION_NUMBER = 1.0;
+    public static final double CURRENT_VERSION_NUMBER = 1.0;
 
     private Session currentSession;
     private boolean isRunning;
@@ -19,19 +19,17 @@ public class CoDecideApp {
 
     public void run() {
         while (isRunning) {
-            System.out.println("Welcome to CoDecide"
-                    + ui.CoDecideApp.CURRENT_VERSION_NUMBER + "The The smarter way to find common ground");
-            System.out.println("Let's proceed with making a Poll");
+            Messages.welcomeMessage();
             Poll currentPoll = model.Poll.createPoll(cliVersionUser);
             int numChoices = 0;
             for (int choiceOptionInput = 1; choiceOptionInput != 0; numChoices++) {
                 System.out.println("What should be Option" + numChoices);
                 String option = INPUT.next();
                 currentPoll.addOptionToPoll(option);
-                System.out.println("Press (1) to add other option Or (0) To move on");
+                InputPromts.optionInputs();
                 int choice = INPUT.nextInt();
-                while (choice != 0 && choice != 1) {            // Later make this into throw an exception
-                    System.out.println("Invalid input Press (1) to add other option Or (0) To move on");
+                while (choice != 0 && choice != 1) { // Later make this into throw an exception
+                    ErrorMessages.optionInputs();
                     choice = INPUT.nextInt();
                 }
                 switch (choice) {
@@ -43,18 +41,17 @@ public class CoDecideApp {
                         break;
                 }
             }
-            System.out.println("Thank you for adding the options");
-            System.out.println("Lets get started with adding desired users to the Poll");
+            Messages.postAddingOptions();
             int numUsers = 1;
             for (int choiceUserInput = 1; choiceUserInput != 0; numUsers++) {
                 System.out.println("Please give the Username for user number" + numUsers);
                 String newUserUsername = INPUT.next();
                 // Check for if the Username exists later !!! no CLI
                 currentPoll.addUserToPoll(cliVersionUser);
-                System.out.println("Press (1) to add other Users Or (0) To move on");
+                InputPromts.userInputs();
                 int choice = INPUT.nextInt();
-                while (choice != 0 && choice != 1) {            // Later make this into throw an exception
-                    System.out.println("Invalid input Press (1) to add other option Or (0) To move on");
+                while (choice != 0 && choice != 1) { // Later make this into throw an exception
+                    ErrorMessages.userInputs();
                     choice = INPUT.nextInt();
                 }
                 switch (choice) {
@@ -65,21 +62,19 @@ public class CoDecideApp {
                         choiceUserInput = 0;
                         break;
                 }
-                System.out.println("Thank you for adding the User's lets get to Voting");
+                Messages.postAddingUsers();
                 for (User user : currentPoll.getUsers()) {
                     System.out.println("Lets get started" + user.getFirstName());
                     for (Option option : currentPoll.getOptions()) {
-                        System.out.println("Please select a value on a scale from 1 to 100");
-                        System.out.println("where 1 means least wanted and 100 means most wanted.");
-                        System.out.println("For the Option" + option.getValue());
-                        int vote = INPUT.nextInt();                                 
-                        while (0 < vote && vote >= 100) {           // Later make this into throw an exception
+                        InputPromts.voteInputs(option);
+                        int vote = INPUT.nextInt();
+                        while (0 < vote && vote >= 100) { // Later make this into throw an exception
                             option.addVote(vote);
                         }
                     }
                     System.out.println("Thank you" + user.getFirstName());
                 }
-                System.out.println("Thank you all for giving your votes");
+                Messages.postAddingVotes();
                 int highestSoFar = 0;
                 String resultOption = "";
                 for (Option option : currentPoll.getOptions()) {
@@ -88,7 +83,7 @@ public class CoDecideApp {
                         resultOption = option.getValue();
                     }
                 }
-                System.out.println("You all should go with" + resultOption);
+                Messages.results(resultOption);
             }
         }
     }
