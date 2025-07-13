@@ -3,8 +3,8 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserServices {
-    private UserServices() {
+public class UserAction {
+    private UserAction() {
 
     }
     
