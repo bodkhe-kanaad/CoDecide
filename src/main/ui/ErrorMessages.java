@@ -41,4 +41,8 @@ public class ErrorMessages {
     public static final void pleaseTryAgain() {
         System.out.println("Please try again");
     }
+
+    public static final void noUserExists()   {
+        System.out.println("There is no User with this Username");
+    }
 }

@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserServices {
+    private UserServices() {
+
+    }
+    
     private static Map<String, User> ALL_USERS = new HashMap<>();
 
     // MODIFIES UserLogin.loginStatus set to true or false

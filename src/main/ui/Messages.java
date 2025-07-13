@@ -57,5 +57,10 @@ public class Messages {
         System.out.println("Lets get started with making the Poll");
     }
 
+    public static final void nextLogin(User user) {
+        System.out.println("You " + user.getFirstName() + " are up next");
+        System.out.println("Please proceed to login");
+    }
+
 }
 
