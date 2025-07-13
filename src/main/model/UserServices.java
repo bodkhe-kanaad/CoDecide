@@ -25,6 +25,9 @@ public class UserServices {
     // MODIFIES Session.currentUserLoggedIn
     // user logging in as the currentUserLoggedIn.
     public static String login(String userName, String password) {
+        if (ALL_USERS.containsKey(userName) == false) {
+            return "Wrong Username";
+        }
         if (ALL_USERS.containsKey(userName) && ALL_USERS.get(userName).getPassword().contentEquals(password)) {
             Session session = Session.sessionInitializer(ALL_USERS.get(userName));
             return "Successfull";

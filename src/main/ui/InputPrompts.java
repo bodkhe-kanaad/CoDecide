@@ -35,7 +35,7 @@ public class InputPrompts {
     }
 
     public static final void lastNameInput() {
-        System.out.println("What is your last");
+        System.out.println("What is your Last Name");
     }
 
     public static final void signupUsernameInput() {

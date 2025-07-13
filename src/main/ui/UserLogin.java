@@ -39,23 +39,19 @@ public class UserLogin {
     }
 
     public static boolean login() {
-        Messages.userLoginSelected();
         InputPrompts.usernameInput();
         String username = CoDecideApp.INPUT.next();
-        boolean usermameStatus = UserServices.isUsernameExists(username);
-        while (!usermameStatus) {
-            String newUsername = wrongUserName(username);
-            usermameStatus = UserServices.isUsernameExists(newUsername);
-            username = newUsername;
-        }
-        InputPrompts.usernameInput();
+        InputPrompts.passwordInput();
         String password = CoDecideApp.INPUT.next();
         String status = UserServices.login(username, password);
         switch (status) {
+            case "Wrong Username":
+                return wrongUserName();
             case "Successfull":
                 return true;
             case "Password is incorrect":
                 ErrorMessages.passwordInput();
+                ErrorMessages.pleaseTryAgain();
                 return UserLogin.login();
             default:
                 return false;
@@ -88,9 +84,9 @@ public class UserLogin {
         }
     }
 
-    public static String wrongUserName(String username) {
+    public static boolean wrongUserName() {
         ErrorMessages.wrongUserName();
-        InputPrompts.reEnterUsername();
-        return CoDecideApp.INPUT.next();
+        ErrorMessages.pleaseTryAgain();
+        return login();
     }
 }

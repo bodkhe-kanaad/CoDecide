@@ -7,7 +7,7 @@ public class Messages {
     public static final void welcomeMessage() {
         System.out.println("Welcome to CoDecide "
                 + ui.CoDecideApp.CURRENT_VERSION_NUMBER);
-        System.out.println("The The smarter way to find common ground");
+        System.out.println("The smarter way to find common ground");
     }
 
     public static final void postAddingOptions() {

@@ -37,4 +37,8 @@ public class ErrorMessages {
     public static final void wrongUserName() {
         System.out.println("This Username is incorrect");
     }
+    
+    public static final void pleaseTryAgain() {
+        System.out.println("Please try again");
+    }
 }
