@@ -39,4 +39,12 @@ public class OptionTest {
         assertEquals(newOption.getValue(), "Changed Option");
     }
 
+    @Test
+    public void testOptionConstrutor() {
+        Option newOption = new Option(1, 0, "Test");
+        assertEquals(newOption.getOptionID(), 1);
+        assertEquals(newOption.getValue(), "Test");
+        assertEquals(newOption.getVoteTotal(), 0);
+    }
+
 }
