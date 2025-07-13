@@ -1,6 +1,7 @@
 package model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class PollTest {
 
     @Before
     public void runBefore() {
-        testPoll = new Poll(Poll.getNEXT_POLL_ID(), testUser, User.getEmptyUserList(),testOptionList, false,
+        testPoll = new Poll(Poll.getNEXT_POLL_ID(), testUser, User.getEmptyUserList(), testOptionList, false,
                 User.getEmptyUserList());
     }
 
@@ -28,7 +29,7 @@ public class PollTest {
         assertEquals(newPoll.getPollId(), testPoll.getPollId());
         assertEquals(newPoll.getOwner(), testPoll.getOwner());
         assertEquals(newPoll.getUsers(), testPoll.getUsers());
-        assertEquals(newPoll.getOptions().size() + 1, testPoll.getOptions().size());
+        assertEquals(newPoll.getOptions().size() + 2, testPoll.getOptions().size());
         assertEquals(newPoll.isCompleted(), testPoll.isCompleted());
         assertEquals(newPoll.getHasVoted(), testPoll.getHasVoted());
 
@@ -36,12 +37,12 @@ public class PollTest {
 
     @Test
     /*
-     * Compare the size list since there was 1 option in originally the test option
-     * Since the method add's one option we added another one making a total of 2.
+     * Compare the size list since there was 2 option in originally the test option
+     * Since the method add's one option we added another one making a total of 3.
      */
     public void testaddOptionToPoll() {
         testPoll.addOptionToPoll("Test String 2");
-        assertEquals(testPoll.getOptions().size(), 2);
+        assertEquals(testPoll.getOptions().size(), 3);
     }
 
     @Test
@@ -52,6 +53,20 @@ public class PollTest {
     public void testaddUserToPoll() {
         testPoll.addUserToPoll(testUser);
         assertEquals(testPoll.getUsers().size(), 2);
+    }
+
+    @Test
+    public void testisCompleted() {
+        testPoll.setCompleted(true);
+        assertEquals(testPoll.isCompleted(), true);
+        assertNotEquals(testPoll.isCompleted(), false);
+    }
+
+    @Test
+    public void pollResults() {
+        testPoll.getOptions().get(1).addVote(100);
+        String result = testPoll.pollResults();
+        assertEquals(result, testPoll.getOptions().get(1).getValue());
     }
 
 }

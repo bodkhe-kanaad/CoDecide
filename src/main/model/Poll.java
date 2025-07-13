@@ -72,20 +72,8 @@ public class Poll {
         return isCompleted;
     }
 
-    public void setOptions(List<Option> options) {
-        this.options = options;
-    }
-
-    public void isCompleted(boolean isCompleted) {
-        this.isCompleted = isCompleted;
-    }
-
     public static int getNEXT_POLL_ID() {
         return NEXT_POLL_ID;
-    }
-
-    public void setNEXT_POLL_ID(int nextId) {
-        NEXT_POLL_ID = nextId;
     }
 
     public void setCompleted(boolean isCompleted) {
@@ -94,10 +82,6 @@ public class Poll {
 
     public List<User> getHasVoted() {
         return hasVoted;
-    }
-
-    public void setHasVoted(List<User> hasVoted) {
-        this.hasVoted = hasVoted;
     }
 
     // EFFECTS It will create a new poll with certain default inital fields.
@@ -124,6 +108,20 @@ public class Poll {
 
     public void addUserToPoll(User u1) {
          this.getUsers().add(u1);
+    }
+
+
+    // EFFECTS it calculates the votes and gives result of the Poll
+    public String pollResults() {
+        int highestSoFar = 0;
+        String resultOption = "";
+        for (Option option : this.getOptions()) {
+            if (option.getVoteTotal() > highestSoFar) {
+                highestSoFar = option.getVoteTotal();
+                resultOption = option.getValue();
+            }
+        }
+        return resultOption;
     }
 
 }
