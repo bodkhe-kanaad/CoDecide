@@ -1,18 +1,9 @@
 package model;
 
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Before;
 import org.junit.Test;
 
 public class UserTest {
-    private User testUser;
-
-    @Before
-    public void runBefore() {
-        testUser = new User(User.getNextUserID(), "John", "Doe", "doe.john", "Testpassword@1234",
-                model.Poll.EMPTY_POLLS);
-    }
 
     @Test
     /*
