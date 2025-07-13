@@ -11,7 +11,7 @@ public class CoDecideApp {
     public static final Scanner INPUT = new Scanner(System.in);
     public static final double CURRENT_VERSION_NUMBER = 1.0;
 
-    private static Session session;    
+    private static Session session;
     private boolean isRunning; // True if the App is still running, False if the App has been closed.
 
     public CoDecideApp() {
@@ -21,15 +21,16 @@ public class CoDecideApp {
     // EFFECTS This runs the App after a call from the User.
     public void run() {
         while (isRunning) {
-            Messages.welcomeMessage();              // Welcome messages
-            UserLoginServices.loginStatus();                // User Authentication 
-            Messages.postLogin();               
-            Poll currentPoll = model.Poll.createPoll(session.getCurrentUserLoggedIn());
-            PollEditer.optionAdder(currentPoll);
-            Messages.postAddingOptions();
-            PollEditer.userAdder(currentPoll);
-            Messages.postAddingUsers();
-            Voting.addingVote(currentPoll);
+            Messages.welcomeMessage(); // Welcome messages
+            UserLoginServices.loginStatus(); // User Authentication
+            Messages.postLogin(); // Post Login Messages
+            Poll currentPoll = model.Poll.createPoll(session.getCurrentUserLoggedIn()); // Creation of the Poll with
+                                                                                        // with current user as Owner
+            PollEditer.optionAdder(currentPoll); // Adding options to the Poll
+            Messages.postAddingOptions(); // Post adding options messages
+            PollEditer.userAdder(currentPoll); // Adding other users to the Poll if needed
+            Messages.postAddingUsers();         // Post adding users messages
+            Voting.addingVote(currentPoll);     // Casting votes to the Poll
             Messages.postAddingVotes();
             String result = currentPoll.pollResults();
             Messages.results(result);
@@ -37,7 +38,7 @@ public class CoDecideApp {
         }
     }
 
-    public static  void setSession(Session s) {
+    public static void setSession(Session s) {
         session = s;
     }
 }

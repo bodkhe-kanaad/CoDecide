@@ -11,7 +11,7 @@ public class ErrorMessages {
     }
 
     public static final void voteInputs() {
-        System.out.println("Invalid input choose a number from 1 to 100");
+        System.out.println("Invalid input, choose a number from 0 to 100");
     }
 
     public static final void loginOptionsInputs() {

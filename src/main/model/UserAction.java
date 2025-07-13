@@ -7,8 +7,11 @@ public class UserAction {
     private UserAction() {
 
     }
-    
+
+    private static  User CLI_USER = User.createUser("K", "B", "b.k", "T");
+    private static User CLI_USER_TWO = User.createUser("A", "B", "b.a", "T");
     private static Map<String, User> ALL_USERS = new HashMap<>();
+
 
     // MODIFIES UserLogin.loginStatus set to true or false
     // EFFECTS creates an user using the User.createUser() method and adds it to the
@@ -35,6 +38,8 @@ public class UserAction {
     }
 
     public static Map<String, User> getAllUsersMap() {
+        ALL_USERS.put("b.k", CLI_USER);
+        ALL_USERS.put("b.a", CLI_USER_TWO);
         return ALL_USERS;
     }
 

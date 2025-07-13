@@ -17,7 +17,7 @@ public class PollEditer {
             InputPrompts.addoptionInput(numChoices);
             numChoices++;
             String option = CoDecideApp.INPUT.next();
-            PollAction.addingUserToPoll(option, currentPoll);
+            PollAction.addingOptionToPoll(option, currentPoll);
 
             InputPrompts.optionInputs();
             choice = CoDecideApp.INPUT.nextInt();

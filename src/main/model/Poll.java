@@ -44,7 +44,7 @@ public class Poll {
         int pollId = NEXT_POLL_ID;
         NEXT_POLL_ID++;
         List<User> users = User.getEmptyUserList();
-        users.add(owner);
+        // users.add(owner);
         boolean isCompleted = false;
         List<User> hasVoted = User.getEmptyUserList();
         List<Option> options = new ArrayList<>();
