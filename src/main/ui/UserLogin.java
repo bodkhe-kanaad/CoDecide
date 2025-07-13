@@ -22,14 +22,14 @@ public class UserLogin {
     public static boolean userlogin() {
         InputPrompts.loginOptionsInputs();
         int choice = CoDecideApp.INPUT.nextInt();
-        while (choice != 1 && choice != 0) {
+        while (choice != 1 && choice != 2) {
             ErrorMessages.loginOptionsInputs();
             choice = CoDecideApp.INPUT.nextInt();
         }
         switch (choice) {
             case 1:
                 return UserLogin.login();
-            case 0:
+            case 2:
                 return UserLogin.signUp();
             default:
                 ErrorMessages.failedLoginOptions();
