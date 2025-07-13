@@ -1,7 +1,7 @@
 package ui;
 
 import model.Session;
-import model.UserServices;
+import model.UserAction;
 
 /*
  * This class will manage all the user services like
@@ -44,7 +44,7 @@ public class UserLoginServices {
         String username = CoDecideApp.INPUT.next();
         InputPrompts.passwordInput();
         String password = CoDecideApp.INPUT.next();
-        Session session = UserServices.login(username, password);
+        Session session = UserAction.login(username, password);
         if (session != null) {
             CoDecideApp.setSession(session);
             return true;
@@ -61,15 +61,15 @@ public class UserLoginServices {
         String lastName = CoDecideApp.INPUT.next();
         InputPrompts.signupUsernameInput();
         String userName = CoDecideApp.INPUT.next();
-        boolean userNameCheck = UserServices.getAllUsersMap().containsKey(userName);
+        boolean userNameCheck = UserAction.getAllUsersMap().containsKey(userName);
         while (userNameCheck) {
             ErrorMessages.takeUsername();
             userName = CoDecideApp.INPUT.next();
-            userNameCheck = UserServices.getAllUsersMap().containsKey(userName);
+            userNameCheck = UserAction.getAllUsersMap().containsKey(userName);
         }
         InputPrompts.signUpPasswordInput();
         String password = CoDecideApp.INPUT.next();
-        boolean status = UserServices.signUp(firstName, lastName, userName, password);
+        boolean status = UserAction.signUp(firstName, lastName, userName, password);
         if (status) {
             Messages.userSignUpSuccess();
             Messages.postSignUp();
