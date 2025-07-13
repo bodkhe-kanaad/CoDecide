@@ -8,7 +8,6 @@ public class Messages {
         System.out.println("Welcome to CoDecide "
                 + ui.CoDecideApp.CURRENT_VERSION_NUMBER);
         System.out.println("The The smarter way to find common ground");
-        System.out.println("Let's proceed with making a Poll");
     }
 
     public static final void postAddingOptions() {
@@ -32,4 +31,26 @@ public class Messages {
     public static final void afterEachUserVoting(User user) {
         System.out.println("Thank you " + user.getFirstName());
     }
+
+    public static final void userLoginSuccess() {
+        System.out.println("Login Successful");
+    }
+    
+    public static final void userLoginSelected() {
+        System.out.println("Thank you for choosing to Login");
+    }
+
+    public static final void userSignupSelected() {
+        System.out.println("Thank you for choosing to SignUp");
+    }
+
+    public static final void userSignUpSuccess() {
+        System.out.println("SignUp Succesful");
+    }
+
+    public static final void postSignUp() {
+        System.out.println("Please proceed to login");
+    }
+
 }
+

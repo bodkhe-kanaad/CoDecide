@@ -7,6 +7,7 @@ import org.junit.Test;
 
 public class UserTest {
     private User testUser;
+    
 
     @Before
     public void runBefore() {

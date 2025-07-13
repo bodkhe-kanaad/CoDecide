@@ -4,15 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.junit.Before;
 import org.junit.Test;
-import model.UserServices;
 
 public class UserServicesTest {
-    private User testUser;
 
     @Test
     public void testsignUp() {
@@ -23,8 +17,8 @@ public class UserServicesTest {
 
     @Test
     public void testlogin() {
-        String result = UserServices.login("doe.john","Testpassword@1234");
-        assertEquals(result,"Successfull");
+        String result = UserServices.login("doe.john", "Testpassword@1234");
+        assertEquals(result, "Successfull");
     }
 
     @Test
@@ -33,6 +27,5 @@ public class UserServicesTest {
         assertTrue(UserServices.isUsernameExists("adam.eve")); // Added this user to the all users in test before this
         assertFalse(UserServices.isUsernameExists("Test 1234"));
     }
-
 
 }
