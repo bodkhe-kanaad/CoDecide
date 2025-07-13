@@ -13,15 +13,15 @@ import java.util.List;
 public class User {
     private static int NEXT_USER_ID = 1;
 
-    private int userId;
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String password;
-    private List<Poll> partOfPoll;
+    private int userId;             // Unique UserId for each user
+    private String firstName;       // Users First Name
+    private String lastName;        // Users Last Name
+    private String username;        // Username for Login
+    private String password;        // Password for Login
+    private List<Poll> partOfPoll;  // This user is part of what Poll's
 
     // Constants for the class
-    private static final List<User> emptyUsers = new ArrayList<>();
+    private static final List<User> emptyUsers = new ArrayList<>(); // The empty user list
     private static final User testUser = createUser("John", "Doe", "doe.john", "Testpassword@1234");
 
     // Constructor for User
@@ -44,41 +44,41 @@ public class User {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    //public void setFirstName(String firstName) {
+        //this.firstName = firstName;
+    //}
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    // public void setLastName(String lastName) {
+    //     this.lastName = lastName;
+    // }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    // public void setUsername(String username) {
+    //     this.username = username;
+    // }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    // public void setPassword(String password) {
+    //     this.password = password;
+    // }
 
     public List<Poll> getPartOfPoll() {
         return partOfPoll;
     }
 
-    public void setPartOfPoll(List<Poll> partOfPoll) {
-        this.partOfPoll = partOfPoll;
-    }
+    // public void setPartOfPoll(List<Poll> partOfPoll) {
+    //     this.partOfPoll = partOfPoll;
+    // }
 
     public static List<User> getEmptyUserList() {
         return emptyUsers;

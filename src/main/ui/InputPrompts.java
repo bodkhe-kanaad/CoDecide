@@ -5,11 +5,19 @@ import model.*;
 public class InputPrompts {
 
     public static final void optionInputs() {
-        System.out.println("Press (1) to add other option Or (0) To move on");
+        System.out.println("Press (1) to add other option Or (2) To move on");
     }
 
     public static final void userInputs() {
-        System.out.println("Press (1) to add other user Or (0) To move on");
+        System.out.println("Press (1) to add other user Or (2) To move on");
+    }
+
+    public static final void adduserInput() {
+        System.out.println("Please give the Username for the User to be added");
+    }
+
+    public static final void addoptionInput(int numChoices) {
+        System.out.println("What should be Option" + " " + numChoices);
     }
 
     public static final void voteInputs(Option option) {

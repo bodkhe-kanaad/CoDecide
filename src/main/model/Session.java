@@ -8,18 +8,27 @@ package model;
 public class Session {
     private static int NEXT_SESSION_ID = 1;
 
-    private model.User sessionOwner;
+    private model.User currentUserLoggedIn;
     private int sessionID;
 
-    public Session(User sessionOwner, int sessionID) {
-        this.sessionOwner = sessionOwner;
+    public model.User getCurrentUserLoggedIn() {
+        return currentUserLoggedIn;
+    }
+
+    public void setCurrentUserLoggedIn(model.User currentUserLoggedIn) {
+        this.currentUserLoggedIn = currentUserLoggedIn;
+    }
+
+
+    public Session(User currentUserLoggedIn, int sessionID) {
+        this.currentUserLoggedIn = currentUserLoggedIn;
         this.sessionID = sessionID;
     }
 
-    private static final Session cliVersionSession = new Session(model.User.getTestuser(), 1);
-
-    public static Session getCliVersionSession() {
-        return cliVersionSession;
+    public static Session sessionInitializer(User currentUserLoggedIn) {
+        int sessionID = NEXT_SESSION_ID;
+        NEXT_SESSION_ID++;
+        return new Session(currentUserLoggedIn, sessionID);
     }
 
 }

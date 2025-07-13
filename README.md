@@ -21,5 +21,5 @@ This project is my way of putting that insight into action. CoDecide lets people
 
 1. As a User I want make a Poll and add Options to it
 2. As a User I want to add my group members to it.
-3. As a User I want to be able to Rank these Options using an aggregate sum of 100 points.
-4. As a User I want to other group members to be able to rank the Options using an aggregate sum of 100 points.
+3. As a User I want to be able to vote for these Options on the 0-100 scale.
+4. As a User I want to get the result of my Poll.

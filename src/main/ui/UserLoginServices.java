@@ -1,5 +1,6 @@
 package ui;
 
+import model.Session;
 import model.UserServices;
 
 /*
@@ -7,19 +8,19 @@ import model.UserServices;
  * SignUp , Login , ChangePassword()
  */
 
-public class UserLogin {
+public class UserLoginServices {
 
     public static void loginStatus() {
-        boolean status = userlogin();
+        boolean status = promptLoginChoice();
         if (status == false) {
             ErrorMessages.userNotLoggedIn();
-            userlogin();
+            promptLoginChoice();
         } else {
             Messages.userLoginSuccess();
         }
     }
 
-    public static boolean userlogin() {
+    public static boolean promptLoginChoice() {
         InputPrompts.loginOptionsInputs();
         int choice = CoDecideApp.INPUT.nextInt();
         while (choice != 1 && choice != 2) {
@@ -28,9 +29,9 @@ public class UserLogin {
         }
         switch (choice) {
             case 1:
-                return UserLogin.login();
+                return UserLoginServices.login();
             case 2:
-                return UserLogin.signUp();
+                return UserLoginServices.signUp();
             default:
                 ErrorMessages.failedLoginOptions();
                 return false;
@@ -43,18 +44,12 @@ public class UserLogin {
         String username = CoDecideApp.INPUT.next();
         InputPrompts.passwordInput();
         String password = CoDecideApp.INPUT.next();
-        String status = UserServices.login(username, password);
-        switch (status) {
-            case "Wrong Username":
-                return wrongUserName();
-            case "Successfull":
-                return true;
-            case "Password is incorrect":
-                ErrorMessages.passwordInput();
-                ErrorMessages.pleaseTryAgain();
-                return UserLogin.login();
-            default:
-                return false;
+        Session session = UserServices.login(username, password);
+        if (session != null) {
+            CoDecideApp.setSession(session);
+            return true;
+        } else {
+            return wrongCredentials();
         }
     }
 
@@ -66,11 +61,11 @@ public class UserLogin {
         String lastName = CoDecideApp.INPUT.next();
         InputPrompts.signupUsernameInput();
         String userName = CoDecideApp.INPUT.next();
-        boolean userNameCheck = UserServices.isUsernameExists(userName);
+        boolean userNameCheck = UserServices.getAllUsersMap().containsKey(userName);
         while (userNameCheck) {
             ErrorMessages.takeUsername();
             userName = CoDecideApp.INPUT.next();
-            userNameCheck = UserServices.isUsernameExists(userName);
+            userNameCheck = UserServices.getAllUsersMap().containsKey(userName);
         }
         InputPrompts.signUpPasswordInput();
         String password = CoDecideApp.INPUT.next();
@@ -84,8 +79,7 @@ public class UserLogin {
         }
     }
 
-    public static boolean wrongUserName() {
-        ErrorMessages.wrongUserName();
+    public static boolean wrongCredentials() {
         ErrorMessages.pleaseTryAgain();
         return login();
     }

@@ -7,7 +7,6 @@ import org.junit.Test;
 
 public class UserTest {
     private User testUser;
-    
 
     @Before
     public void runBefore() {
@@ -22,11 +21,12 @@ public class UserTest {
      */
     public void testcreateUser() {
         User newUser = model.User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
-        assertEquals(newUser.getUserId(), newUser.getUserId());
-        assertEquals(newUser.getFirstName(), testUser.getFirstName());
-        assertEquals(newUser.getLastName(), testUser.getLastName());
-        assertEquals(newUser.getUsername(), testUser.getUsername());
-        assertEquals(newUser.getPassword(), testUser.getPassword());
-        assertEquals(newUser.getPartOfPoll(), testUser.getPartOfPoll());
+        assertEquals(newUser.getUserId(), User.getNextUserID() - 1);
+        assertEquals(newUser.getFirstName(), "John");
+        assertEquals(newUser.getLastName(), "Doe");
+        assertEquals(newUser.getUsername(), "doe.john");
+        assertEquals(newUser.getPassword(), "Testpassword@1234");
+        assertEquals(newUser.getPartOfPoll(), Poll.EMPTY_POLLS);
     }
 }
+
