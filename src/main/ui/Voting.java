@@ -3,7 +3,7 @@ package ui;
 import model.*;
 
 /*
- * This class contains the methods for the user to register the vote
+ * This class contains the method for the user to register the vote
  */
 
 public class Voting {
@@ -16,14 +16,15 @@ public class Voting {
             for (Option option : currentPoll.getOptions()) {
                 InputPrompts.voteInputs(option);
                 int vote = CoDecideApp.INPUT.nextInt();
-                PollAction.casteVote(user, option, vote);
-            //    
-            //     while (0 > vote || vote > 100) {
-            //         ErrorMessages.voteInputs();
-            //         vote = CoDecideApp.INPUT.nextInt();
-            //     }
-            //     option.addVote(vote);
-            // }
+                boolean status = PollAction.castVote(user, option, vote);
+                while (status == false) {
+                    ErrorMessages.voteInputs();
+                    vote = CoDecideApp.INPUT.nextInt();
+                    status = PollAction.castVote(user, option, vote);
+                }
+                ErrorMessages.voteInputs();
+                vote = CoDecideApp.INPUT.nextInt();
+            }
             Messages.afterEachUserVoting(user);
             if (userIndex < currentPoll.getUsers().size()) {
                 Messages.nextLogin(currentPoll.getUsers().get(userIndex));

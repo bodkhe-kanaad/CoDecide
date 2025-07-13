@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
 import org.junit.Test;
 
 public class PollActionTest {
@@ -36,10 +35,10 @@ public class PollActionTest {
 
     @Test
     public void testAddingOptionToPoll() {
-        Poll poll =  Poll.createPoll(User.getTestuser());
+        Poll poll = Poll.createPoll(User.getTestuser());
         poll.getOptions().clear();
         PollAction.addingOptionToPoll("Test 1", poll);
-        assertEquals(1,poll.getOptions().size());
+        assertEquals(1, poll.getOptions().size());
     }
 
     @Test
@@ -47,16 +46,20 @@ public class PollActionTest {
         User testUser = User.getTestuser();
         Option option = Option.testOptionList().getFirst();
         option.setVoteTotal(0);
-        boolean result = PollAction.casteVote(testUser, option, 20);
+        boolean result = PollAction.castVote(testUser, option, 20);
         assertTrue(result);
-        assertEquals(75, option.getVoteTotal());
+        assertEquals(20, option.getVoteTotal());
     }
 
-    public void testcaseVoteFaliure() {
+    @Test
+    public void testcastVoteFaliure() {
         User testUser = User.getTestuser();
         Option option = Option.testOptionList().getFirst();
         option.setVoteTotal(0);
-        boolean result = PollAction.casteVote(testUser, option, 200);
+        boolean result = PollAction.castVote(testUser, option, 200);
+        assertFalse(result);
+        option.setVoteTotal(0);
+        result = PollAction.castVote(testUser, option, -20);
         assertFalse(result);
     }
 

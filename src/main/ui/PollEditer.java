@@ -12,23 +12,19 @@ public class PollEditer {
     // EFFECTS Adds options to the poll from user input
     public static void optionAdder(Poll currentPoll) {
         int numChoices = 1;
-        for (int choiceOptionInput = 1; choiceOptionInput != 2; numChoices++) {
+        int choice = 1;
+        while (choice != 2) {
             InputPrompts.addoptionInput(numChoices);
+            numChoices++;
             String option = CoDecideApp.INPUT.next();
-            currentPoll.addOptionToPoll(option);
+            PollAction.addingUserToPoll(option, currentPoll);
+
             InputPrompts.optionInputs();
-            int choice = CoDecideApp.INPUT.nextInt();
-            while (choice != 2 && choice != 1) { 
+            choice = CoDecideApp.INPUT.nextInt();
+
+            while (choice != 1 && choice != 2) {
                 ErrorMessages.optionInputs();
                 choice = CoDecideApp.INPUT.nextInt();
-            }
-            switch (choice) {
-                case 1:
-                    choiceOptionInput = 1;
-                    break;
-                case 2:
-                    choiceOptionInput = 2;
-                    break;
             }
         }
     }
@@ -40,17 +36,20 @@ public class PollEditer {
         InputPrompts.userInputs();
         int choice = CoDecideApp.INPUT.nextInt();
 
-        while (choice != 0 && choice != 1) { 
+        while (choice != 0 && choice != 1) {
             ErrorMessages.userInputs();
             choice = CoDecideApp.INPUT.nextInt();
         }
 
-        while (choice == 1) {    
+        while (choice == 1) {
             InputPrompts.adduserInput();
             String username = CoDecideApp.INPUT.next();
-            currentPoll.addUserToPoll(UserServices.getAllUsersMap().get(username));
+            boolean status = PollAction.addingUserToPoll(username, currentPoll);
+            if (!status) {
+                ErrorMessages.noUserExists();
+            }
             InputPrompts.userInputs();
-            choice = CoDecideApp.INPUT.nextInt(); 
+            choice = CoDecideApp.INPUT.nextInt();
         }
     }
 }

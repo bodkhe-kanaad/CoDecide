@@ -1,8 +1,8 @@
 package model;
 
 /*
- * This class handles all the services for Poll triggered by user action
- * such as adding Users and adding Options
+ * This class handles all the methods triggered by user action in the Poll 
+ * such as adding Users and adding Options or casting vote
  */
 public class PollAction {
 
@@ -12,7 +12,7 @@ public class PollAction {
 
     // REQURIES currentPoll is not null
     // MODIEIS currentPoll.users and User.partOfPoll
-    // EFFECTS adds the user to the Poll in which this was triggered 
+    // EFFECTS adds the user to the Poll in which this was triggered
     // also then adds the Poll in which it was triggered to the user
     public static boolean addingUserToPoll(String username, Poll currentPoll) {
         if (UserAction.getAllUsersMap().containsKey(username)) {
@@ -23,7 +23,7 @@ public class PollAction {
             return false;
         }
     }
-    
+
     // REQURIES currentPoll is not null
     // MODIEIS currentPoll.users and User.partOfPoll
     // EFFECTS adds the option to the Poll in which this was triggered
@@ -34,8 +34,11 @@ public class PollAction {
     // REQUIRES User and Option is not null
     // MODIFIES option.voteTotal
     // EFFECTS adds the vote on the scale of 0-100 to the voteTotal of that option
-    public static boolean casteVote(User user, Option option, int vote) {
-        return true
-
+    public static boolean castVote(User user, Option option, int vote) {
+        while (vote < 0 || vote > 100) {
+            return false;
+        }
+        option.addVote(vote);
+        return true;
     }
 }
