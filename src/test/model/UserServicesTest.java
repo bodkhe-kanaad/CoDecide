@@ -1,6 +1,7 @@
 package model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
@@ -28,8 +29,9 @@ public class UserServicesTest {
 
     @Test
     public void testisUsernameExists() {
-        assertTrue(UserServices.isUsernameExists("doe.john")); // Added this user to the all users in test before this
-        assertTrue(UserServices.isUsernameExists("Test 1234"));
+        UserServices.signUp("Adam", "Eve", "adam.eve", "Testpassword@1234");
+        assertTrue(UserServices.isUsernameExists("adam.eve")); // Added this user to the all users in test before this
+        assertFalse(UserServices.isUsernameExists("Test 1234"));
     }
 
 
