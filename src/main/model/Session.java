@@ -16,9 +16,9 @@ public class Session {
         this.sessionID = sessionID;
     }
 
-    private final Session cliVersionSession = new Session(model.User.getTestuser(), 1);
+    private static final Session cliVersionSession = new Session(model.User.getTestuser(), 1);
 
-    public Session getCliVersionSession() {
+    public static Session getCliVersionSession() {
         return cliVersionSession;
     }
 

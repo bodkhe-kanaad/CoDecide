@@ -10,10 +10,12 @@ public class CoDecideApp {
     private Session currentSession;
     private boolean isRunning;
 
-    public CoDecideApp(Session currentSession) {
+    public CoDecideApp() {
+        Session currentSession = Session.getCliVersionSession();
         this.currentSession = currentSession;
         this.isRunning = true;
     }
+
 
     public static model.User cliVersionUser = model.User.getTestuser();
 

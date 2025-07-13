@@ -5,8 +5,9 @@ import model.User;
 public class Messages {
 
     public static final void welcomeMessage() {
-        System.out.println("Welcome to CoDecide"
-                + ui.CoDecideApp.CURRENT_VERSION_NUMBER + "The The smarter way to find common ground");
+        System.out.println("Welcome to CoDecide "
+                + ui.CoDecideApp.CURRENT_VERSION_NUMBER);
+        System.out.println("The The smarter way to find common ground");
         System.out.println("Let's proceed with making a Poll");
     }
 
@@ -16,7 +17,8 @@ public class Messages {
     }
 
     public static final void postAddingUsers() {
-        System.out.println("Thank you for adding the User's lets get to Voting");
+        System.out.println("Thank you for adding the User's");
+        System.out.println("lets get to Voting");
     }
 
     public static final void postAddingVotes() {
@@ -24,10 +26,10 @@ public class Messages {
     }
 
     public static final void results(String resultOption) {
-        System.out.println("You all should go with" + resultOption);
+        System.out.println("You all should go with " + resultOption);
     }
 
     public static final void afterEachUserVoting(User user) {
-        System.out.println("Thank you" + user.getFirstName());
+        System.out.println("Thank you " + user.getFirstName());
     }
 }

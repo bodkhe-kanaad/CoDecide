@@ -5,9 +5,9 @@ import model.*;
 public class PollEditer {
 
     public static void optionAdder(Poll currentPoll) {
-        int numChoices = 0;
+        int numChoices = 1;
         for (int choiceOptionInput = 1; choiceOptionInput != 0; numChoices++) {
-            System.out.println("What should be Option" + numChoices);
+            System.out.println("What should be Option" + " " + numChoices);
             String option = CoDecideApp.INPUT.next();
             currentPoll.addOptionToPoll(option);
             InputPromts.optionInputs();
@@ -30,7 +30,7 @@ public class PollEditer {
     public static void userAdder(Poll currentPoll) {
         int numUsers = 1;
         for (int choiceUserInput = 1; choiceUserInput != 0; numUsers++) {
-            System.out.println("Please give the Username for user number" + numUsers);
+            System.out.println("Please give the Username for the number " + numUsers + " User");
             String newUserUsername = CoDecideApp.INPUT.next();
             // Check for if the Username exists later !!! no CLI
             currentPoll.addUserToPoll(CoDecideApp.cliVersionUser);
