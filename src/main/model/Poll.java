@@ -30,7 +30,7 @@ public class Poll {
         this.pollId = pollId;
         this.owner = owner;
         this.users = users;
-        this.users.add(owner);
+        users.add(owner);
         this.options = options;
         this.isCompleted = isCompleted;
         this.hasVoted = hasVoted;
@@ -44,7 +44,6 @@ public class Poll {
         int pollId = NEXT_POLL_ID;
         NEXT_POLL_ID++;
         List<User> users = User.getEmptyUserList();
-        // users.add(owner);
         boolean isCompleted = false;
         List<User> hasVoted = User.getEmptyUserList();
         List<Option> options = new ArrayList<>();

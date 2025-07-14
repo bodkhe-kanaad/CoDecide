@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Map;
+
 /*
  * This class handles all the methods triggered by user action in the Poll 
  * such as adding Users and adding Options or casting vote
@@ -15,13 +17,17 @@ public class PollAction {
     // EFFECTS adds the user to the Poll in which this was triggered
     // also then adds the Poll in which it was triggered to the user
     public static boolean addingUserToPoll(String username, Poll currentPoll) {
-        if (UserAction.getAllUsersMap().containsKey(username)) {
-            currentPoll.addUserToPoll(UserAction.getAllUsersMap().get(username));
-            UserAction.getAllUsersMap().get(username).getPartOfPoll().add(currentPoll);
-            return true;
-        } else {
-            return false;
+        Map<String, User> allUsers = UserAction.getAllUsersMap();
+        if (allUsers.containsKey(username)) {
+            User user = allUsers.get(username);
+        if (!currentPoll.getUsers().contains(user)) {
+                currentPoll.addUserToPoll(user);
+                user.getPartOfPoll().add(currentPoll);
+                return true;
+            }
         }
+        return false;
+
     }
 
     // REQURIES currentPoll is not null

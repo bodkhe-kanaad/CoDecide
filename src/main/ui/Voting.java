@@ -13,36 +13,39 @@ public class Voting {
     public static void addingVote(Poll currentPoll) {
         List<User> pollUsers = currentPoll.getUsers();
         int totalUsers = pollUsers.size();
-
-        for (int index = 0; index < totalUsers; index++) {
-            User currentUser = pollUsers.get(index);
-            System.out.println("Let's get started " + currentUser.getFirstName());
+        for (int i = 0; i < totalUsers; i++) {
+            User user = pollUsers.get(i);
+            System.out.println("Let's get started " + user.getFirstName());
             for (Option option : currentPoll.getOptions()) {
-                boolean status = userVote(option, currentUser);
-                while (!status) {
-                    ErrorMessages.voteInputs();
-                    int vote = CoDecideApp.INPUT.nextInt();
-                    status = PollAction.castVote(currentUser, option, vote);
-                }
+                handleVoteInput(user, option);
             }
-
-            userChange(currentUser, currentPoll);
-
-            if (index + 1 < currentPoll.getUsers().size()) {
-                CoDecideApp.getSession().setRunning(false);
-
-                User nextUser = pollUsers.get(index + 1);
-                Messages.nextLogin(nextUser);
-                UserLoginServices.login();
+            afterUserVoted(user, currentPoll);
+            if (i + 1 < totalUsers) {
+                User nextUser = pollUsers.get(i + 1);
+                System.out.println(
+                        "Let's get started " + nextUser.getFirstName() + " please proceed to login");
+                UserLoginServices.nextUserLogin(nextUser);
             } else {
                 CoDecideApp.getSession().setRunning(false);
             }
         }
     }
 
-    public static void userChange(User currentUser, Poll currentPoll) {
+    public static void afterUserVoted(User currentUser, Poll currentPoll) {
         Messages.afterEachUserVoting(currentUser);
         currentPoll.getHasVoted().add(currentUser);
+    }
+
+    private static void handleVoteInput(User user, Option option) {
+        boolean status = false;
+        while (!status) {
+            InputPrompts.voteInputs(option);
+            int vote = CoDecideApp.INPUT.nextInt();
+            status = PollAction.castVote(user, option, vote);
+            if (!status) {
+                ErrorMessages.voteInputs();
+            }
+        }
     }
 
     public static boolean userVote(Option option, User currentUser) {

@@ -76,4 +76,9 @@ public class UserActionTest {
         assertNull(session);
     }
 
+    @Test
+    public void testNextUserLoginAuthentication() {
+
+    }
+
 }

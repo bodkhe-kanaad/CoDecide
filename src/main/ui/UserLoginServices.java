@@ -1,6 +1,7 @@
 package ui;
 
 import model.Session;
+import model.User;
 import model.UserAction;
 
 /*
@@ -82,5 +83,24 @@ public class UserLoginServices {
     public static boolean wrongCredentials() {
         ErrorMessages.pleaseTryAgain();
         return login();
+    }
+
+     // REQUIRES nextUser is not null
+    // EFFECTS checks if the next User logging in is the User we intended and not someone else with valid credentials 
+    public static void nextUserLogin(User nextUser) {
+        CoDecideApp.getSession().setRunning(false);
+        while (true) {
+            boolean loginSuccess = UserLoginServices.login();
+            if (!loginSuccess) {
+                System.out.println("Login failed. Please try again.");
+                continue;
+            }
+            User currentUser = CoDecideApp.getSession().getCurrentUserLoggedIn();
+            if (currentUser.equals(nextUser)) {
+                break;
+            } else {
+                System.out.println("Incorrect user " + nextUser.getFirstName() + " please proceed to login");
+            }
+        }
     }
 }
