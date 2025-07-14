@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * This class represents the users of the app
- * A user has authentication credentials 
- * unique userId
- * details about its credentials and what polls this user is a part of 
+ * This class represents the Users
+ * A user has authentication credentials and unique userId 
+ * and details about themselves also what polls this user is a part of.
  */
 
 public class User {
@@ -44,41 +43,25 @@ public class User {
         return firstName;
     }
 
-    //public void setFirstName(String firstName) {
-        //this.firstName = firstName;
-    //}
 
     public String getLastName() {
         return lastName;
     }
 
-    // public void setLastName(String lastName) {
-    //     this.lastName = lastName;
-    // }
+
 
     public String getUsername() {
         return username;
     }
 
-    // public void setUsername(String username) {
-    //     this.username = username;
-    // }
 
     public String getPassword() {
         return password;
     }
 
-    // public void setPassword(String password) {
-    //     this.password = password;
-    // }
-
     public List<Poll> getPartOfPoll() {
         return partOfPoll;
     }
-
-    // public void setPartOfPoll(List<Poll> partOfPoll) {
-    //     this.partOfPoll = partOfPoll;
-    // }
 
     public static List<User> getEmptyUserList() {
         return emptyUsers;

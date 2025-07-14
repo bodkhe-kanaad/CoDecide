@@ -1,5 +1,8 @@
 package ui;
 
+/* 
+ * This class is all Messages printed for Errors or invalid inputs
+*/
 public class ErrorMessages {
 
     public static final void optionInputs() {

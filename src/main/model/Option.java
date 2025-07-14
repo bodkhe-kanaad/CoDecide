@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * This class represents a single option in the poll
- * It can hold any type of value for example it can be string or int
+ * This class represents a option in the poll. 
+ * It has details 
  */
 public class Option {
     private int nextOptionId = 1;
@@ -13,7 +13,7 @@ public class Option {
 
     private final int optionID; // Unique id for each option made
     private int voteTotal; // This is the aggregated value that this option has received from all users.
-    private String value; // Using Java generics to accept any data type
+    private String value; //  This is the actual string value of that option.
 
     public Option(int optionID, int voteValue, String value) {
         this.optionID = optionID;
@@ -53,17 +53,14 @@ public class Option {
         this.value = value;
     }
 
-    // REQUIRES You to specify the option is of which data type
     // EFFECTS It creates a new option that can be added to the poll when the user
     // specifies its value
     public static Option createOption(String option) {
         return new Option(option);
     }
 
-    // The constraints on how much vote can be passed to this parameter will be handled 
-    // by the method that calls this one
     // MODIFIES this
-    // EFFECT It adds the vote from this user for this option to this options aggregate vote.
+    // EFFECT It adds the vote from the user for this option to the option's total vote.
     public void addVote(int vote) {
         int currentVote = this.getVoteTotal();
         int newVote = currentVote + vote;
@@ -76,7 +73,7 @@ public class Option {
         this.setValue(newText);
     }
 
-    // 
+    // Helper method for testing.
     public static final List<Option> testOptionList() {
         List<Option> testOptionList = new ArrayList<>();
         Option testOption = new Option("Test");

@@ -5,24 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * This class is a poll 
+ * This class represents a Poll 
  * it can be started by a user and 
  * has specific users as its members and a uniqueId for each poll
- * Uses java generics so that a poll can be any data type
  */
 public class Poll {
     private static int NEXT_POLL_ID = 1;
 
     private int pollId; // Unique ID for each Poll
-    private User owner; // The User who initated the Poll
+    private User owner; // The User who initialized the Poll
     private List<User> users; // The users which are participating in this poll
-    private List<Option> options; // Uses the generic A which can be any primitve data-type or object
+    private List<Option> options; // The list of all options that will be voted upon
     private boolean isCompleted; // Indicates if this poll has been completed
     private List<User> hasVoted; // Tells us which users have voted already.
 
     // Constants for the class
-    public static final List<Poll> EMPTY_POLLS = new ArrayList<>(); // This is an empty list of Poll , ? means that
-                                                                    // it can be any data type.
+    public static final List<Poll> EMPTY_POLLS = new ArrayList<>(); // This is an empty list of Poll 
 
     // Constructor for Poll
     public Poll(int pollId, User owner, List<User> users, List<Option> options, boolean isCompleted,
@@ -90,9 +88,9 @@ public class Poll {
 
     // MODIFIES this
     // EFFECTS It adds a new option to the Poll
-    // This method calls the helper method from Option to make the actual Option
-    // Object since the user will give the value of the option needed to be added
-    // not an Object Option.
+    // This method calls the helper method from Option class to make the actual Option
+    // Object since the user will give the string of the option needed to be added
+    // not the Object Option itself.
 
     public void addOptionToPoll(String newOptionValue) {
         Option newOption = Option.createOption(newOptionValue);
@@ -102,9 +100,8 @@ public class Poll {
     // MODIFIES this
     // EFFECTS It adds a new User to the Poll
     // This method calls does not call helper method User to make the actual User
-    // Object since the user will impu the details of which User they wish to add in
-    // the poll
-
+    // Object since the user will input the details of which User they wish to add in
+    // the poll and this user will already be a part of the global user map.
     public void addUserToPoll(User u1) {
          this.getUsers().add(u1);
     }

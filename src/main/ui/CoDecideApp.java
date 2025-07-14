@@ -3,7 +3,7 @@ package ui;
 import java.util.Scanner;
 import model.*;
 /*
- * This is the class that has the App and its detailsw
+ * This is the class that has the App and its details
  * about session and if the instance of the app is running.
  */
 
@@ -36,9 +36,9 @@ public class CoDecideApp {
             PollEditer.userAdder(currentPoll); // Adding other users to the Poll if needed
             Messages.postAddingUsers();         // Post adding users messages
             Voting.addingVote(currentPoll);     // Casting votes to the Poll
-            Messages.postAddingVotes();
-            Messages.results(Voting.calculateResult(currentPoll));
-            isRunning = false;
+            Messages.postAddingVotes();         //  Post voting
+            Messages.results(Voting.calculateResult(currentPoll));      // Option to view the result or quit Poll
+            isRunning = false;      // Condition to stop App for CLI no rerunning app for another Poll
         }
     }
 

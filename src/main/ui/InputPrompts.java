@@ -1,7 +1,10 @@
 package ui;
 
-import model.*;
+/*
+ * Class for all input prompts
+ */
 
+import model.*;
 public class InputPrompts {
 
     public static final void optionInputs() {

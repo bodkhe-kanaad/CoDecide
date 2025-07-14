@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class UserAction {
     private UserAction() {
-
     }
 
+    // CLI Version constants for Easier testing since no data persistence.
     private static User CLI_USER = User.createUser("K", "B", "b.k", "T");
     private static User CLI_USER_TWO = User.createUser("A", "B", "b.a", "T");
     private static Map<String, User> ALL_USERS = new HashMap<>();
@@ -36,6 +36,7 @@ public class UserAction {
         }
     }
 
+    // Getter for the global user map
     public static Map<String, User> getAllUsersMap() {
         ALL_USERS.put("b.k", CLI_USER);
         ALL_USERS.put("b.a", CLI_USER_TWO);

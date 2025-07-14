@@ -1,5 +1,8 @@
 package ui;
 
+/*
+ * Class for all Messages printed out
+ */
 import model.User;
 
 public class Messages {

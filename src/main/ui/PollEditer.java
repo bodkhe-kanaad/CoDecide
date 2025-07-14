@@ -3,7 +3,7 @@ package ui;
 import model.*;
 
 /*
- * This class has methods related to adding options and users to the poll
+ * This class has methods related to Poll and its inputs
  */
 
 public class PollEditer {
