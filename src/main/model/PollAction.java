@@ -20,7 +20,7 @@ public class PollAction {
         Map<String, User> allUsers = UserAction.getAllUsersMap();
         if (allUsers.containsKey(username)) {
             User user = allUsers.get(username);
-        if (!currentPoll.getUsers().contains(user)) {
+            if (!currentPoll.getUsers().contains(user)) {
                 currentPoll.addUserToPoll(user);
                 user.getPartOfPoll().add(currentPoll);
                 return true;

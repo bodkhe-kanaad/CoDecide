@@ -9,7 +9,7 @@ import model.*;
 
 public class CoDecideApp {
     public static final Scanner INPUT = new Scanner(System.in);
-    public static final double CURRENT_VERSION_NUMBER = 1.0;
+    public static final double CURRENT_VERSION_NUMBER = 1.50;
 
     private static Session session;
 

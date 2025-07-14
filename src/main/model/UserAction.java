@@ -3,9 +3,6 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
-import ui.CoDecideApp;
-import ui.UserLoginServices;
-
 public class UserAction {
     private UserAction() {
 
