@@ -57,15 +57,16 @@ public class UserActionTest {
         UserAction.getAllUsersMap().clear();
         UserAction.signUp("Adam", "Eve", "adam.eve", "Testpassword@1234");
         assertTrue(UserAction.getAllUsersMap().containsKey("adam.eve")); // Added this user to the all users in test
-                                                                           // before this
+                                                                         // before this
         assertFalse(UserAction.getAllUsersMap().containsKey("Test 1234"));
     }
 
     @Test
     public void testAllUsersMap() {
         UserAction.getAllUsersMap().clear();
-        UserAction.signUp("Rick", "Grimes", "rick.grimes", "ZombieKill");
-        assertEquals(1, UserAction.getAllUsersMap().size());
+        UserAction.signUp("John", "Doe", "doe.john", "Testpassword@1234");
+        assertEquals(3, UserAction.getAllUsersMap().size()); // Two test items have been added for easier CLI non
+                                                             // persistence User authentication
     }
 
     @Test

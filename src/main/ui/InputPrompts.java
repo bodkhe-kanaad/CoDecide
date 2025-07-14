@@ -58,4 +58,9 @@ public class InputPrompts {
         System.out.println("Please enter your Username Again");
     }
 
+    public static final void resultOption() {
+        System.out.println("Do you want to calculate the result");
+        System.out.println("Press (1) Calculate or (2) Quit Poll ");
+    }
+
 }

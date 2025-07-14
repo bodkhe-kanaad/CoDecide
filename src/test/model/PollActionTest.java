@@ -63,4 +63,15 @@ public class PollActionTest {
         assertFalse(result);
     }
 
+    @Test
+    public void testCalculateResult() {
+        User testUser = User.getTestuser();
+        Poll poll = Poll.createPoll(User.getTestuser());
+        PollAction.addingOptionToPoll(Option.testOptionList().getFirst().getValue(),poll);
+        poll.getOptions().getFirst().setVoteTotal(0);
+        PollAction.castVote(testUser,poll.getOptions().getFirst(), 20);
+        String result = PollAction.calculateResult(poll);
+        assertEquals(Option.testOptionList().getFirst().getValue(), result);
+    }
+
 }

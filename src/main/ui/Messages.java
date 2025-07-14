@@ -25,7 +25,7 @@ public class Messages {
     }
 
     public static final void results(String resultOption) {
-        System.out.println("You all should go with " + resultOption);
+        System.out.println(resultOption);
     }
 
     public static final void afterEachUserVoting(User user) {

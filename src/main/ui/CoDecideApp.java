@@ -12,6 +12,11 @@ public class CoDecideApp {
     public static final double CURRENT_VERSION_NUMBER = 1.0;
 
     private static Session session;
+
+    public static Session getSession() {
+        return session;
+    }
+
     private boolean isRunning; // True if the App is still running, False if the App has been closed.
 
     public CoDecideApp() {
@@ -32,8 +37,7 @@ public class CoDecideApp {
             Messages.postAddingUsers();         // Post adding users messages
             Voting.addingVote(currentPoll);     // Casting votes to the Poll
             Messages.postAddingVotes();
-            String result = currentPoll.pollResults();
-            Messages.results(result);
+            Messages.results(Voting.calculateResult(currentPoll));
             isRunning = false;
         }
     }

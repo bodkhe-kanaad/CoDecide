@@ -39,7 +39,10 @@ public class PollAction {
             return false;
         }
         option.addVote(vote);
-
         return true;
+    }
+
+    public static String calculateResult(Poll currentPoll) {
+        return currentPoll.pollResults();
     }
 }

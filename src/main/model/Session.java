@@ -10,6 +10,15 @@ public class Session {
 
     private model.User currentUserLoggedIn;
     private int sessionID;
+    private boolean isRunning;
+
+    public void setRunning(boolean isRunning) {
+        this.isRunning = isRunning;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
+    }
 
     public model.User getCurrentUserLoggedIn() {
         return currentUserLoggedIn;
@@ -20,15 +29,17 @@ public class Session {
     }
 
 
-    public Session(User currentUserLoggedIn, int sessionID) {
+    public Session(User currentUserLoggedIn, int sessionID, boolean isRunning) {
         this.currentUserLoggedIn = currentUserLoggedIn;
         this.sessionID = sessionID;
+        this.isRunning = isRunning;
     }
 
     public static Session sessionInitializer(User currentUserLoggedIn) {
         int sessionID = NEXT_SESSION_ID;
         NEXT_SESSION_ID++;
-        return new Session(currentUserLoggedIn, sessionID);
+        boolean isRunning = true;
+        return new Session(currentUserLoggedIn, sessionID, isRunning);
     }
 
 }
