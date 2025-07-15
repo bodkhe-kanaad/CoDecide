@@ -23,3 +23,5 @@ This project is my way of putting that insight into action. CoDecide lets people
 2. As a User I want to add my group members to it.
 3. As a User I want to be able to vote for these Options on the 0-100 scale.
 4. As a User I want to get the result of my Poll.
+5. As a User I want to save my Poll when I am done voting before seeing the result.
+6. As a User I want to reload the Poll and see the result.
