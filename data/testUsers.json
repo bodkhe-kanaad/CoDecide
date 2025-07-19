@@ -1,0 +1,18 @@
+{"users": [
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "password": "T",
+        "partOfPolls": [],
+        "userId": 4,
+        "username": "doe.john"
+    },
+    {
+        "firstName": "Adam",
+        "lastName": "Eve",
+        "password": "T",
+        "partOfPolls": [],
+        "userId": 5,
+        "username": "eve.adam"
+    }
+]}

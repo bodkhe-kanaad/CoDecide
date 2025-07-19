@@ -1,0 +1,60 @@
+{"polls": [
+    {
+        "owner": "doe.john",
+        "usersList": [
+            "doe.john",
+            "eve.adam",
+            "eve.adam",
+            "doe.john"
+        ],
+        "usersVotedList": [
+            "doe.john",
+            "eve.adam",
+            "eve.adam",
+            "doe.john"
+        ],
+        "optionsList": [
+            {
+                "voteTotal": 0,
+                "optionId": 1,
+                "value": "A"
+            },
+            {
+                "voteTotal": 0,
+                "optionId": 1,
+                "value": "B"
+            }
+        ],
+        "pollId": 1,
+        "isCompleted": false
+    },
+    {
+        "owner": "eve.adam",
+        "usersList": [
+            "doe.john",
+            "eve.adam",
+            "eve.adam",
+            "doe.john"
+        ],
+        "usersVotedList": [
+            "doe.john",
+            "eve.adam",
+            "eve.adam",
+            "doe.john"
+        ],
+        "optionsList": [
+            {
+                "voteTotal": 0,
+                "optionId": 1,
+                "value": "A"
+            },
+            {
+                "voteTotal": 0,
+                "optionId": 1,
+                "value": "B"
+            }
+        ],
+        "pollId": 2,
+        "isCompleted": false
+    }
+]}

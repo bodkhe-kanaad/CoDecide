@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /*
@@ -8,8 +9,14 @@ import java.util.Map;
  */
 public class PollAction {
 
+    private static Map<Integer, Poll> ALL_POLLS = new HashMap<>();
+    
+
     private PollAction() {
+    // TODO ADD IMPLEMENTATION;
     }
+
+
 
     // REQURIES currentPoll is not null
     // MODIEIS currentPoll.users and User.partOfPoll

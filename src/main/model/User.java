@@ -3,6 +3,10 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.junit.Test;
+
 /*
  * This class represents the Users
  * A user has authentication credentials and unique userId 
@@ -12,12 +16,12 @@ import java.util.List;
 public class User {
     private static int NEXT_USER_ID = 1;
 
-    private int userId;             // Unique UserId for each user
-    private String firstName;       // Users First Name
-    private String lastName;        // Users Last Name
-    private String username;        // Username for Login
-    private String password;        // Password for Login
-    private List<Poll> partOfPoll;  // This user is part of what Poll's
+    private int userId; // Unique UserId for each user
+    private String firstName; // Users First Name
+    private String lastName; // Users Last Name
+    private String username; // Username for Login
+    private String password; // Password for Login
+    private List<Poll> partOfPoll; // This user is part of what Poll's
 
     // Constants for the class
     private static final List<User> emptyUsers = new ArrayList<>(); // The empty user list
@@ -43,17 +47,13 @@ public class User {
         return firstName;
     }
 
-
     public String getLastName() {
         return lastName;
     }
 
-
-
     public String getUsername() {
         return username;
     }
-
 
     public String getPassword() {
         return password;
@@ -81,12 +81,28 @@ public class User {
         int userId = NEXT_USER_ID;
         NEXT_USER_ID++;
         List<Poll> partOfPoll = Poll.EMPTY_POLLS;
-        User newUser = new User(userId, firstName, lastName, username, password, partOfPoll);
-        return newUser;
+        return new User(userId, firstName, lastName, username, password, partOfPoll);
     }
 
     // EFFECTS It will create a new user
     public static User createUser(String firstName, String lastName, String username, String password) {
         return userInitalizer(firstName, lastName, username, password);
+    }
+
+    public JSONObject toJson() {
+        JSONObject userJson = new JSONObject();
+        JSONArray partOfPollJson = new JSONArray();
+        userJson.put("username", username);
+        userJson.put("firstName", firstName);
+        userJson.put("lastName", lastName);
+        userJson.put("password", password);
+        userJson.put("userId", userId);
+
+        for (Poll p : partOfPoll) {
+            partOfPollJson.put(p.getPollId());
+        }
+        userJson.put("partOfPolls", partOfPollJson);
+        return userJson;
+
     }
 }

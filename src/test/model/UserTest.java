@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -12,7 +13,7 @@ public class UserTest {
     private Poll p1;
     private Poll p2;
 
-    @BeforeEach
+    @Before
     public void runBefore() {
         newUser = model.User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
         p1 = Poll.createPoll(newUser);
@@ -29,6 +30,7 @@ public class UserTest {
         assertEquals(newUser.getPartOfPoll(), Poll.EMPTY_POLLS);
     }
 
+    @Test
     public void testToJson() {
         JSONObject userJson = newUser.toJson();
 
@@ -38,7 +40,7 @@ public class UserTest {
         assertEquals("Testpassword@1234", userJson.getString("password"));
         assertEquals(newUser.getUserId(), userJson.getInt("userId"));
 
-        JSONArray pollIds = userJson.getJSONArray("partOfPoll");
+        JSONArray pollIds = userJson.getJSONArray("partOfPolls");
         assertEquals(2, pollIds.length());
         assertEquals(p1.getPollId(), pollIds.get(0));
         assertEquals(p2.getPollId(), pollIds.get(1));

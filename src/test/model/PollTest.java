@@ -17,7 +17,7 @@ public class PollTest {
     User testUser = User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
     List<Option> testOptionList = Option.testOptionList();
 
-    @BeforeEach
+    @Before
     public void runBefore() {
         testPoll = new Poll(Poll.getNextPollId(), testUser, User.getEmptyUserList(), testOptionList, false,
                 User.getEmptyUserList());
@@ -55,9 +55,11 @@ public class PollTest {
      * Since the method add's one option we added another one making a total of 2.
      */
     public void testaddUserToPoll() {
+        assertEquals(testPoll.getUsers().size(), 1);
         testPoll.addUserToPoll(testUser);
-        assertEquals(testPoll.getUsers().size(), 3);
+        assertEquals(testPoll.getUsers().size(), 2);
     }
+
 
     @Test
     public void testisCompleted() {

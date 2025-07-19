@@ -43,7 +43,7 @@ public class OptionTest {
     @Test
     public void testOptionConstrutor() {
         Option newOption = new Option(1, 0, "Test");
-        assertEquals(newOption.getOptionID(), 1);
+        assertEquals(newOption.getOptionId(), 1);
         assertEquals(newOption.getValue(), "Test");
         assertEquals(newOption.getVoteTotal(), 0);
     }
@@ -51,7 +51,7 @@ public class OptionTest {
     @Test
     public void testToJson() {
         JSONObject optionJson = testOption.toJson();
-        assertEquals(testOption.getOptionID(), optionJson.getInt("optionId"));
+        assertEquals(testOption.getOptionId(), optionJson.getInt("optionId"));
         assertEquals(testOption.getVoteTotal(), optionJson.getInt("voteTotal"));
         assertEquals(testOption.getValue(), optionJson.get("value"));
     }
