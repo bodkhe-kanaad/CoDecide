@@ -7,15 +7,19 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class PollTest {
     Poll testPoll;
     User testUser = User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
     List<Option> testOptionList = Option.testOptionList();
 
-    @Before
+    @BeforeEach
     public void runBefore() {
-        testPoll = new Poll(Poll.getNEXT_POLL_ID(), testUser, User.getEmptyUserList(), testOptionList, false,
+        testPoll = new Poll(Poll.getNextPollId(), testUser, User.getEmptyUserList(), testOptionList, false,
                 User.getEmptyUserList());
     }
 
@@ -52,7 +56,7 @@ public class PollTest {
      */
     public void testaddUserToPoll() {
         testPoll.addUserToPoll(testUser);
-        assertEquals(testPoll.getUsers().size(), 2);
+        assertEquals(testPoll.getUsers().size(), 3);
     }
 
     @Test
@@ -69,4 +73,25 @@ public class PollTest {
         assertEquals(result, testPoll.getOptions().get(1).getValue());
     }
 
+    @Test
+    public void testToJson() {
+        JSONObject pollJson = testPoll.toJson();
+        JSONArray optionListJson;
+        JSONArray usersListJson;
+        JSONArray usersVotedListJson;
+
+        assertEquals(testPoll.getPollId(), pollJson.get("pollId"));
+        assertEquals(testPoll.getOwner().getUsername(), pollJson.get("owner"));
+        assertEquals(testPoll.isCompleted(), pollJson.get("isCompleted"));
+        
+        optionListJson = pollJson.getJSONArray("optionsList");
+        assertEquals(testPoll.getOptions().size(), optionListJson.length());
+        
+        usersListJson = pollJson.getJSONArray("usersList");
+        assertEquals(testPoll.getUsers().size(), usersListJson.length());
+
+        usersVotedListJson = pollJson.getJSONArray("usersVotedList");
+        assertEquals(testPoll.getHasVoted().size(), usersVotedListJson.length());
+
+    }
 }
