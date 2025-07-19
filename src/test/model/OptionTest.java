@@ -1,5 +1,6 @@
 package model;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.json.JSONObject;
@@ -54,6 +55,11 @@ public class OptionTest {
         assertEquals(testOption.getOptionId(), optionJson.getInt("optionId"));
         assertEquals(testOption.getVoteTotal(), optionJson.getInt("voteTotal"));
         assertEquals(testOption.getValue(), optionJson.get("value"));
+    }
+
+    @Test
+    public void testGetEmptyList() {
+        assertNotNull(Option.testOptionList());
     }
 
 }

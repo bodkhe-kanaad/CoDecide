@@ -1,6 +1,7 @@
 package model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -45,6 +46,11 @@ public class UserTest {
         JSONArray pollIds = userJson.getJSONArray("partOfPolls");
         assertEquals(p1.getPollId(), pollIds.getInt(0));
         assertEquals(p2.getPollId(), pollIds.getInt(1));
+    }
+
+    @Test
+    public void testgetTestuser() {
+        assertNotNull(User.getTestuser());
     }
 
 }

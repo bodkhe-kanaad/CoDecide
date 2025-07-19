@@ -70,14 +70,27 @@ public class PollTest {
 
     @Test
     public void pollResults() {
+        String result;
         testPoll.addOptionToPoll("Test String 1");
-        testPoll.getOptions().get(0).addVote(100);
-        String result = testPoll.pollResults();
+        testPoll.getOptions().get(0).addVote(99);
+        result = testPoll.pollResults();
         assertEquals(result, testPoll.getOptions().get(0).getValue());
+
+        testPoll.addOptionToPoll("Test 2");
+        testPoll.getOptions().get(1).addVote(100);
+        result = testPoll.pollResults();
+        assertEquals(result, testPoll.getOptions().get(1).getValue());
+
+        testPoll.addOptionToPoll("Test 3");
+        testPoll.getOptions().get(1).addVote(50);
+        result = testPoll.pollResults();
+        assertEquals(result, testPoll.getOptions().get(1).getValue());
     }
 
     @Test
     public void testToJson() {
+        testPoll.addOptionToPoll("Test 1");
+        testPoll.getHasVoted().add(testUser);
         JSONObject pollJson = testPoll.toJson();
         JSONArray optionListJson;
         JSONArray usersListJson;
@@ -89,12 +102,14 @@ public class PollTest {
 
         optionListJson = pollJson.getJSONArray("optionsList");
         assertEquals(testPoll.getOptions().size(), optionListJson.length());
+        assertEquals("Test 1",optionListJson.getJSONObject(0).get("value"));
+
 
         usersListJson = pollJson.getJSONArray("usersList");
         assertEquals(testPoll.getUsers().size(), usersListJson.length());
 
         usersVotedListJson = pollJson.getJSONArray("usersVotedList");
         assertEquals(testPoll.getHasVoted().size(), usersVotedListJson.length());
-
+        assertEquals("doe.john", usersVotedListJson.getString(0));
     }
 }
