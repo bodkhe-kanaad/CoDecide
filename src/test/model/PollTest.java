@@ -80,9 +80,9 @@ public class PollTest {
         JSONArray usersListJson;
         JSONArray usersVotedListJson;
 
-        assertEquals(testPoll.getPollId(), pollJson.get("pollId"));
-        assertEquals(testPoll.getOwner().getUsername(), pollJson.get("owner"));
-        assertEquals(testPoll.isCompleted(), pollJson.get("isCompleted"));
+        assertEquals(testPoll.getPollId(), pollJson.getInt("pollId"));
+        assertEquals(testPoll.getOwner().getUsername(), pollJson.getString("owner"));
+        assertEquals(testPoll.isCompleted(), pollJson.getBoolean("isCompleted"));
         
         optionListJson = pollJson.getJSONArray("optionsList");
         assertEquals(testPoll.getOptions().size(), optionListJson.length());
