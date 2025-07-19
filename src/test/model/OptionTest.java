@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,6 +46,14 @@ public class OptionTest {
         assertEquals(newOption.getOptionID(), 1);
         assertEquals(newOption.getValue(), "Test");
         assertEquals(newOption.getVoteTotal(), 0);
+    }
+
+    @Test
+    public void testToJson() {
+        JSONObject optionJson = testOption.toJson();
+        assertEquals(testOption.getOptionID(), optionJson.getInt("optionId"));
+        assertEquals(testOption.getVoteTotal(), optionJson.getInt("voteTotal"));
+        assertEquals(testOption.getValue(), optionJson.get("value"));
     }
 
 }
