@@ -1,14 +1,13 @@
 package model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-
+import org.junit.jupiter.api.Test;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,10 +16,12 @@ public class PollTest {
     User testUser = User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
     List<Option> testOptionList = Option.testOptionList();
 
-    @Before
+    @BeforeEach
     public void runBefore() {
-        testPoll = new Poll(Poll.getNextPollId(), testUser, User.getEmptyUserList(), testOptionList, false,
-                User.getEmptyUserList());
+        Poll.resetNextPollId();
+        User.resetNextUserID();
+        testPoll = Poll.createPoll(testUser);
+        
     }
 
     @Test
@@ -29,14 +30,12 @@ public class PollTest {
      * method works as intended
      */
     public void testcreatePoll() {
-        Poll newPoll = Poll.createPoll(testUser);
-        assertEquals(newPoll.getPollId(), testPoll.getPollId());
-        assertEquals(newPoll.getOwner(), testPoll.getOwner());
-        assertEquals(newPoll.getUsers(), testPoll.getUsers());
-        assertEquals(newPoll.getOptions().size() + 2, testPoll.getOptions().size());
-        assertEquals(newPoll.isCompleted(), testPoll.isCompleted());
-        assertEquals(newPoll.getHasVoted(), testPoll.getHasVoted());
-
+        assertEquals(testPoll.getPollId(), Poll.getNextPollId() - 1);
+        assertEquals(testUser, testPoll.getOwner());
+        assertEquals(1, testPoll.getUsers().size());
+        assertEquals(0, testPoll.getOptions().size());
+        assertEquals(0, testPoll.getHasVoted().size());
+        assertFalse(testPoll.isCompleted());
     }
 
     @Test
@@ -45,8 +44,10 @@ public class PollTest {
      * Since the method add's one option we added another one making a total of 3.
      */
     public void testaddOptionToPoll() {
+        testPoll.addOptionToPoll("Test String 1");
+        assertEquals(1,testPoll.getOptions().size());
         testPoll.addOptionToPoll("Test String 2");
-        assertEquals(testPoll.getOptions().size(), 3);
+        assertEquals(2,testPoll.getOptions().size());
     }
 
     @Test
@@ -55,11 +56,10 @@ public class PollTest {
      * Since the method add's one option we added another one making a total of 2.
      */
     public void testaddUserToPoll() {
-        assertEquals(testPoll.getUsers().size(), 1);
+        assertEquals(1, testPoll.getUsers().size());
         testPoll.addUserToPoll(testUser);
-        assertEquals(testPoll.getUsers().size(), 2);
+        assertEquals(2, testPoll.getUsers().size());
     }
-
 
     @Test
     public void testisCompleted() {
@@ -70,9 +70,10 @@ public class PollTest {
 
     @Test
     public void pollResults() {
-        testPoll.getOptions().get(1).addVote(100);
+        testPoll.addOptionToPoll("Test String 1");
+        testPoll.getOptions().get(0).addVote(100);
         String result = testPoll.pollResults();
-        assertEquals(result, testPoll.getOptions().get(1).getValue());
+        assertEquals(result, testPoll.getOptions().get(0).getValue());
     }
 
     @Test
@@ -85,10 +86,10 @@ public class PollTest {
         assertEquals(testPoll.getPollId(), pollJson.getInt("pollId"));
         assertEquals(testPoll.getOwner().getUsername(), pollJson.getString("owner"));
         assertEquals(testPoll.isCompleted(), pollJson.getBoolean("isCompleted"));
-        
+
         optionListJson = pollJson.getJSONArray("optionsList");
         assertEquals(testPoll.getOptions().size(), optionListJson.length());
-        
+
         usersListJson = pollJson.getJSONArray("usersList");
         assertEquals(testPoll.getUsers().size(), usersListJson.length());
 

@@ -32,6 +32,8 @@ public class UserTest {
 
     @Test
     public void testToJson() {
+        Poll.resetNextPollId();
+        User.resetNextUserID();
         JSONObject userJson = newUser.toJson();
 
         assertEquals("doe.john", userJson.getString("username"));
@@ -41,10 +43,8 @@ public class UserTest {
         assertEquals(newUser.getUserId(), userJson.getInt("userId"));
 
         JSONArray pollIds = userJson.getJSONArray("partOfPolls");
-        assertEquals(2, pollIds.length());
-        assertEquals(p1.getPollId(), pollIds.get(0));
-        assertEquals(p2.getPollId(), pollIds.get(1));
+        assertEquals(p1.getPollId(), pollIds.getInt(0));
+        assertEquals(p2.getPollId(), pollIds.getInt(1));
     }
 
 }
-

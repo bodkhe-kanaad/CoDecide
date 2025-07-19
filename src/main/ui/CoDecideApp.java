@@ -29,16 +29,17 @@ public class CoDecideApp {
             Messages.welcomeMessage(); // Welcome messages
             UserLoginServices.loginStatus(); // User Authentication
             Messages.postLogin(); // Post Login Messages
+            // TODO Change this to have a ALL_POLLS Map
             Poll currentPoll = model.Poll.createPoll(session.getCurrentUserLoggedIn()); // Creation of the Poll with
                                                                                         // with current user as Owner
             PollEditer.optionAdder(currentPoll); // Adding options to the Poll
             Messages.postAddingOptions(); // Post adding options messages
             PollEditer.userAdder(currentPoll); // Adding other users to the Poll if needed
-            Messages.postAddingUsers();         // Post adding users messages
-            Voting.addingVote(currentPoll);     // Casting votes to the Poll
-            Messages.postAddingVotes();         //  Post voting
-            Messages.results(Voting.calculateResult(currentPoll));      // Option to view the result or quit Poll
-            isRunning = false;      // Condition to stop App for CLI no rerunning app for another Poll
+            Messages.postAddingUsers(); // Post adding users messages
+            Voting.addingVote(currentPoll); // Casting votes to the Poll
+            Messages.postAddingVotes(); // Post voting
+            Messages.results(Voting.calculateResult(currentPoll)); // Option to view the result or quit Poll
+            isRunning = false; // Condition to stop App for CLI no rerunning app for another Poll
         }
     }
 

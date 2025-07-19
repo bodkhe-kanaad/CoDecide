@@ -3,16 +3,38 @@
         "firstName": "John",
         "lastName": "Doe",
         "password": "T",
-        "partOfPolls": [],
-        "userId": 4,
+        "partOfPolls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            3,
+            4,
+            5
+        ],
+        "userId": 3,
         "username": "doe.john"
     },
     {
         "firstName": "Adam",
         "lastName": "Eve",
         "password": "T",
-        "partOfPolls": [],
-        "userId": 5,
+        "partOfPolls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            3,
+            4,
+            5
+        ],
+        "userId": 4,
         "username": "eve.adam"
     }
 ]}

@@ -51,6 +51,7 @@ public class PollAction {
             return false;
         }
         option.addVote(vote);
+        
         return true;
     }
 

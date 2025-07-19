@@ -8,6 +8,13 @@ import model.*;
 
 public class PollEditer {
 
+    // MODIDIES Poll created by the user
+    // EFFECTS Gives the option to make a Poll or Open an existing one
+    // Makes the Poll or Opens it after user triggers the event
+    public static void creatPoll() {
+        // TODO ADD implmentation;
+    }
+
     // MODIFIES Poll created by the user in the App
     // EFFECTS Adds options to the poll from user input
     public static void optionAdder(Poll currentPoll) {
@@ -31,7 +38,6 @@ public class PollEditer {
 
     // MODIFIES Poll created by the user in the App
     // EFFECTS Adds User to the poll from user input.
-
     public static void userAdder(Poll currentPoll) {
         InputPrompts.userInputs();
         int choice = CoDecideApp.INPUT.nextInt();

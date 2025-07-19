@@ -35,7 +35,7 @@ public class Poll {
         this.users = users;
         this.options = options;
         this.isCompleted = isCompleted;
-        this.hasVoted = hasVoted;
+        this.hasVoted = new ArrayList<>();
     }
 
     // The constructor to initialize a new Poll
@@ -77,6 +77,10 @@ public class Poll {
 
     public static int getNextPollId() {
         return NEXT_POLL_ID;
+    }
+
+    public static int resetNextPollId() {
+        return NEXT_POLL_ID = 1;
     }
 
     public void setCompleted(boolean isCompleted) {
@@ -151,7 +155,7 @@ public class Poll {
             usersVotedListJson.put(u.getUsername());
         }
 
-        pollJson.put("usersList", usersVotedListJson);
+        pollJson.put("usersList", usersListJson);
         pollJson.put("usersVotedList", usersVotedListJson);
         pollJson.put("optionsList", optionsListJson);
 

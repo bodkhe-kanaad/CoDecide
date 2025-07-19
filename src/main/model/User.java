@@ -71,6 +71,10 @@ public class User {
         return NEXT_USER_ID;
     }
 
+    public static int resetNextUserID() {
+        return NEXT_USER_ID = 1;
+    }
+    
     public static User getTestuser() {
         return testUser;
     }
@@ -103,6 +107,5 @@ public class User {
         }
         userJson.put("partOfPolls", partOfPollJson);
         return userJson;
-
     }
 }
