@@ -4,6 +4,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,11 +32,13 @@ public class Poll {
             List<User> hasVoted) {
         this.pollId = pollId;
         this.owner = owner;
-        users.add(owner);
+        if (!users.contains(owner)) {
+            users.add(owner);
+        }
         this.users = users;
         this.options = options;
         this.isCompleted = isCompleted;
-        this.hasVoted = new ArrayList<>();
+        this.hasVoted = hasVoted;
     }
 
     // The constructor to initialize a new Poll
@@ -45,13 +48,13 @@ public class Poll {
     private static Poll pollInitializer(User owner) {
         int pollId = NEXT_POLL_ID;
         NEXT_POLL_ID++;
-        List<User> users = User.getEmptyUserList();
+        List<User> users = new ArrayList<>();
         boolean isCompleted = false;
-        List<User> hasVoted = User.getEmptyUserList();
+        List<User> hasVoted = new ArrayList<>();
         List<Option> options = new ArrayList<>();
         Poll newPoll = new Poll(pollId, owner, users, options, isCompleted, hasVoted);
         owner.getPartOfPoll().add(newPoll);
-        return newPoll; 
+        return newPoll;
     }
 
     // Getters and Setters for Poll
@@ -160,7 +163,50 @@ public class Poll {
         pollJson.put("optionsList", optionsListJson);
 
         return pollJson;
+    }
 
+    public static Poll reconstructPoll(JSONObject pollJson, Map<String, User> allUsers) {
+        int pollId;
+        User owner;
+        boolean isCompleted;
+        List<Object> usersUsernames;
+        List<Object> hasVotedUsernames;
+        JSONArray optionsListJson;
+        String ownerUsername;
+
+        pollId = pollJson.getInt("pollId");
+        ownerUsername = pollJson.getString("owner");
+        usersUsernames = pollJson.getJSONArray("usersList").toList();
+        hasVotedUsernames = pollJson.getJSONArray("usersVotedList").toList();
+        optionsListJson = pollJson.getJSONArray("optionsList");
+        isCompleted = pollJson.getBoolean("isCompleted");
+        owner = allUsers.get(ownerUsername);
+
+        List<User> users = new ArrayList<>();
+        for (Object obj : usersUsernames) {
+            String username = (String) obj;
+            User user = allUsers.get(username);
+            if (user != null) {
+                users.add(user);
+            }
+        }
+
+        List<User> hasVoted = new ArrayList<>();
+        for (Object obj : hasVotedUsernames) {
+            String username = (String) obj;
+            User user = allUsers.get(username);
+            if (user != null) {
+                hasVoted.add(user);
+            }
+        }
+
+        List<Option> options = new ArrayList<>();
+        for (int i = 0; i < optionsListJson.length(); i++) {
+            JSONObject optionJson = optionsListJson.getJSONObject(i);
+            options.add(Option.reconstructOption(optionJson));
+        }
+
+        return new Poll(pollId, owner, users, options, isCompleted, hasVoted);
     }
 
 }

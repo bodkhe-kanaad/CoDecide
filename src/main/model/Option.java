@@ -11,7 +11,8 @@ import org.json.JSONObject;
  * It has details 
  */
 public class Option {
-    private int nextOptionId = 1;
+    private static int NEXT_OPTION_ID = 1;
+
     private static final int DEFAULT_VOTE_TOTAL = 0;
 
     private final int optionId; // Unique id for each option made
@@ -30,8 +31,8 @@ public class Option {
     // It assigned the voteTotal to be 0 since for a new Option no one will have
     // voted it
     public Option(String value) {
-        this.optionId = nextOptionId;
-        nextOptionId++;
+        this.optionId = NEXT_OPTION_ID;
+        NEXT_OPTION_ID++;
         this.voteTotal = DEFAULT_VOTE_TOTAL;
         this.value = value;
     }
@@ -76,6 +77,10 @@ public class Option {
         this.setValue(newText);
     }
 
+    public static int getNextOptionId() {
+        return NEXT_OPTION_ID;
+    }
+
     // Helper method for testing.
     public static final List<Option> testOptionList() {
         List<Option> testOptionList = new ArrayList<>();
@@ -94,6 +99,17 @@ public class Option {
         return optionJson;
     }
 
+    public static Option reconstructOption(JSONObject optionJson) {
+        int optionId;
+        int voteTotal;
+        String value;
 
+        optionId = optionJson.getInt("optionId");
+        voteTotal = optionJson.getInt("voteTotal");
+        value = optionJson.getString("value");
+
+        return new Option(optionId, voteTotal, value);
+    }
 
 }
+

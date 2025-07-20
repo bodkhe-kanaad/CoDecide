@@ -1,5 +1,6 @@
 package model;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -22,23 +23,36 @@ public class OptionTest {
     }
 
     @Test
+    public void testGetOptionId() {
+        Option newOption = Option.createOption("Test Option");
+        assertEquals(Option.getNextOptionId() - 1, newOption.getOptionId());
+    }
+
+    @Test
+    public void testSetValue() {
+        testOption.setValue("New Value");
+        assertEquals("New Value", testOption.getValue());
+    }
+
+    @Test
     public void testaddVote() {
         Option newOption = new Option("Test Option");
         newOption.addVote(15);
-        assertEquals(newOption.getVoteTotal(),15);
+        assertEquals(newOption.getVoteTotal(), 15);
         newOption.addVote(-15);
-        assertEquals(newOption.getVoteTotal(),0);
+        assertEquals(newOption.getVoteTotal(), 0);
         newOption.addVote(0);
-        assertEquals(newOption.getVoteTotal(),0);
+        assertEquals(newOption.getVoteTotal(), 0);
         newOption.addVote(100);
-        assertEquals(newOption.getVoteTotal(),100);
+        assertEquals(newOption.getVoteTotal(), 100);
     }
 
     @Test
     public void testchangeOption() {
         Option newOption = new Option("Test Option");
         newOption.changeOption("Changed Option");
-        assertEquals(newOption.getValue(), "Changed Option");
+        assertEquals("Changed Option", newOption.getValue());
+        assertNotEquals("Test Option", newOption.getValue());
     }
 
     @Test
@@ -60,6 +74,20 @@ public class OptionTest {
     @Test
     public void testGetEmptyList() {
         assertNotNull(Option.testOptionList());
+    }
+
+    @Test
+    public void testReconstructOption() {
+        JSONObject optionJson = new JSONObject();
+        optionJson.put("optionId", 1);
+        optionJson.put("value", "Option A");
+        optionJson.put("voteTotal", 5);
+
+        Option reconstructed = Option.reconstructOption(optionJson);
+
+        assertEquals(1, reconstructed.getOptionId());
+        assertEquals("Option A", reconstructed.getValue());
+        assertEquals(5, reconstructed.getVoteTotal());
     }
 
 }

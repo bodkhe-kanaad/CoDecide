@@ -38,6 +38,8 @@ public class User {
         this.partOfPoll = partOfPoll;
     }
 
+    
+
     // Getters and Setters for User
     public int getUserId() {
         return userId;
@@ -63,9 +65,9 @@ public class User {
         return partOfPoll;
     }
 
-    public static List<User> getEmptyUserList() {
-        return emptyUsers;
-    }
+    // public static List<User> getEmptyUserList() {
+    //     return emptyUsers;
+    // }
 
     public static int getNextUserID() {
         return NEXT_USER_ID;
@@ -74,7 +76,7 @@ public class User {
     public static int resetNextUserID() {
         return NEXT_USER_ID = 1;
     }
-    
+
     public static User getTestuser() {
         return testUser;
     }
@@ -108,4 +110,16 @@ public class User {
         userJson.put("partOfPolls", partOfPollJson);
         return userJson;
     }
+
+    public static User reconstructUser(JSONObject userJson) {
+        int userId = userJson.getInt("userId");
+        String username = userJson.getString("username");
+        String firstName = userJson.getString("firstName");
+        String lastName = userJson.getString("lastName");
+        String password = userJson.getString("password");
+    
+        return new User(userId, firstName, lastName, username, password, new ArrayList<>());
+    }
+    
+
 }

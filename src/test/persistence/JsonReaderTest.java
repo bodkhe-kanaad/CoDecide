@@ -13,18 +13,20 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JsonReaderTest {
-    private static final String USERS_FILE = "./data/test_users.json";
-    private static final String POLLS_FILE = "./data/test_polls.json";
+    private static final String USERS_FILE = "./data/testUsers.json";
+    private static final String POLLS_FILE = "./data/testPolls.json";
 
     private JsonReader reader;
     private Map<String, User> testUsers;
     private Map<Integer, Poll> testPolls;
-    private User u1, u2;
-    private Poll p1, p2;
+    private User u1;
+    private User u2;
+    private Poll p1;
+    private Poll p2;
 
     @BeforeEach
     public void runBefore() {
-        reader = JsonReader.jsonReaderUser(USERS_FILE);
+        reader = new JsonReader(USERS_FILE, POLLS_FILE);
         testUsers = new HashMap<>();
         testPolls = new HashMap<>();
 
@@ -94,18 +96,31 @@ public class JsonReaderTest {
             assertTrue(polls.containsKey(p2.getPollId()));
 
             Poll readP1 = polls.get(p1.getPollId());
-            assertEquals(u1.getUsername(),p1.getOwner().getUsername());
+            assertEquals(u1.getUsername(), readP1.getOwner().getUsername());
             assertEquals(2, readP1.getOptions().size());
             assertEquals(2, readP1.getUsers().size());
             assertEquals(u1, readP1.getUsers().get(0));
             assertEquals(p1.getOptions().get(0).getOptionId(), readP1.getOptions().get(0).getOptionId());
             assertEquals("A", readP1.getOptions().get(0).getValue());
             assertEquals(0, readP1.getOptions().get(0).getVoteTotal());
-            
-        } catch (IOException e) {
-            fail("Reading Failed");
-        }
 
+        } catch (IOException e) {
+            fail("Reading Failed" + e.getMessage());
+        }
     }
+
+    @Test
+    public void testJsonReaderUser() {
+        assertNotNull(JsonReader.jsonReaderUser(USERS_FILE));
+    }
+
+    @Test
+    public void testJsonReaderPoll() {
+        assertNotNull(JsonReader.jsonReaderPoll(POLLS_FILE));
+    }
+
+
+    
+
 
 }
