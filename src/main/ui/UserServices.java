@@ -9,8 +9,9 @@ import model.UserAction;
  * SignUp , Login , ChangePassword()
  */
 
-public class UserLoginServices {
+public class UserServices {
 
+    // EFFECTS checks the status of login making sure no one can use the app without logging in
     public static void loginStatus() {
         boolean status = promptLoginChoice();
         if (status == false) {
@@ -21,6 +22,7 @@ public class UserLoginServices {
         }
     }
 
+    // EFFECTS prompting the user to login
     public static boolean promptLoginChoice() {
         InputPrompts.loginOptionsInputs();
         int choice = CoDecideApp.INPUT.nextInt();
@@ -30,9 +32,9 @@ public class UserLoginServices {
         }
         switch (choice) {
             case 1:
-                return UserLoginServices.login();
+                return UserServices.login();
             case 2:
-                return UserLoginServices.signUp();
+                return UserServices.signUp();
             default:
                 ErrorMessages.failedLoginOptions();
                 return false;
@@ -40,6 +42,7 @@ public class UserLoginServices {
 
     }
 
+    // EFFECTS accepting inputs and passing them to Login UserAction
     public static boolean login() {
         InputPrompts.usernameInput();
         String username = CoDecideApp.INPUT.next();
@@ -54,6 +57,7 @@ public class UserLoginServices {
         }
     }
 
+    // EFFECTS accepting inputs and passing them to signup UserAction
     public static boolean signUp() {
         Messages.userSignupSelected();
         InputPrompts.firstNameInput();
@@ -80,6 +84,7 @@ public class UserLoginServices {
         }
     }
 
+    //EFFECTS Helper method for login
     public static boolean wrongCredentials() {
         ErrorMessages.pleaseTryAgain();
         return login();
@@ -90,7 +95,7 @@ public class UserLoginServices {
     public static void nextUserLogin(User nextUser) {
         CoDecideApp.getSession().setRunning(false);
         while (true) {
-            boolean loginSuccess = UserLoginServices.login();
+            boolean loginSuccess = UserServices.login();
             if (!loginSuccess) {
                 System.out.println("Login failed. Please try again.");
                 continue;

@@ -39,6 +39,7 @@ public class Session {
     }
     // REQUIRES currentUserLoggedIn is not null
     // EFFECTS It makes a new poll with auto incrementing next session id
+    
     public static Session sessionInitializer(User currentUserLoggedIn) {
         int sessionID = NEXT_SESSION_ID;
         NEXT_SESSION_ID++;

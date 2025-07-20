@@ -2,7 +2,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -135,8 +134,8 @@ public class Poll {
         return resultOption;
     }
 
+    // EFFECTS converts the Poll to a format that can be saved in JSON files
     public JSONObject toJson() {
-        // TODO Auto-generated method stub
         JSONObject pollJson = new JSONObject();
         JSONArray optionsListJson = new JSONArray();
         JSONArray usersListJson = new JSONArray();
@@ -165,6 +164,9 @@ public class Poll {
         return pollJson;
     }
 
+    
+    @SuppressWarnings
+    // EFFECTS converts the JSON stored data into Poll object
     public static Poll reconstructPoll(JSONObject pollJson, Map<String, User> allUsers) {
         int pollId;
         User owner;

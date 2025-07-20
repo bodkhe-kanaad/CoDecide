@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Before;
@@ -76,6 +78,28 @@ public class UserTest {
         assertEquals("Test@123", reconstructed.getPassword());
         assertEquals(1, reconstructed.getUserId());
         assertEquals(0, reconstructed.getPartOfPoll().size());
+    }
+
+    @Test
+    public void testingSetters() {
+        User.setNextUserId(0);
+        assertEquals(0, User.getNextUserID());
+        newUser = model.User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
+        newUser.setUserId(0);
+        assertEquals(0, newUser.getUserId());
+        newUser.setFirstName("K");
+        assertEquals("K", newUser.getFirstName());
+        newUser.setLastName("L");
+        assertEquals("L", newUser.getLastName());
+        newUser.setPassword("T");
+        assertEquals("T", newUser.getPassword());
+        newUser.setPartOfPoll(new ArrayList<>());
+        assertTrue(newUser.getPartOfPoll().isEmpty());
+        newUser.setUsername("Test");
+        assertEquals("Test", newUser.getUsername());
+        newUser.setPartOfPollId(new ArrayList<>());
+        assertEquals(0,newUser.getPartOfPollId().size());
+
     }
 
 }

@@ -2,6 +2,8 @@ package model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.*;
+import persistence.DataStore;
 
 /*
  * This class handles all the methods triggered by user action related to Poll 
@@ -9,13 +11,18 @@ import java.util.Map;
  */
 public class PollAction {
 
-    private static Map<Integer, Poll> ALL_POLLS = new HashMap<>();
-    
+    private static Map<Integer, Poll> ALL_POLLS = DataStore.getAllPolls();
 
-    private PollAction() {
-    // TODO ADD IMPLEMENTATION;
-    }
+    // public static List<Poll> ownershipForPolls(User currentUser) {
+    //     List<Poll> ownershipPolls = new ArrayList<>();
 
+    //     for (Poll p : ALL_POLLS.values()) {
+    //         if (p.getOwner().equals(currentUser) && p.isCompleted()) {
+    //             ownershipPolls.add(p);
+    //         }
+    //     }
+    //     return ownershipPolls;
+    // }
 
 
     // REQURIES currentPoll is not null

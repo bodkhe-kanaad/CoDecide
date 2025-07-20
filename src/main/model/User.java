@@ -22,6 +22,7 @@ public class User {
     private String username; // Username for Login
     private String password; // Password for Login
     private List<Poll> partOfPoll; // This user is part of what Poll's
+    private List<Integer> partOfPollId;
 
     // Constants for the class
     private static final List<User> emptyUsers = new ArrayList<>(); // The empty user list
@@ -29,16 +30,15 @@ public class User {
 
     // Constructor for User
     public User(int userId, String firstName, String lastName, String username, String password,
-            List<Poll> partOfPoll) {
+            List<Poll> partOfPoll, List<Integer> partOfPollId) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.partOfPoll = partOfPoll;
+        this.partOfPollId = partOfPollId;
     }
-
-    
 
     // Getters and Setters for User
     public int getUserId() {
@@ -65,9 +65,6 @@ public class User {
         return partOfPoll;
     }
 
-    // public static List<User> getEmptyUserList() {
-    //     return emptyUsers;
-    // }
 
     public static int getNextUserID() {
         return NEXT_USER_ID;
@@ -81,13 +78,50 @@ public class User {
         return testUser;
     }
 
+    public List<Integer> getPartOfPollId() {
+        return partOfPollId;
+    }
+
+    public void setPartOfPollId(List<Integer> partOfPollId) {
+        this.partOfPollId = partOfPollId;
+    }
+
+    public static void setNextUserId(int userId) {
+        NEXT_USER_ID = userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPartOfPoll(List<Poll> partOfPoll) {
+        this.partOfPoll = partOfPoll;
+    }
+
     // EFFECTS makes a new user initialized with autoincrementing userID and empty
     // list of polls the user is part of.
     private static User userInitalizer(String firstName, String lastName, String username, String password) {
         int userId = NEXT_USER_ID;
         NEXT_USER_ID++;
         List<Poll> partOfPoll = Poll.EMPTY_POLLS;
-        return new User(userId, firstName, lastName, username, password, partOfPoll);
+        List<Integer> partOfPollId = new ArrayList<>();
+        return new User(userId, firstName, lastName, username, password, partOfPoll, partOfPollId);
     }
 
     // EFFECTS It will create a new user
@@ -95,6 +129,7 @@ public class User {
         return userInitalizer(firstName, lastName, username, password);
     }
 
+    // EFFECTS converts the User Object fields to format that can be stored in JSON
     public JSONObject toJson() {
         JSONObject userJson = new JSONObject();
         JSONArray partOfPollJson = new JSONArray();
@@ -110,16 +145,23 @@ public class User {
         userJson.put("partOfPolls", partOfPollJson);
         return userJson;
     }
-
+ 
+     // EFFECTS converts the JSON format storied data to User Object
     public static User reconstructUser(JSONObject userJson) {
         int userId = userJson.getInt("userId");
         String username = userJson.getString("username");
         String firstName = userJson.getString("firstName");
         String lastName = userJson.getString("lastName");
         String password = userJson.getString("password");
-    
-        return new User(userId, firstName, lastName, username, password, new ArrayList<>());
+        List<Integer> partOfPollIds = new ArrayList<>();
+
+        JSONArray pollArray = userJson.getJSONArray("partOfPolls");
+
+        for (int i = 0; i < pollArray.length(); i++) {
+            partOfPollIds.add(pollArray.getInt(i));
+        }
+
+        return new User(userId, firstName, lastName, username, password, new ArrayList<>(), partOfPollIds);
     }
-    
 
 }

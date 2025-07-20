@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -80,6 +81,7 @@ public class JsonReaderTest {
             assertEquals("Doe", readU1.getLastName());
             assertEquals("T", readU1.getPassword());
             assertEquals(u1.getUserId(), readU1.getUserId());
+            assertEquals(2, u1.getPartOfPoll().size());
 
         } catch (IOException e) {
             fail("Reading Failed");
@@ -119,8 +121,30 @@ public class JsonReaderTest {
         assertNotNull(JsonReader.jsonReaderPoll(POLLS_FILE));
     }
 
+    @Test
+    public void testUserPolllinkingAfterRead() {
+        try {
+            Map<String, User> users = reader.readUsers();
+            Map<Integer, Poll> polls = reader.readPolls(users);
 
-    
+            User readU1 = users.get("doe.john");
+            User readU2 = users.get("eve.adam");
 
+            List<Poll> pollsForU1 = readU1.getPartOfPoll();
+            assertEquals(2, pollsForU1.size());
+            assertTrue(pollsForU1.stream().anyMatch(p -> p.getPollId() == p2.getPollId()));
+
+            List<Poll> pollsForU2 = readU2.getPartOfPoll();
+            assertEquals(2, pollsForU2.size());
+            assertTrue(pollsForU2.stream().anyMatch(p -> p.getPollId() == p1.getPollId()));
+
+            readU2.getPartOfPollId().add(1000);
+            assertEquals(2, pollsForU2.size());
+            assertTrue(pollsForU2.stream().anyMatch(p -> p.getPollId() == p1.getPollId()));
+
+        } catch (IOException e) {
+            fail("Failed: " + e.getMessage());
+        }
+    }
 
 }

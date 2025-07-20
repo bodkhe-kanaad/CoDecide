@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -90,6 +89,7 @@ public class Option {
         return testOptionList;
     }
 
+    // EFFECTS This converts an Option into a Format that can be used for persistence. 
     public JSONObject toJson() {
         JSONObject optionJson = new JSONObject();
         optionJson.put("optionId", optionId);
@@ -99,6 +99,7 @@ public class Option {
         return optionJson;
     }
 
+    // EFFECTS This converts the stored into a Option object.
     public static Option reconstructOption(JSONObject optionJson) {
         int optionId;
         int voteTotal;

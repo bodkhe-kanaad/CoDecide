@@ -5,6 +5,7 @@ package ui;
  */
 
 import model.*;
+
 public class InputPrompts {
 
     public static final void optionInputs() {
@@ -64,6 +65,13 @@ public class InputPrompts {
     public static final void resultOption() {
         System.out.println("Do you want to calculate the result");
         System.out.println("Press (1) Calculate or (2) Quit Poll ");
+    }
+
+    public static final void appFunctions() {
+        System.out.println("What would you like to do?");
+        System.out.println("(1) Create a new poll");
+        System.out.println("(2) Check results for a poll");
+        System.out.println("(3) Quit");
     }
 
 }

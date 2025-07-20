@@ -65,8 +65,8 @@ public class UserActionTest {
     public void testAllUsersMap() {
         UserAction.getAllUsersMap().clear();
         UserAction.signUp("John", "Doe", "doe.john", "Testpassword@1234");
-        assertEquals(3, UserAction.getAllUsersMap().size()); // Two test items have been added for easier CLI non
-                                                             // persistence User authentication
+        assertEquals(1, UserAction.getAllUsersMap().size());
+                                                             
     }
 
     @Test

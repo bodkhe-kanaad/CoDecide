@@ -45,7 +45,8 @@ public class ErrorMessages {
         System.out.println("Please try again");
     }
 
-    public static final void noUserExists()   {
+    public static final void noOrDuplicateUser()   {
         System.out.println("There is no User with this Username");
+        System.out.println("Or User is already a part of the Poll");
     }
 }

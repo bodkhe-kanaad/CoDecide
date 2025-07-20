@@ -3,14 +3,15 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
+import persistence.DataStore;
+import ui.CoDecideApp;
+
 public class UserAction {
     private UserAction() {
     }
 
     // CLI Version constants for Easier testing since no data persistence.
-    private static User CLI_USER = User.createUser("K", "B", "b.k", "T");
-    private static User CLI_USER_TWO = User.createUser("A", "B", "b.a", "T");
-    private static Map<String, User> ALL_USERS = new HashMap<>();
+    private static Map<String, User> ALL_USERS = DataStore.getAllUsers();
 
     // MODIFIES UserLogin.loginStatus set to true or false
     // EFFECTS creates an user using the User.createUser() method and adds it to the
@@ -38,8 +39,6 @@ public class UserAction {
 
     // Getter for the global user map
     public static Map<String, User> getAllUsersMap() {
-        ALL_USERS.put("b.k", CLI_USER);
-        ALL_USERS.put("b.a", CLI_USER_TWO);
         return ALL_USERS;
     }
 }

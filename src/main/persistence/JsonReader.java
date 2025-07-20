@@ -58,6 +58,19 @@ public class JsonReader {
             Poll poll = Poll.reconstructPoll(pollJson, allUsers);
             readPollsMap.put(poll.getPollId(), poll);
         }
+
+        for (User u : allUsers.values()) {
+            List<Poll> partOfPolls = new ArrayList<>();
+            for (Integer pollId : u.getPartOfPollId()) {
+                Poll poll = readPollsMap.get(pollId);
+                if (poll != null) {
+                    partOfPolls.add(poll);
+                }
+            }
+
+            u.setPartOfPoll(partOfPolls);
+        }
+
         return readPollsMap;
     }
 }

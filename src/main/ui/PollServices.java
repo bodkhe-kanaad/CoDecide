@@ -1,19 +1,17 @@
 package ui;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import model.*;
 
 /*
  * This class has methods related to Poll and its inputs
  */
 
-public class PollEditer {
-
-    // MODIDIES Poll created by the user
-    // EFFECTS Gives the option to make a Poll or Open an existing one
-    // Makes the Poll or Opens it after user triggers the event
-    public static void creatPoll() {
-        // TODO ADD implmentation;
-    }
+public class PollServices {
 
     // MODIFIES Poll created by the user in the App
     // EFFECTS Adds options to the poll from user input
@@ -52,10 +50,28 @@ public class PollEditer {
             String username = CoDecideApp.INPUT.next();
             boolean status = PollAction.addingUserToPoll(username, currentPoll);
             if (!status) {
-                ErrorMessages.noUserExists();
+                ErrorMessages.noOrDuplicateUser();
             }
             InputPrompts.userInputs();
             choice = CoDecideApp.INPUT.nextInt();
         }
     }
+    
+ // TODO IMPLEMENT
+    // public static String showResultsForUser(User currentUser) {
+    //     Map<Integer, String> pollResults = new HashMap<>();
+    //     List<String> print = new ArrayList<>();
+    //     if (PollAction.ownershipForPolls(currentUser) != null) {
+    //         for (Poll p : PollAction.ownershipForPolls(currentUser)) {
+    //             pollResults.put(p.getPollId(), PollAction.calculateResult(p));
+    //         }
+    //         for (Map.Entry<Integer, String> entry : pollResults.entrySet()) {
+    //             print.add("Poll Id: " + entry.getKey() + ", Result: " + entry.getValue());
+    //         }
+    //     } else {
+    //         return "You are not the owner for any Polls";
+    //     }
+    //     return print.toString();
+
+    // }
 }

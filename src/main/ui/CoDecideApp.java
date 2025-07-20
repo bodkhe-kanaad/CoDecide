@@ -1,17 +1,26 @@
 package ui;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import model.*;
+import persistence.DataStore;
 /*
  * This is the class that has the App and its details
  * about session and if the instance of the app is running.
  */
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 public class CoDecideApp {
     public static final Scanner INPUT = new Scanner(System.in);
-    public static final double CURRENT_VERSION_NUMBER = 1.50;
+    public static final double CURRENT_VERSION_NUMBER = 2.0;
+    public static final JsonReader reader = new JsonReader("data/users.json", "data/polls.json");
 
     private static Session session;
+
+    private boolean sessionActive;
 
     public static Session getSession() {
         return session;
@@ -20,6 +29,7 @@ public class CoDecideApp {
     private boolean isRunning; // True if the App is still running, False if the App has been closed.
 
     public CoDecideApp() {
+        loadState();
         this.isRunning = true;
     }
 
@@ -27,23 +37,86 @@ public class CoDecideApp {
     public void run() {
         while (isRunning) {
             Messages.welcomeMessage(); // Welcome messages
-            UserLoginServices.loginStatus(); // User Authentication
+            UserServices.loginStatus(); // User Authentication
             Messages.postLogin(); // Post Login Messages
-            // TODO Change this to have a ALL_POLLS Map
-            Poll currentPoll = model.Poll.createPoll(session.getCurrentUserLoggedIn()); // Creation of the Poll with
-                                                                                        // with current user as Owner
-            PollEditer.optionAdder(currentPoll); // Adding options to the Poll
-            Messages.postAddingOptions(); // Post adding options messages
-            PollEditer.userAdder(currentPoll); // Adding other users to the Poll if needed
-            Messages.postAddingUsers(); // Post adding users messages
-            Voting.addingVote(currentPoll); // Casting votes to the Poll
-            Messages.postAddingVotes(); // Post voting
-            Messages.results(Voting.calculateResult(currentPoll)); // Option to view the result or quit Poll
-            isRunning = false; // Condition to stop App for CLI no rerunning app for another Poll
+            this.sessionActive = true;
+            while (sessionActive == true) {
+                int choice = 0;
+                while (choice != 1 && choice != 2 && choice != 3) {
+                    InputPrompts.appFunctions();
+                    choice = INPUT.nextInt();
+                }
+                switch (choice) {
+                    case 1:
+                        createChoicePoll();
+                        break;
+                    case 2:
+                        quitApplcationChoice(); // Later load back functionality
+                    case 3:
+                        quitApplcationChoice();
+                        break;
+                }
+            }
         }
     }
 
     public static void setSession(Session s) {
         session = s;
+        saveState();
     }
+
+    // EFFECTS loads the App's past data after relaunching the App
+    public static void loadState() {
+        try {
+            Map<String, User> users = reader.readUsers();
+            Map<Integer, Poll> polls = reader.readPolls(users);
+
+            DataStore.getAllUsers().clear();
+            DataStore.getAllUsers().putAll(users);
+
+            DataStore.getAllPolls().clear();
+            DataStore.getAllPolls().putAll(polls);
+        } catch (IOException e) {
+            System.out.println("Failed to load data: " + e.getMessage());
+        }
+    }
+
+    // EFFECTS Saves the current state of the App and its details
+    public static void saveState() {
+        try {
+            JsonWriter userWriter = new JsonWriter("data/users.json");
+            JsonWriter pollWriter = new JsonWriter("data/polls.json");
+
+            userWriter.open();
+            userWriter.writeAllUsers(DataStore.getAllUsers());
+            userWriter.close();
+
+            pollWriter.open();
+            pollWriter.writeAllPolls(DataStore.getAllPolls());
+            pollWriter.close();
+        } catch (IOException e) {
+            System.out.println("Auto-save failed: " + e.getMessage());
+        }
+    }
+
+    // EFFECTS creates a Poll by taking inputs and passing on to other methods
+    private void createChoicePoll() {
+        Poll currentPoll = model.Poll.createPoll(session.getCurrentUserLoggedIn());
+        PollServices.optionAdder(currentPoll); // Adding options to the Poll
+        Messages.postAddingOptions(); // Post adding options messages
+        PollServices.userAdder(currentPoll); // Adding other users to the Poll if needed
+        Messages.postAddingUsers(); // Post adding users messages
+        Voting.addingVote(currentPoll); // Casting votes to the Poll
+        Messages.postAddingVotes(); // Post voting
+        Messages.results(Voting.calculateResult(currentPoll)); // Option to view the result or quit Poll
+        DataStore.getAllPolls().put(currentPoll.getPollId(), currentPoll);
+        saveState();
+    }
+
+    // EFFECTS sets fields needed to quit the App
+    private void quitApplcationChoice() {
+        sessionActive = false;
+        isRunning = false;
+    }
+
 }
