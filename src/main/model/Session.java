@@ -1,6 +1,6 @@
 package model;
 
-import model.User.User;
+import model.user.User;
 
 /*
  * This class represents a Session and will be used 
@@ -12,7 +12,7 @@ import model.User.User;
 public class Session {
     private static int NEXT_SESSION_ID = 1;
 
-    private model.User.User currentUserLoggedIn;
+    private model.user.User currentUserLoggedIn;
     private int sessionID;
     private boolean isRunning;
 
@@ -25,11 +25,11 @@ public class Session {
         return isRunning;
     }
 
-    public model.User.User getCurrentUserLoggedIn() {
+    public model.user.User getCurrentUserLoggedIn() {
         return currentUserLoggedIn;
     }
 
-    public void setCurrentUserLoggedIn(model.User.User currentUserLoggedIn) {
+    public void setCurrentUserLoggedIn(model.user.User currentUserLoggedIn) {
         this.currentUserLoggedIn = currentUserLoggedIn;
     }
 

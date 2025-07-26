@@ -5,8 +5,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import model.Poll.Poll;
-import model.User.User;
+
+import model.poll.Poll;
+import model.user.User;
 
 public class JsonReader {
     private String userSourceFile;

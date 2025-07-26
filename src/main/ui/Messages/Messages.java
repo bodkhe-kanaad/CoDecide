@@ -1,6 +1,6 @@
 package ui.Messages;
 
-import model.User.User;
+import model.user.User;
 import ui.CoDecideApp;
 
 public class Messages {

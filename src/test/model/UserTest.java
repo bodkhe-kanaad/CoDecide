@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
-import model.Poll.Poll;
-import model.User.User;
+
+import model.poll.Poll;
+import model.user.User;
 
 public class UserTest {
     private User newUser;
@@ -20,7 +21,7 @@ public class UserTest {
 
     @Test
     public void testcreateUser() {
-        newUser = model.User.User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
+        newUser = model.user.User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
         p1 = Poll.createPoll(newUser);
         p2 = Poll.createPoll(newUser);
         assertEquals(newUser.getUserId(), User.getNextUserID() - 1);
@@ -33,7 +34,7 @@ public class UserTest {
 
     @Test
     public void testToJson() {
-        testUser = model.User.User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
+        testUser = model.user.User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
         p1 = Poll.createPoll(testUser);
         p2 = Poll.createPoll(testUser);
 
@@ -84,7 +85,7 @@ public class UserTest {
     public void testingSetters() {
         User.setNextUserId(0);
         assertEquals(0, User.getNextUserID());
-        newUser = model.User.User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
+        newUser = model.user.User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
         newUser.setUserId(0);
         assertEquals(0, newUser.getUserId());
         newUser.setFirstName("K");

@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 import model.*;
-import model.Poll.Poll;
-import model.User.User;
+import model.poll.Poll;
+import model.user.User;
 import persistence.DataStore;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -18,9 +18,7 @@ import ui.Messages.InputPrompts;
  *  - instance of the app is running.
  */
 
-
-
-
+ 
 public class CoDecideApp {
     public static final Scanner INPUT = new Scanner(System.in);
     public static final double CURRENT_VERSION_NUMBER = 2.0;
@@ -117,7 +115,7 @@ public class CoDecideApp {
 
     // EFFECTS creates a Poll by taking inputs and passing on to other methods
     private void choiceCreatePoll() {
-        Poll currentPoll = model.Poll.Poll.createPoll(session.getCurrentUserLoggedIn());
+        Poll currentPoll = model.poll.Poll.createPoll(session.getCurrentUserLoggedIn());
         PollServices.optionAdder(currentPoll); // Adding options to the Poll
         Messages.postAddingOptions(); // Post adding options messages
         PollServices.userAdder(currentPoll); // Adding other users to the Poll if needed

@@ -1,9 +1,10 @@
 package ui;
 
 import java.util.List;
-import model.Poll.Poll;
-import model.Poll.PollAction;
-import model.User.User;
+
+import model.poll.Poll;
+import model.poll.PollAction;
+import model.user.User;
 import ui.Messages.ErrorMessages;
 import ui.Messages.InputPrompts;
 

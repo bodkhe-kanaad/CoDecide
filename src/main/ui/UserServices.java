@@ -1,8 +1,8 @@
 package ui;
 
 import model.Session;
-import model.User.User;
-import model.User.UserAction;
+import model.user.User;
+import model.user.UserAction;
 import ui.Messages.Messages;
 import ui.Messages.ErrorMessages;
 import ui.Messages.InputPrompts;

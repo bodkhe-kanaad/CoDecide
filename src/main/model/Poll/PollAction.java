@@ -1,10 +1,10 @@
-package model.Poll;
+package model.poll;
 
 import java.util.Map;
 
 import model.Option;
-import model.User.User;
-import model.User.UserAction;
+import model.user.User;
+import model.user.UserAction;
 
 import java.util.*;
 import persistence.DataStore;
@@ -71,5 +71,9 @@ public class PollAction {
             }
         }
         return ownershipPolls;
+    }
+
+    public static Map<Integer, Poll> getAllPolls() {
+        return ALL_POLLS;
     }
 }

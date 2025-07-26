@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.User.User;
+import model.user.User;
 
 public class SessionTest {
     private Session testSession;

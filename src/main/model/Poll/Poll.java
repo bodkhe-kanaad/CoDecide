@@ -1,5 +1,5 @@
 
-package model.Poll;
+package model.poll;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.Option;
-import model.User.User;
+import model.user.User;
 
 /*
  * This class represents a Poll 

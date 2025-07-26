@@ -1,15 +1,19 @@
 package model;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
 import org.junit.Test;
 
-import model.Poll.Poll;
-import model.Poll.PollAction;
-import model.User.User;
-import model.User.UserAction;
+import model.poll.Poll;
+import model.poll.PollAction;
+import model.user.User;
+import model.user.UserAction;
+import ui.PollServices;
 
 public class PollActionTest {
 
@@ -82,4 +86,73 @@ public class PollActionTest {
         assertEquals(Option.testOptionList().getFirst().getValue(), result);
     }
 
+    @Test
+    public void testOwnershipForPollsAndCompleted() {
+        User testUser = User.getTestuser();
+        Poll poll = Poll.createPoll(User.getTestuser());
+        PollAction.addingOptionToPoll(Option.testOptionList().getFirst().getValue(), poll);
+        poll.getOptions().getFirst().setVoteTotal(100);
+        poll.setCompleted(true);
+
+        PollAction.getAllPolls().clear();
+        PollAction.getAllPolls().put(poll.getPollId(), poll);
+
+        List<Poll> result = PollAction.ownershipForPollsAndCompleted(testUser);
+
+        assertEquals(1, result.size());
+        assertTrue(result.contains(poll));
+    }
+
+    @Test
+    public void testOwnershipForPollsAndNotCompleted() {
+        User testUser = User.getTestuser();
+        Poll poll = Poll.createPoll(User.getTestuser());
+        PollAction.addingOptionToPoll(Option.testOptionList().getFirst().getValue(), poll);
+        poll.getOptions().getFirst().setVoteTotal(100);
+        poll.setCompleted(false);
+
+        PollAction.getAllPolls().clear();
+        PollAction.getAllPolls().put(poll.getPollId(), poll);
+
+        List<Poll> result = PollAction.ownershipForPollsAndCompleted(testUser);
+
+        assertEquals(0, result.size());
+        assertFalse(result.contains(poll));
+    }
+
+    @Test
+    public void testOwnershipForPollsAndNotCompletedNotOwner() {
+        User testUser = User.getTestuser();
+        User owner = User.createUser("Owner", "Onwer", "o", "T");
+        Poll poll = Poll.createPoll(owner);
+        PollAction.addingOptionToPoll(Option.testOptionList().getFirst().getValue(), poll);
+        poll.getOptions().getFirst().setVoteTotal(100);
+        poll.setCompleted(false);
+
+        PollAction.getAllPolls().clear();
+        PollAction.getAllPolls().put(poll.getPollId(), poll);
+
+        List<Poll> result = PollAction.ownershipForPollsAndCompleted(testUser);
+
+        assertEquals(0, result.size());
+        assertFalse(result.contains(poll));
+    }
+
+    @Test
+    public void testOwnershipForPollsAndCompletedNotOwner() {
+        User testUser = User.getTestuser();
+        User owner = User.createUser("Owner", "Onwer", "o", "T");
+        Poll poll = Poll.createPoll(owner);
+        PollAction.addingOptionToPoll(Option.testOptionList().getFirst().getValue(), poll);
+        poll.getOptions().getFirst().setVoteTotal(100);
+        poll.setCompleted(true);
+
+        PollAction.getAllPolls().clear();
+        PollAction.getAllPolls().put(poll.getPollId(), poll);
+
+        List<Poll> result = PollAction.ownershipForPollsAndCompleted(testUser);
+
+        assertEquals(0, result.size());
+        assertFalse(result.contains(poll));
+    }
 }

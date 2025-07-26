@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import model.User.UserAction;
+import model.user.UserAction;
 
 public class UserActionTest {
 

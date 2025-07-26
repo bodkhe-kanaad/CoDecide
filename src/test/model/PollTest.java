@@ -3,6 +3,7 @@ package model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
@@ -12,8 +13,8 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.Poll.Poll;
-import model.User.User;
+import model.poll.Poll;
+import model.user.User;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -202,6 +203,13 @@ public class PollTest {
         assertEquals(0, reconstructed.getHasVoted().size());
 
         assertEquals(0, reconstructed.getOptions().size());
+    }
+
+    @Test
+    public void testToPrintResult() {
+        testPoll.addOptionToPoll("A");
+        testPoll.getOptions().get(0).addVote(100);
+        assertNotNull(testPoll.toPrintResult());
     }
 
 }

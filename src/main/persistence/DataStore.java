@@ -3,8 +3,8 @@ package persistence;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.Poll.Poll;
-import model.User.User;
+import model.poll.Poll;
+import model.user.User;
 
 public class DataStore {
     private static final Map<String, User> allUsers = new HashMap<>();
