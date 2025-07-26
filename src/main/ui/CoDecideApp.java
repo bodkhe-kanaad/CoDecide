@@ -36,23 +36,27 @@ public class CoDecideApp {
     // EFFECTS This runs the App after a call from the User.
     public void run() {
         while (isRunning) {
-            Messages.welcomeMessage(); // Welcome messages
-            UserServices.loginStatus(); // User Authentication
-            Messages.postLogin(); // Post Login Messages
+            appStart();
             this.sessionActive = true;
             while (sessionActive == true) {
                 int choice = 0;
-                while (choice != 1 && choice != 2 && choice != 3) {
+                while (choice != 1 && choice != 2 && choice != 3 && choice != 4) {
                     InputPrompts.appFunctions();
                     choice = INPUT.nextInt();
                 }
                 switch (choice) {
                     case 1:
-                        createChoicePoll();
+                        choiceCreatePoll();
                         break;
                     case 2:
-                        quitApplcationChoice(); // Later load back functionality
+                        String allPollsToPrint;
+                        allPollsToPrint = PollServices.showResultsForUser(session.getCurrentUserLoggedIn());
+                        Messages.printAllPollResults(allPollsToPrint);
+                        break;
                     case 3:
+                        UserServices.loginStatus();
+                        break;
+                    case 4:
                         quitApplcationChoice();
                         break;
                 }
@@ -66,7 +70,7 @@ public class CoDecideApp {
     }
 
     // EFFECTS loads the App's past data after relaunching the App
-    public static void loadState() {
+    private static void loadState() {
         try {
             Map<String, User> users = reader.readUsers();
             Map<Integer, Poll> polls = reader.readPolls(users);
@@ -82,7 +86,7 @@ public class CoDecideApp {
     }
 
     // EFFECTS Saves the current state of the App and its details
-    public static void saveState() {
+    private static void saveState() {
         try {
             JsonWriter userWriter = new JsonWriter("data/users.json");
             JsonWriter pollWriter = new JsonWriter("data/polls.json");
@@ -100,7 +104,7 @@ public class CoDecideApp {
     }
 
     // EFFECTS creates a Poll by taking inputs and passing on to other methods
-    private void createChoicePoll() {
+    private void choiceCreatePoll() {
         Poll currentPoll = model.Poll.createPoll(session.getCurrentUserLoggedIn());
         PollServices.optionAdder(currentPoll); // Adding options to the Poll
         Messages.postAddingOptions(); // Post adding options messages
@@ -117,6 +121,12 @@ public class CoDecideApp {
     private void quitApplcationChoice() {
         sessionActive = false;
         isRunning = false;
+    }
+
+    private void appStart() {
+        Messages.welcomeMessage(); // Welcome messages
+        UserServices.loginStatus(); // User Authentication
+        Messages.postLogin(); // Post Login Messages
     }
 
 }

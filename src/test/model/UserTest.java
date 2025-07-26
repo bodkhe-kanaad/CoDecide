@@ -48,7 +48,7 @@ public class UserTest {
         assertEquals(testUser.getUserId(), userJson.getInt("userId"));
 
         JSONArray pollIds = userJson.getJSONArray("partOfPolls");
-        assertTrue(pollIds.length() == 2);
+        assertEquals(2,pollIds.length());
     }
 
     @Test

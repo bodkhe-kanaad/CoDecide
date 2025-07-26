@@ -164,8 +164,7 @@ public class Poll {
         return pollJson;
     }
 
-    
-    @SuppressWarnings
+    // @SuppressWarnings
     // EFFECTS converts the JSON stored data into Poll object
     public static Poll reconstructPoll(JSONObject pollJson, Map<String, User> allUsers) {
         int pollId;
@@ -184,31 +183,54 @@ public class Poll {
         isCompleted = pollJson.getBoolean("isCompleted");
         owner = allUsers.get(ownerUsername);
 
-        List<User> users = new ArrayList<>();
-        for (Object obj : usersUsernames) {
-            String username = (String) obj;
-            User user = allUsers.get(username);
-            if (user != null) {
-                users.add(user);
-            }
-        }
+        List<User> users = userNamesToUsers(allUsers, usersUsernames);
 
-        List<User> hasVoted = new ArrayList<>();
-        for (Object obj : hasVotedUsernames) {
-            String username = (String) obj;
-            User user = allUsers.get(username);
-            if (user != null) {
-                hasVoted.add(user);
-            }
-        }
+        List<User> hasVoted = hasVotedUserNamesToUsers(allUsers, hasVotedUsernames);
 
-        List<Option> options = new ArrayList<>();
-        for (int i = 0; i < optionsListJson.length(); i++) {
-            JSONObject optionJson = optionsListJson.getJSONObject(i);
-            options.add(Option.reconstructOption(optionJson));
-        }
+        List<Option> options = optionsListToOption(optionsListJson);
 
         return new Poll(pollId, owner, users, options, isCompleted, hasVoted);
     }
 
+    // TODO
+    public String toPrintResult() {
+        String result = PollAction.calculateResult(this);
+        return "Poll ID : " + pollId + "\n" + "Owner : " + owner + "\n" + "Result : " + result;
+    }
+
+    // TODO
+    private static List<User> userNamesToUsers(Map<String, User> allUsers, List<Object> usersUsernames) {
+        List<User> userList = new ArrayList<>();
+        for (Object obj : usersUsernames) {
+            String username = (String) obj;
+            User user = allUsers.get(username);
+            if (user != null) {
+                userList.add(user);
+            }
+        }
+        return userList;
+    }
+
+    // TODO
+    private static List<User> hasVotedUserNamesToUsers(Map<String, User> allUsers, List<Object> hasVotedUsernames) {
+        List<User> hasVotedList = new ArrayList<>();
+        for (Object obj : hasVotedUsernames) {
+            String username = (String) obj;
+            User user = allUsers.get(username);
+            if (user != null) {
+                hasVotedList.add(user);
+            }
+        }
+        return hasVotedList;
+    }
+
+    // TODO
+    private static List<Option> optionsListToOption(JSONArray optionsListJson) {
+        List<Option> optionsList = new ArrayList<>();
+        for (int i = 0; i < optionsListJson.length(); i++) {
+            JSONObject optionJson = optionsListJson.getJSONObject(i);
+            optionsList.add(Option.reconstructOption(optionJson));
+        }
+        return optionsList;
+    }
 }

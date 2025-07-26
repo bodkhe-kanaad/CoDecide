@@ -1,8 +1,18 @@
-{"users": [{
-    "firstName": "Kanaad",
-    "lastName": "Bodkhe",
-    "password": "Test@1234",
-    "partOfPolls": [],
-    "userId": 2,
-    "username": "b.k"
-}]}
+{"users": [
+    {
+        "firstName": "Kanaad",
+        "lastName": "Bodkhe",
+        "password": "Test@1234",
+        "partOfPolls": [1],
+        "userId": 2,
+        "username": "b.k"
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "password": "Test@1234",
+        "partOfPolls": [1],
+        "userId": 2,
+        "username": "doe.john"
+    }
+]}

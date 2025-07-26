@@ -56,22 +56,19 @@ public class PollServices {
             choice = CoDecideApp.INPUT.nextInt();
         }
     }
-    
- // TODO IMPLEMENT
-    // public static String showResultsForUser(User currentUser) {
-    //     Map<Integer, String> pollResults = new HashMap<>();
-    //     List<String> print = new ArrayList<>();
-    //     if (PollAction.ownershipForPolls(currentUser) != null) {
-    //         for (Poll p : PollAction.ownershipForPolls(currentUser)) {
-    //             pollResults.put(p.getPollId(), PollAction.calculateResult(p));
-    //         }
-    //         for (Map.Entry<Integer, String> entry : pollResults.entrySet()) {
-    //             print.add("Poll Id: " + entry.getKey() + ", Result: " + entry.getValue());
-    //         }
-    //     } else {
-    //         return "You are not the owner for any Polls";
-    //     }
-    //     return print.toString();
 
-    // }
+    public static String showResultsForUser(User currentUser) {
+        Map<Integer, String> pollResults = new HashMap<>();
+        List<String> print = new ArrayList<>();
+        List<Poll> ownerForPolls = PollAction.ownershipForPolls(currentUser);
+        String allPollsPrint = "";
+        if (!ownerForPolls.isEmpty()) {
+            for (Poll p : ownerForPolls) {
+                allPollsPrint += p.toPrintResult();
+            }
+        } else {
+            return "You are not the owner for any Polls";
+        }
+        return "Here is the result for all your Past Polls :" + "\n" + allPollsPrint;
+    }
 }

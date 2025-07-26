@@ -13,18 +13,6 @@ public class PollAction {
 
     private static Map<Integer, Poll> ALL_POLLS = DataStore.getAllPolls();
 
-    // public static List<Poll> ownershipForPolls(User currentUser) {
-    //     List<Poll> ownershipPolls = new ArrayList<>();
-
-    //     for (Poll p : ALL_POLLS.values()) {
-    //         if (p.getOwner().equals(currentUser) && p.isCompleted()) {
-    //             ownershipPolls.add(p);
-    //         }
-    //     }
-    //     return ownershipPolls;
-    // }
-
-
     // REQURIES currentPoll is not null
     // MODIEIS currentPoll.users and User.partOfPoll
     // EFFECTS adds the user to the Poll in which this was triggered
@@ -64,5 +52,16 @@ public class PollAction {
 
     public static String calculateResult(Poll currentPoll) {
         return currentPoll.pollResults();
+    }
+
+    public static List<Poll> ownershipForPolls(User currentUser) {
+        List<Poll> ownershipPolls = new ArrayList<>();
+
+        for (Poll p : ALL_POLLS.values()) {
+            if (p.getOwner().equals(currentUser) && p.isCompleted()) {
+                ownershipPolls.add(p);
+            }
+        }
+        return ownershipPolls;
     }
 }

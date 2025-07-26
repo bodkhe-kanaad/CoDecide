@@ -70,8 +70,9 @@ public class InputPrompts {
     public static final void appFunctions() {
         System.out.println("What would you like to do?");
         System.out.println("(1) Create a new poll");
-        System.out.println("(2) Check results for a poll");
-        System.out.println("(3) Quit");
+        System.out.println("(2) Check results for past polls");
+        System.out.println("(3) Would someone else like to Login / Signup ?");
+        System.out.println("(4) Quit");
     }
 
 }

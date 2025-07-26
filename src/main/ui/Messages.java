@@ -65,5 +65,9 @@ public class Messages {
         System.out.println("Please proceed to login");
     }
 
+    public static final void printAllPollResults(String allPolls) {
+        System.out.println(allPolls);
+    }
+
 }
 

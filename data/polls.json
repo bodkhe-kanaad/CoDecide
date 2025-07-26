@@ -1,1 +1,25 @@
-{"polls": []}
+{"polls": [{
+    "owner": "doe.john",
+    "usersList": [
+        "doe.john",
+        "b.k"
+    ],
+    "usersVotedList": [
+        "doe.john",
+        "b.k"
+    ],
+    "optionsList": [
+        {
+            "voteTotal": 190,
+            "optionId": 1,
+            "value": "A"
+        },
+        {
+            "voteTotal": 100,
+            "optionId": 2,
+            "value": "B"
+        }
+    ],
+    "pollId": 1,
+    "isCompleted": true
+}]}
