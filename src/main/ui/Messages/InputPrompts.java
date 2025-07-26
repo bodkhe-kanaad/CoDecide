@@ -1,4 +1,4 @@
-package ui;
+package ui.Messages;
 
 /*
  * Class for all input prompts

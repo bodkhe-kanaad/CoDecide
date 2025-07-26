@@ -6,6 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Test;
 
+import model.Poll.Poll;
+import model.Poll.PollAction;
+import model.User.User;
+import model.User.UserAction;
+
 public class PollActionTest {
 
     @Test

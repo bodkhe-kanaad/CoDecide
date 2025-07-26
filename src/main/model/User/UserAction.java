@@ -1,10 +1,9 @@
-package model;
+package model.User;
 
-import java.util.HashMap;
 import java.util.Map;
 
+import model.Session;
 import persistence.DataStore;
-import ui.CoDecideApp;
 
 public class UserAction {
     private UserAction() {

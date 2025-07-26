@@ -1,17 +1,25 @@
 package ui;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import model.*;
+import model.Poll.Poll;
+import model.User.User;
 import persistence.DataStore;
-/*
- * This is the class that has the App and its details
- * about session and if the instance of the app is running.
- */
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import ui.Messages.Messages;
+import ui.Messages.InputPrompts;
+
+/*
+ * This is the class that has the App and its details
+ *  -  session and if its running
+ *  - instance of the app is running.
+ */
+
+
+
 
 public class CoDecideApp {
     public static final Scanner INPUT = new Scanner(System.in);
@@ -64,12 +72,15 @@ public class CoDecideApp {
         }
     }
 
+    // REQUIRES Session s is not Null
+    // MODIFIES this
+    // EFFECTS After login changes the state of the App by setting new session
     public static void setSession(Session s) {
         session = s;
         saveState();
     }
 
-    // EFFECTS loads the App's past data after relaunching the App
+    // EFFECTS loads the App's past data after user relaunches the App
     private static void loadState() {
         try {
             Map<String, User> users = reader.readUsers();
@@ -84,6 +95,7 @@ public class CoDecideApp {
             System.out.println("Failed to load data: " + e.getMessage());
         }
     }
+
 
     // EFFECTS Saves the current state of the App and its details
     private static void saveState() {
@@ -105,7 +117,7 @@ public class CoDecideApp {
 
     // EFFECTS creates a Poll by taking inputs and passing on to other methods
     private void choiceCreatePoll() {
-        Poll currentPoll = model.Poll.createPoll(session.getCurrentUserLoggedIn());
+        Poll currentPoll = model.Poll.Poll.createPoll(session.getCurrentUserLoggedIn());
         PollServices.optionAdder(currentPoll); // Adding options to the Poll
         Messages.postAddingOptions(); // Post adding options messages
         PollServices.userAdder(currentPoll); // Adding other users to the Poll if needed
@@ -123,6 +135,7 @@ public class CoDecideApp {
         isRunning = false;
     }
 
+    // EFFECTS The details about the App when someone starts it and logs them in.
     private void appStart() {
         Messages.welcomeMessage(); // Welcome messages
         UserServices.loginStatus(); // User Authentication

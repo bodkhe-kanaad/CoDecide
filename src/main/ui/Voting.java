@@ -3,6 +3,13 @@ package ui;
 import java.util.List;
 
 import model.*;
+import model.Poll.Poll;
+import model.Poll.PollAction;
+import model.User.User;
+import ui.Messages.Messages;
+import ui.Messages.ErrorMessages;
+import ui.Messages.InputPrompts;
+
 
 /*
  * This class contains the method for the user to register the vote

@@ -1,8 +1,12 @@
 package ui;
 
 import model.Session;
-import model.User;
-import model.UserAction;
+import model.User.User;
+import model.User.UserAction;
+import ui.Messages.Messages;
+import ui.Messages.ErrorMessages;
+import ui.Messages.InputPrompts;
+
 
 /*
  * This class will manage all the user services like
@@ -90,7 +94,7 @@ public class UserServices {
         return login();
     }
 
-     // REQUIRES nextUser is not null
+    // REQUIRES nextUser is not null
     // EFFECTS checks if the next User logging in is the User we intended and not someone else with valid credentials 
     public static void nextUserLogin(User nextUser) {
         CoDecideApp.getSession().setRunning(false);

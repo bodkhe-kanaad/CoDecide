@@ -7,8 +7,8 @@ import java.io.File;
 
 import org.json.*;
 
-import model.Poll;
-import model.User;
+import model.Poll.Poll;
+import model.User.User;
 
 public class JsonWriter {
     private static final int TAB = 4;

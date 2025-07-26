@@ -1,4 +1,4 @@
-package ui;
+package ui.Messages;
 
 /* 
  * This class is all Messages printed for Errors or invalid inputs

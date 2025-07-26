@@ -1,11 +1,11 @@
-package model;
+package model.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.Test;
+import model.Poll.Poll;
 
 /*
  * This class represents the Users
@@ -25,7 +25,6 @@ public class User {
     private List<Integer> partOfPollId;
 
     // Constants for the class
-    private static final List<User> emptyUsers = new ArrayList<>(); // The empty user list
     private static final User testUser = createUser("John", "Doe", "doe.john", "Testpassword@1234");
 
     // Constructor for User

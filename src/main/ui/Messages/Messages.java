@@ -1,9 +1,7 @@
-package ui;
+package ui.Messages;
 
-/*
- * Class for all Messages printed out
- */
-import model.User;
+import model.User.User;
+import ui.CoDecideApp;
 
 public class Messages {
 

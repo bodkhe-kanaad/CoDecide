@@ -1,5 +1,7 @@
 package model;
 
+import model.User.User;
+
 /*
  * This class represents a Session and will be used 
  * for data persistence so that each user can come back 
@@ -10,7 +12,7 @@ package model;
 public class Session {
     private static int NEXT_SESSION_ID = 1;
 
-    private model.User currentUserLoggedIn;
+    private model.User.User currentUserLoggedIn;
     private int sessionID;
     private boolean isRunning;
 
@@ -23,11 +25,11 @@ public class Session {
         return isRunning;
     }
 
-    public model.User getCurrentUserLoggedIn() {
+    public model.User.User getCurrentUserLoggedIn() {
         return currentUserLoggedIn;
     }
 
-    public void setCurrentUserLoggedIn(model.User currentUserLoggedIn) {
+    public void setCurrentUserLoggedIn(model.User.User currentUserLoggedIn) {
         this.currentUserLoggedIn = currentUserLoggedIn;
     }
 

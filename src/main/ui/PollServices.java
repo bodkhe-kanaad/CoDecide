@@ -1,11 +1,12 @@
 package ui;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import model.Poll.Poll;
+import model.Poll.PollAction;
+import model.User.User;
+import ui.Messages.ErrorMessages;
+import ui.Messages.InputPrompts;
 
-import model.*;
 
 /*
  * This class has methods related to Poll and its inputs
@@ -57,10 +58,11 @@ public class PollServices {
         }
     }
 
+    // REQUIRES User currentUser is not Null
+    // EFFECTS It returns the Polls that need to be printed as a String
     public static String showResultsForUser(User currentUser) {
-        Map<Integer, String> pollResults = new HashMap<>();
-        List<String> print = new ArrayList<>();
-        List<Poll> ownerForPolls = PollAction.ownershipForPolls(currentUser);
+        List<Poll> ownerForPolls = PollAction.ownershipForPollsAndCompleted(currentUser); // Helper method to get all the Polls for
+                                                                              // which current User is the owner
         String allPollsPrint = "";
         if (!ownerForPolls.isEmpty()) {
             for (Poll p : ownerForPolls) {

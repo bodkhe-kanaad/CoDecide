@@ -11,6 +11,10 @@ import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import model.Poll.Poll;
+import model.User.User;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 

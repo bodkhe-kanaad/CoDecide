@@ -8,6 +8,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import model.User.UserAction;
+
 public class UserActionTest {
 
     @Test

@@ -1,7 +1,11 @@
-package model;
+package model.Poll;
 
-import java.util.HashMap;
 import java.util.Map;
+
+import model.Option;
+import model.User.User;
+import model.User.UserAction;
+
 import java.util.*;
 import persistence.DataStore;
 
@@ -50,11 +54,15 @@ public class PollAction {
         return true;
     }
 
+    // REQUIRES Poll currentPoll is not Null
+    // EFFECTS It returns the string which is the result for that Poll
     public static String calculateResult(Poll currentPoll) {
         return currentPoll.pollResults();
     }
 
-    public static List<Poll> ownershipForPolls(User currentUser) {
+    // REQUIRES User currentUser is not Null
+    // EFFECTS It returns the List<Poll> for which the given user is the Owner and Is Completed
+    public static List<Poll> ownershipForPollsAndCompleted(User currentUser) {
         List<Poll> ownershipPolls = new ArrayList<>();
 
         for (Poll p : ALL_POLLS.values()) {

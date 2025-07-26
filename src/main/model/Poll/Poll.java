@@ -1,5 +1,5 @@
 
-package model;
+package model.Poll;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,9 @@ import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import model.Option;
+import model.User.User;
 
 /*
  * This class represents a Poll 
@@ -164,7 +167,7 @@ public class Poll {
         return pollJson;
     }
 
-    // @SuppressWarnings
+
     // EFFECTS converts the JSON stored data into Poll object
     public static Poll reconstructPoll(JSONObject pollJson, Map<String, User> allUsers) {
         int pollId;
@@ -192,13 +195,13 @@ public class Poll {
         return new Poll(pollId, owner, users, options, isCompleted, hasVoted);
     }
 
-    // TODO
+    // EFFECTS Returns the result for the Poll including its details
     public String toPrintResult() {
         String result = PollAction.calculateResult(this);
         return "Poll ID : " + pollId + "\n" + "Owner : " + owner + "\n" + "Result : " + result;
     }
 
-    // TODO
+    // EFFECTS Returns the All Users for the Poll by finding them using their Usernames
     private static List<User> userNamesToUsers(Map<String, User> allUsers, List<Object> usersUsernames) {
         List<User> userList = new ArrayList<>();
         for (Object obj : usersUsernames) {
@@ -211,7 +214,7 @@ public class Poll {
         return userList;
     }
 
-    // TODO
+    // EFFECTS Returns the Users Who have Voted for the Poll by finding them using their Usernames
     private static List<User> hasVotedUserNamesToUsers(Map<String, User> allUsers, List<Object> hasVotedUsernames) {
         List<User> hasVotedList = new ArrayList<>();
         for (Object obj : hasVotedUsernames) {
@@ -224,12 +227,12 @@ public class Poll {
         return hasVotedList;
     }
 
-    // TODO
+    // EFFECTS Returns the Options for the Poll by reconstructing them using a Helper method
     private static List<Option> optionsListToOption(JSONArray optionsListJson) {
         List<Option> optionsList = new ArrayList<>();
         for (int i = 0; i < optionsListJson.length(); i++) {
             JSONObject optionJson = optionsListJson.getJSONObject(i);
-            optionsList.add(Option.reconstructOption(optionJson));
+            optionsList.add(Option.reconstructOption(optionJson)); // The helper method to reconstruct the Option
         }
         return optionsList;
     }

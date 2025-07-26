@@ -1,8 +1,8 @@
 package persistence;
 
-import model.Poll;
-import model.User;
-import org.json.JSONObject;
+import model.Poll.Poll;
+import model.User.User;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
