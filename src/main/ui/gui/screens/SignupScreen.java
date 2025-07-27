@@ -75,9 +75,7 @@ public class SignupScreen extends JFrame {
         JLabel lastnameLabel = Components.lastnameLabel();
         JTextField lastnameField = Components.lastnameField();
 
-        JLabel statusLabel = new JLabel(" ");
-        statusLabel.setForeground(Constants.statusColor());
-        statusLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel statusLabel = Components.statusLabel();
 
         signupButton.addActionListener(new SignupHandler(usernameField, passwordField, firstnameField, lastnameField,
                 statusLabel, signupFrame));

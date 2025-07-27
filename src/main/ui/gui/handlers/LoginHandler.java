@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 
 import model.Session;
 import ui.gui.UserServicesGUI;
+import ui.gui.screens.PostLoginScreen;
 
 public class LoginHandler implements ActionListener {
     private JTextField usernameField;
@@ -41,7 +42,7 @@ public class LoginHandler implements ActionListener {
         if (session != null) {
             currentFrame.dispose();
             JOptionPane.showMessageDialog(null, "Login succssful!");
-            // TODO open next
+            new PostLoginScreen();
         } else {
             statusLabel.setText("Incorrect Username or Password.");
         }

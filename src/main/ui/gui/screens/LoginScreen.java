@@ -1,8 +1,6 @@
 package ui.gui.screens;
 
-import java.awt.Component;
 import java.awt.Dimension;
-
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -12,9 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
 import ui.gui.Components;
-import ui.gui.Constants;
 import ui.gui.HeaderPanel;
 import ui.gui.handlers.LoginHandler;
 
@@ -50,6 +46,7 @@ public class LoginScreen extends JFrame {
         JTextField usernameField = Components.usernameField();
         JLabel passwordLabel = Components.passwordLabel();
         JPasswordField passwordField = Components.passwordField();
+        JLabel statusLabel = Components.statusLabel();
 
         loginFormPanel.setLayout(new BoxLayout(loginFormPanel, BoxLayout.Y_AXIS));
         loginFormPanel.setBorder(BorderFactory.createEmptyBorder(20, 60, 10, 60));
@@ -57,9 +54,7 @@ public class LoginScreen extends JFrame {
         usernameField.setMaximumSize(new Dimension(300,30));
         passwordField.setMaximumSize(new Dimension(300,30));
 
-        JLabel statusLabel = new JLabel(" ");
-        statusLabel.setForeground(Constants.statusColor());
-        statusLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
 
         loginButton.addActionListener(new LoginHandler(usernameField, passwordField, statusLabel, loginFrame));
 
@@ -68,7 +63,7 @@ public class LoginScreen extends JFrame {
         loginFormPanel.add(Box.createVerticalStrut(10));
         loginFormPanel.add(passwordLabel);
         loginFormPanel.add(passwordField);
-        loginFormPanel.add(Box.createVerticalStrut(15));
+        loginFormPanel.add(Box.createVerticalStrut(10));
         loginFormPanel.add(loginButton);
         loginFormPanel.add(Box.createVerticalStrut(10));
         loginFormPanel.add(switchToSignupButton);

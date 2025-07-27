@@ -136,6 +136,14 @@ public class Components {
     }
 
     // TODO
+    public static JButton addOptionButton() {
+        JButton addOption = new JButton("Add Option");
+        addOption.setAlignmentX(Component.CENTER_ALIGNMENT);
+        addOption.setActionCommand("ADD OPTION");
+        return addOption;
+    }
+
+    // TODO
     public static JLabel usernameLabel() {
         JLabel usernameLabel = new JLabel("Username :");
         usernameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -200,6 +208,31 @@ public class Components {
         return lastnameField;
     }
 
+    // TODO
+    public static JLabel addOptionLabel() {
+        JLabel addOptionLabel = new JLabel("Option :");
+        addOptionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return addOptionLabel;
+    }
+
+    // TODO
+    public static JTextField addOptionField() {
+        JTextField addOptionField = new JTextField();
+        addOptionField.setPreferredSize(new Dimension(200, 25));
+        addOptionField.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        return addOptionField;
+    }
+
+    // TODO
+    public static JLabel statusLabel() {
+        JLabel statusLabel = new JLabel(" ");
+        statusLabel.setForeground(Constants.statusColor());
+        statusLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        return statusLabel;
+    }
+
     // REQUIRES: JFrame currentFrame is not null
     // EFFECTS: Returns a button that switches from Signup to Login screen
     public static JButton switchToLoginButton(JFrame currentFrame) {
@@ -220,7 +253,7 @@ public class Components {
     // REQUIRES: JFrame currentFrame is not null
     // EFFECTS: Returns a button that switches from Login to Signup screen
     public static JButton switchToSignupButton(JFrame currentFrame) {
-        JButton signupButton = new JButton("Would you like to Signup ?");
+        JButton signupButton = new JButton("Do not have an account ?");
         signupButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         signupButton.addActionListener(new ActionListener() {
