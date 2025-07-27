@@ -1,4 +1,4 @@
-package ui;
+package ui.cli;
 
 import java.util.List;
 
@@ -6,9 +6,7 @@ import model.*;
 import model.poll.Poll;
 import model.poll.PollAction;
 import model.user.User;
-import ui.Messages.Messages;
-import ui.Messages.ErrorMessages;
-import ui.Messages.InputPrompts;
+import ui.cli.messages.*;
 
 
 /*
@@ -34,9 +32,9 @@ public class Voting {
                 User nextUser = pollUsers.get(i + 1);
                 System.out.println(
                         "Let's get started " + nextUser.getFirstName() + " please proceed to login");
-                UserServices.nextUserLogin(nextUser);
+                UserServicesCLI.nextUserLogin(nextUser);
             } else {
-                CoDecideApp.getSession().setRunning(false);
+                CoDecideAppCLI.getSession().setRunning(false);
             }
         }
     }
@@ -54,7 +52,7 @@ public class Voting {
         boolean status = false;
         while (!status) {
             InputPrompts.voteInputs(option);
-            int vote = CoDecideApp.INPUT.nextInt();
+            int vote = CoDecideAppCLI.INPUT.nextInt();
             status = PollAction.castVote(user, option, vote);
             if (!status) {
                 ErrorMessages.voteInputs();
@@ -66,20 +64,20 @@ public class Voting {
     // EFFECTS On the basis of the input adds the vote to total
     public static boolean userVote(Option option, User currentUser) {
         InputPrompts.voteInputs(option);
-        int vote = CoDecideApp.INPUT.nextInt();
+        int vote = CoDecideAppCLI.INPUT.nextInt();
         return PollAction.castVote(currentUser, option, vote);
     }
 
     // EFFECTS calculates the result of the Poll but highest aggregate votes received.
     public static String calculateResult(Poll currentPoll) {
         InputPrompts.resultOption();
-        int choice = CoDecideApp.INPUT.nextInt();
+        int choice = CoDecideAppCLI.INPUT.nextInt();
         switch (choice) {
             case 1:
                 System.out.println("Only the poll owner can view results.");
                 System.out.println("Please proceed to login:");
-                boolean isLoggedIn = UserServices.login();
-                User loggedInUser = CoDecideApp.getSession().getCurrentUserLoggedIn();
+                boolean isLoggedIn = UserServicesCLI.login();
+                User loggedInUser = CoDecideAppCLI.getSession().getCurrentUserLoggedIn();
                 User owner = currentPoll.getOwner();
                 if (isLoggedIn && loggedInUser.equals(owner)) {
                     return "You should all go with " + PollAction.calculateResult(currentPoll);

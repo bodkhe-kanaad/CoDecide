@@ -1,4 +1,4 @@
-package ui.Messages;
+package ui.cli.messages;
 
 /* 
  * This class is all Messages printed for Errors or invalid inputs

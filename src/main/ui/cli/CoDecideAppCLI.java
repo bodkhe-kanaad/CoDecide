@@ -1,4 +1,4 @@
-package ui;
+package ui.cli;
 
 import java.io.IOException;
 import java.util.Map;
@@ -9,8 +9,8 @@ import model.user.User;
 import persistence.DataStore;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import ui.Messages.Messages;
-import ui.Messages.InputPrompts;
+import ui.cli.messages.InputPrompts;
+import ui.cli.messages.Messages;
 
 /*
  * This is the class that has the App and its details
@@ -18,8 +18,7 @@ import ui.Messages.InputPrompts;
  *  - instance of the app is running.
  */
 
- 
-public class CoDecideApp {
+public class CoDecideAppCLI {
     public static final Scanner INPUT = new Scanner(System.in);
     public static final double CURRENT_VERSION_NUMBER = 2.0;
     public static final JsonReader reader = new JsonReader("data/users.json", "data/polls.json");
@@ -34,7 +33,7 @@ public class CoDecideApp {
 
     private boolean isRunning; // True if the App is still running, False if the App has been closed.
 
-    public CoDecideApp() {
+    public CoDecideAppCLI() {
         loadState();
         this.isRunning = true;
     }
@@ -55,12 +54,10 @@ public class CoDecideApp {
                         choiceCreatePoll();
                         break;
                     case 2:
-                        String allPollsToPrint;
-                        allPollsToPrint = PollServices.showResultsForUser(session.getCurrentUserLoggedIn());
-                        Messages.printAllPollResults(allPollsToPrint);
+                        choicePastResult();
                         break;
                     case 3:
-                        UserServices.loginStatus();
+                        UserServicesCLI.loginStatus();
                         break;
                     case 4:
                         quitApplcationChoice();
@@ -94,7 +91,6 @@ public class CoDecideApp {
         }
     }
 
-
     // EFFECTS Saves the current state of the App and its details
     private static void saveState() {
         try {
@@ -116,9 +112,9 @@ public class CoDecideApp {
     // EFFECTS creates a Poll by taking inputs and passing on to other methods
     private void choiceCreatePoll() {
         Poll currentPoll = model.poll.Poll.createPoll(session.getCurrentUserLoggedIn());
-        PollServices.optionAdder(currentPoll); // Adding options to the Poll
+        PollServicesCLI.optionAdder(currentPoll); // Adding options to the Poll
         Messages.postAddingOptions(); // Post adding options messages
-        PollServices.userAdder(currentPoll); // Adding other users to the Poll if needed
+        PollServicesCLI.userAdder(currentPoll); // Adding other users to the Poll if needed
         Messages.postAddingUsers(); // Post adding users messages
         Voting.addingVote(currentPoll); // Casting votes to the Poll
         Messages.postAddingVotes(); // Post voting
@@ -136,8 +132,14 @@ public class CoDecideApp {
     // EFFECTS The details about the App when someone starts it and logs them in.
     private void appStart() {
         Messages.welcomeMessage(); // Welcome messages
-        UserServices.loginStatus(); // User Authentication
+        UserServicesCLI.loginStatus(); // User Authentication
         Messages.postLogin(); // Post Login Messages
+    }
+
+    private void choicePastResult() {
+        String allPollsToPrint;
+        allPollsToPrint = PollServicesCLI.showResultsForUser(session.getCurrentUserLoggedIn());
+        Messages.printAllPollResults(allPollsToPrint);
     }
 
 }

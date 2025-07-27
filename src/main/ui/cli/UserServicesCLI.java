@@ -1,11 +1,9 @@
-package ui;
+package ui.cli;
 
 import model.Session;
 import model.user.User;
 import model.user.UserAction;
-import ui.Messages.Messages;
-import ui.Messages.ErrorMessages;
-import ui.Messages.InputPrompts;
+import ui.cli.messages.*;
 
 
 /*
@@ -13,7 +11,7 @@ import ui.Messages.InputPrompts;
  * SignUp , Login , ChangePassword()
  */
 
-public class UserServices {
+public class UserServicesCLI {
 
     // EFFECTS checks the status of login making sure no one can use the app without logging in
     public static void loginStatus() {
@@ -29,16 +27,16 @@ public class UserServices {
     // EFFECTS prompting the user to login
     public static boolean promptLoginChoice() {
         InputPrompts.loginOptionsInputs();
-        int choice = CoDecideApp.INPUT.nextInt();
+        int choice = CoDecideAppCLI.INPUT.nextInt();
         while (choice != 1 && choice != 2) {
             ErrorMessages.loginOptionsInputs();
-            choice = CoDecideApp.INPUT.nextInt();
+            choice = CoDecideAppCLI.INPUT.nextInt();
         }
         switch (choice) {
             case 1:
-                return UserServices.login();
+                return UserServicesCLI.login();
             case 2:
-                return UserServices.signUp();
+                return UserServicesCLI.signUp();
             default:
                 ErrorMessages.failedLoginOptions();
                 return false;
@@ -49,12 +47,12 @@ public class UserServices {
     // EFFECTS accepting inputs and passing them to Login UserAction
     public static boolean login() {
         InputPrompts.usernameInput();
-        String username = CoDecideApp.INPUT.next();
+        String username = CoDecideAppCLI.INPUT.next();
         InputPrompts.passwordInput();
-        String password = CoDecideApp.INPUT.next();
+        String password = CoDecideAppCLI.INPUT.next();
         Session session = UserAction.login(username, password);
         if (session != null) {
-            CoDecideApp.setSession(session);
+            CoDecideAppCLI.setSession(session);
             return true;
         } else {
             return wrongCredentials();
@@ -65,19 +63,19 @@ public class UserServices {
     public static boolean signUp() {
         Messages.userSignupSelected();
         InputPrompts.firstNameInput();
-        String firstName = CoDecideApp.INPUT.next();
+        String firstName = CoDecideAppCLI.INPUT.next();
         InputPrompts.lastNameInput();
-        String lastName = CoDecideApp.INPUT.next();
+        String lastName = CoDecideAppCLI.INPUT.next();
         InputPrompts.signupUsernameInput();
-        String userName = CoDecideApp.INPUT.next();
+        String userName = CoDecideAppCLI.INPUT.next();
         boolean userNameCheck = UserAction.getAllUsersMap().containsKey(userName);
         while (userNameCheck) {
             ErrorMessages.takeUsername();
-            userName = CoDecideApp.INPUT.next();
+            userName = CoDecideAppCLI.INPUT.next();
             userNameCheck = UserAction.getAllUsersMap().containsKey(userName);
         }
         InputPrompts.signUpPasswordInput();
-        String password = CoDecideApp.INPUT.next();
+        String password = CoDecideAppCLI.INPUT.next();
         boolean status = UserAction.signUp(firstName, lastName, userName, password);
         if (status) {
             Messages.userSignUpSuccess();
@@ -97,14 +95,14 @@ public class UserServices {
     // REQUIRES nextUser is not null
     // EFFECTS checks if the next User logging in is the User we intended and not someone else with valid credentials 
     public static void nextUserLogin(User nextUser) {
-        CoDecideApp.getSession().setRunning(false);
+        CoDecideAppCLI.getSession().setRunning(false);
         while (true) {
-            boolean loginSuccess = UserServices.login();
+            boolean loginSuccess = UserServicesCLI.login();
             if (!loginSuccess) {
                 System.out.println("Login failed. Please try again.");
                 continue;
             }
-            User currentUser = CoDecideApp.getSession().getCurrentUserLoggedIn();
+            User currentUser = CoDecideAppCLI.getSession().getCurrentUserLoggedIn();
             if (currentUser.equals(nextUser)) {
                 break;
             } else {

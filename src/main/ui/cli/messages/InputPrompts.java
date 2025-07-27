@@ -1,4 +1,4 @@
-package ui.Messages;
+package ui.cli.messages;
 
 /*
  * Class for all input prompts

@@ -13,7 +13,7 @@ import model.poll.Poll;
 import model.poll.PollAction;
 import model.user.User;
 import model.user.UserAction;
-import ui.PollServices;
+import ui.cli.PollServicesCLI;
 
 public class PollActionTest {
 

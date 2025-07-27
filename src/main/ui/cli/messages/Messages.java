@@ -1,13 +1,12 @@
-package ui.Messages;
+package ui.cli.messages;
 
 import model.user.User;
-import ui.CoDecideApp;
 
 public class Messages {
 
     public static final void welcomeMessage() {
         System.out.println("Welcome to CoDecide "
-                + ui.CoDecideApp.CURRENT_VERSION_NUMBER);
+                + ui.cli.CoDecideAppCLI.CURRENT_VERSION_NUMBER);
         System.out.println("The smarter way to find common ground");
     }
 

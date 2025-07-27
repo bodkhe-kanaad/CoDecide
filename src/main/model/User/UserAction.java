@@ -12,13 +12,16 @@ public class UserAction {
     // CLI Version constants for Easier testing since no data persistence.
     private static Map<String, User> ALL_USERS = DataStore.getAllUsers();
 
-    // MODIFIES UserLogin.loginStatus set to true or false
     // EFFECTS creates an user using the User.createUser() method and adds it to the
     // Map of ALL_USERS
     public static boolean signUp(String firstName, String lastName, String userName, String password) {
-        User newUser = User.createUser(firstName, lastName, userName, password);
-        ALL_USERS.put(userName, newUser);
-        return true;
+        if (ALL_USERS.containsKey(userName)) {
+            return false;
+        } else {
+            User newUser = User.createUser(firstName, lastName, userName, password);
+            ALL_USERS.put(userName, newUser);
+            return true;
+        }
     }
 
     // MODIFIES Creates new Session with Session.currentUserLoggedIn as the logging
