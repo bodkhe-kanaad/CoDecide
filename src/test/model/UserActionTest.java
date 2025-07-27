@@ -19,6 +19,7 @@ public class UserActionTest {
         UserAction.signUp("John", "Doe", "doe.john", "Testpassword@1234");
         assertEquals("doe.john", UserAction.getAllUsersMap().get("doe.john").getUsername());
         assertEquals(originalMapSize + 1, UserAction.getAllUsersMap().size());
+        assertFalse(UserAction.signUp("John", "Doe", "doe.john", "Testpassword@1234"));
     }
 
     @Test

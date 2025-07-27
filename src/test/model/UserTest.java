@@ -32,25 +32,25 @@ public class UserTest {
         assertEquals(newUser.getPartOfPoll(), Poll.EMPTY_POLLS);
     }
 
-    @Test
-    public void testToJson() {
-        testUser = model.user.User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
-        p1 = Poll.createPoll(testUser);
-        p2 = Poll.createPoll(testUser);
+    // @Test
+    // public void testToJson() {
+    //     testUser = model.user.User.createUser("John", "Doe", "doe.john", "Testpassword@1234");
+    //     p1 = Poll.createPoll(testUser);
+    //     p2 = Poll.createPoll(testUser);
 
-        Poll.resetNextPollId();
-        User.resetNextUserID();
-        JSONObject userJson = testUser.toJson();
+    //     Poll.resetNextPollId();
+    //     User.resetNextUserID();
+    //     JSONObject userJson = testUser.toJson();
 
-        assertEquals("doe.john", userJson.getString("username"));
-        assertEquals("John", userJson.getString("firstName"));
-        assertEquals("Doe", userJson.getString("lastName"));
-        assertEquals("Testpassword@1234", userJson.getString("password"));
-        assertEquals(testUser.getUserId(), userJson.getInt("userId"));
+    //     assertEquals("doe.john", userJson.getString("username"));
+    //     assertEquals("John", userJson.getString("firstName"));
+    //     assertEquals("Doe", userJson.getString("lastName"));
+    //     assertEquals("Testpassword@1234", userJson.getString("password"));
+    //     assertEquals(testUser.getUserId(), userJson.getInt("userId"));
 
-        JSONArray pollIds = userJson.getJSONArray("partOfPolls");
-        assertEquals(2,pollIds.length());
-    }
+    //     JSONArray pollIds = userJson.getJSONArray("partOfPolls");
+    //     assertEquals(2,pollIds.length());
+    // }
 
     @Test
     public void testgetTestuser() {

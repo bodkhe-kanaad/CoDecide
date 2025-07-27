@@ -1,13 +1,10 @@
 package ui.gui.screens;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -27,7 +24,7 @@ import ui.gui.handlers.SignupHandler;
 public class SignupScreen extends JFrame {
 
     public SignupScreen() {
-        setTitle("Welcome to the App, Let's Sign-Up");
+        setTitle("Let's Sign-Up !!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 500);
         setLocationRelativeTo(null);
@@ -59,7 +56,7 @@ public class SignupScreen extends JFrame {
         // gbc.fill = GridBagConstraints.HORIZONTAL;
         // gbc.weightx = 1.0;
 
-        JButton signupButton = Components.signupButton(signupFrame);
+        JButton signupButton = Components.signupButton();
         JButton switchToLoginButton = Components.switchToLoginButton(signupFrame);
         signupButton.setMaximumSize(new Dimension(160, 30));
         switchToLoginButton.setMaximumSize(new Dimension(220, 30));

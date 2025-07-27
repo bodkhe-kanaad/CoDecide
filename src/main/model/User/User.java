@@ -129,6 +129,7 @@ public class User {
         return userInitalizer(firstName, lastName, username, password);
     }
 
+    // TODO test it
     // EFFECTS converts the User Object fields to format that can be stored in JSON
     public JSONObject toJson() {
         JSONObject userJson = new JSONObject();

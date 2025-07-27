@@ -1,6 +1,8 @@
 package ui.gui.screens;
 
 import java.awt.Component;
+import java.awt.Dimension;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,9 +21,9 @@ import ui.gui.handlers.LoginHandler;
 public class LoginScreen extends JFrame {
 
     public LoginScreen() {
-        setTitle("Log Into Your Account");
+        setTitle("Login !!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 400);
+        setSize(600, 500);
         setLocationRelativeTo(null);
 
         add(mainPanel(this));
@@ -42,15 +44,18 @@ public class LoginScreen extends JFrame {
 
     private JPanel loginForm(JFrame loginFrame) {
         JPanel loginFormPanel = new JPanel();
-        JButton loginButton = Components.loginButton(loginFrame);
-        JButton switchToSignupButton = Components.signupButton(loginFrame);
+        JButton loginButton = Components.loginButton();
+        JButton switchToSignupButton = Components.switchToSignupButton(loginFrame);
         JLabel usernameLabel = Components.usernameLabel();
         JTextField usernameField = Components.usernameField();
         JLabel passwordLabel = Components.passwordLabel();
         JPasswordField passwordField = Components.passwordField();
 
         loginFormPanel.setLayout(new BoxLayout(loginFormPanel, BoxLayout.Y_AXIS));
-        loginFormPanel.setBorder(BorderFactory.createEmptyBorder(20, 60, 20, 60));
+        loginFormPanel.setBorder(BorderFactory.createEmptyBorder(20, 60, 10, 60));
+
+        usernameField.setMaximumSize(new Dimension(300,30));
+        passwordField.setMaximumSize(new Dimension(300,30));
 
         JLabel statusLabel = new JLabel(" ");
         statusLabel.setForeground(Constants.statusColor());
@@ -66,9 +71,9 @@ public class LoginScreen extends JFrame {
         loginFormPanel.add(Box.createVerticalStrut(15));
         loginFormPanel.add(loginButton);
         loginFormPanel.add(Box.createVerticalStrut(10));
-        loginFormPanel.add(statusLabel);
-        loginFormPanel.add(Box.createVerticalStrut(10));
         loginFormPanel.add(switchToSignupButton);
+        loginFormPanel.add(Box.createVerticalStrut(10));
+        loginFormPanel.add(statusLabel);
 
         return loginFormPanel;
     }

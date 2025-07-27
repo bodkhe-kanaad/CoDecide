@@ -7,13 +7,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ui.gui.Components;
+import ui.gui.Constants;
 
 public class WelcomeScreen extends JFrame {
 
     public WelcomeScreen() {
-        setTitle("CoDecide");
+        setTitle("CoDecide " + Constants.versionNumber());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 400);
+        setSize(600, 500);
         setLocationRelativeTo(null);
         add(mainPanel(this));
         setVisible(true);

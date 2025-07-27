@@ -49,7 +49,7 @@ public class Components {
     // TODO
     public static JLabel smallSubtitle() {
         JLabel label = new JLabel("The Smarter Way To Find Common Ground");
-        label.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        label.setFont(new Font("SansSerif", Font.ITALIC, 10));
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         return label;
     }
@@ -80,7 +80,7 @@ public class Components {
     }
 
     // TODO
-    public static JButton loginButton(JFrame currentFrame) {
+    public static JButton loginButton() {
         JButton loginButton = new JButton("Login");
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         return loginButton;
@@ -101,10 +101,38 @@ public class Components {
     }
 
     // TODO
-    public static JButton signupButton(JFrame currentFrame) {
+    public static JButton signupButton() {
         JButton signupButton = new JButton("Sign Up");
         signupButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         return signupButton;
+    }
+
+    // TODO
+    public static JButton createPollButton() {
+        JButton createPollButton = new JButton("Create A Poll");
+        createPollButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return createPollButton;
+    }
+
+    // TODO
+    public static JButton viewPastResultsButton() {
+        JButton pastResultsButton = new JButton("Past Results");
+        pastResultsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return pastResultsButton;
+    }
+
+    // TODO
+    public static JButton quitApplicationButton() {
+        JButton quitApp = new JButton("Quit");
+        quitApp.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return quitApp;
+    }
+
+    // TODO
+    public static JButton signOutButton() {
+        JButton signOut = new JButton("Sign Out");
+        signOut.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return signOut;
     }
 
     // TODO
