@@ -144,6 +144,31 @@ public class Components {
     }
 
     // TODO
+    public static JButton addUserButton() {
+        JButton userButton = new JButton("Add User");
+        userButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        userButton.setActionCommand("ADD USER");
+        return userButton;
+    }
+
+    // TODO
+    public static JButton nextButton() {
+        JButton nextButton = new JButton("Next Step");
+        nextButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        nextButton.setActionCommand("NEXT");
+        return nextButton;
+    }
+
+    public static JSlider optionVotingSlider() {
+        JSlider slider = new JSlider(0, 100, 0);
+        slider.setMajorTickSpacing(5); 
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        slider.setSnapToTicks(true); 
+        return slider;
+    }
+
+    // TODO
     public static JLabel usernameLabel() {
         JLabel usernameLabel = new JLabel("Username :");
         usernameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -181,6 +206,13 @@ public class Components {
         JLabel firstnameLabel = new JLabel("Firstname :");
         firstnameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         return firstnameLabel;
+    }
+
+    // TODO
+    public static JLabel firstnameVotingDisplay(String firstname) {
+        JLabel firstnameVotingDisplay = new JLabel("Please proceed to vote " + firstname);
+        firstnameVotingDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return firstnameVotingDisplay;
     }
 
     // TODO
@@ -222,6 +254,21 @@ public class Components {
         addOptionField.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         return addOptionField;
+    }
+
+    // TODO
+    public static JLabel addUserLabel() {
+        JLabel addUserLabel = new JLabel("Username :");
+        addUserLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return addUserLabel;
+    }
+
+    // TODO
+    public static JTextField addUserField() {
+        JTextField addUserField = new JTextField();
+        addUserField.setPreferredSize(new Dimension(200, 25));
+        addUserField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return addUserField;
     }
 
     // TODO

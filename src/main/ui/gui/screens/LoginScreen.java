@@ -16,6 +16,7 @@ import ui.gui.handlers.LoginHandler;
 
 public class LoginScreen extends JFrame {
 
+    //TODO
     public LoginScreen() {
         setTitle("Login !!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,6 +28,7 @@ public class LoginScreen extends JFrame {
 
     }
 
+    //TODO
     private JPanel mainPanel(JFrame loginFrame) {
         JPanel mainPanel = new JPanel();
 
@@ -38,6 +40,7 @@ public class LoginScreen extends JFrame {
         return mainPanel;
     }
 
+    //TODO
     private JPanel loginForm(JFrame loginFrame) {
         JPanel loginFormPanel = new JPanel();
         JButton loginButton = Components.loginButton();

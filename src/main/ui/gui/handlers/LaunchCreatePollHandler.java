@@ -12,10 +12,12 @@ import ui.gui.screens.AddOptionsToPollScreen;
 public class LaunchCreatePollHandler implements ActionListener {
     private JFrame currentFrame;
 
+    //TODO
     public LaunchCreatePollHandler(JFrame currentFrame) {
         this.currentFrame = currentFrame;
     }
 
+    //TODO
     @Override
     public void actionPerformed(ActionEvent click) {
         new AddOptionsToPollScreen();

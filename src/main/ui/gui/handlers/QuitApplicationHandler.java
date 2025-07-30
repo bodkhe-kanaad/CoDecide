@@ -10,10 +10,12 @@ import persistence.DataStore;
 public class QuitApplicationHandler implements ActionListener {
     private JFrame currentFrame;
 
+    //TODO
     public QuitApplicationHandler(JFrame currentFrame) {
         this.currentFrame = currentFrame;
     }
 
+    //TODO
     @Override
     public void actionPerformed(ActionEvent click) {
         DataStore.saveState();

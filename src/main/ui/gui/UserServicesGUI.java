@@ -1,11 +1,7 @@
 package ui.gui;
 
 import model.Session;
-import model.user.User;
 import model.user.UserAction;
-import ui.cli.CoDecideAppCLI;
-import ui.cli.messages.ErrorMessages;
-import ui.cli.messages.InputPrompts;
 
 /*
 * This class will manage all the user services like

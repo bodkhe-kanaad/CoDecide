@@ -25,6 +25,7 @@ import ui.gui.handlers.ViewPastResultsHandler;
 
 public class PostLoginScreen extends JFrame {
 
+    //TODO
     public PostLoginScreen() {
         setTitle("CoDecide " + Constants.versionNumber());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

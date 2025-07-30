@@ -3,13 +3,13 @@ package ui.gui;
 
 import model.Session;
 import persistence.DataStore;
-import ui.gui.screens.AddOptionsToPollScreen;
 import ui.gui.screens.WelcomeScreen;
 
 public class CoDecideAppGUI {
     
     private static Session session;
 
+    //TODO
     public CoDecideAppGUI() {
         DataStore.loadState();
     }

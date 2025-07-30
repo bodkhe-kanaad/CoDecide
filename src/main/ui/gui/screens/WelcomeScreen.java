@@ -11,6 +11,7 @@ import ui.gui.Constants;
 
 public class WelcomeScreen extends JFrame {
 
+    //TODO
     public WelcomeScreen() {
         setTitle("CoDecide " + Constants.versionNumber());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,7 +21,7 @@ public class WelcomeScreen extends JFrame {
         setVisible(true);
     }
     
-
+    //TODO
     public JPanel mainPanel(JFrame currentFrame) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));

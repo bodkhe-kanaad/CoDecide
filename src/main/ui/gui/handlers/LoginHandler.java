@@ -19,6 +19,7 @@ public class LoginHandler implements ActionListener {
     private JLabel statusLabel;
     private JFrame currentFrame;
 
+    //TODO
     public LoginHandler(JTextField usernameField, JPasswordField passwordField, JLabel statusLabel,
             JFrame loginFrame) {
         this.usernameField = usernameField;
@@ -27,6 +28,7 @@ public class LoginHandler implements ActionListener {
         this.currentFrame = loginFrame;
     }
 
+    //TODO
     @Override
     public void actionPerformed(ActionEvent click) {
         String username = usernameField.getText().trim();

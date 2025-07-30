@@ -6,26 +6,19 @@ import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
 import ui.gui.PollServicesGUI;
-import ui.gui.screens.AddUsersToPollScreen;
+import ui.gui.screens.VotingScreen;
 
-public class AddOptionsToPollHandler implements ActionListener {
+public class AddUsersToPollHandler implements ActionListener {
     private JTextField inputField;
     private JLabel statusLabel;
     private final DefaultListModel<String> listModel;
 
     // TODO
-    public AddOptionsToPollHandler(JTextField inputField, JLabel statusLabel, DefaultListModel<String> listModel) {
+    public AddUsersToPollHandler(JTextField inputField, JLabel statusLabel, DefaultListModel<String> listModel) {
         this.inputField = inputField;
         this.statusLabel = statusLabel;
         this.listModel = listModel;
-    }
-
-    public AddOptionsToPollHandler() {
-        this.inputField = null;
-        this.statusLabel = null;
-        this.listModel = null;
     }
 
     // TODO
@@ -34,22 +27,22 @@ public class AddOptionsToPollHandler implements ActionListener {
         String action = click.getActionCommand();
 
         switch (action) {
-            case "ADD OPTION":
+            case "ADD USER":
                 String input = inputField.getText().trim();
                 if (!input.isEmpty()) {
-                    PollServicesGUI.addOptionToPoll(input);
+                    PollServicesGUI.addUserToPoll(input);
                     listModel.addElement(input);
-                    statusLabel.setText("Option Added : " + input);
+                    statusLabel.setText("User Added : " + input);
                     inputField.setText("");
                 } else {
-                    statusLabel.setText("Please enter an option");
+                    statusLabel.setText("Please enter an Username");
                 }
                 break;
 
             case "NEXT":
-                new AddUsersToPollScreen();
+                new VotingScreen();
                 break;
         }
-    }
 
+    }
 }

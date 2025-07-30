@@ -1,5 +1,6 @@
 package ui.gui.screens;
 
+
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -24,6 +25,7 @@ public class AddOptionsToPollScreen extends JFrame {
 
     private DefaultListModel<String> optionListModel = new DefaultListModel<>();
 
+    //TODO
     public AddOptionsToPollScreen() {
         setTitle("Create Poll");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,6 +36,7 @@ public class AddOptionsToPollScreen extends JFrame {
         setVisible(true);
     }
 
+    //TODO
     private JPanel mainPanel() {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -46,6 +49,7 @@ public class AddOptionsToPollScreen extends JFrame {
         return mainPanel;
     }
 
+    //TODO
     private JPanel addOptionPanel() {
         JPanel addOptionPanel = new JPanel();
         addOptionPanel.setLayout(new BoxLayout(addOptionPanel, BoxLayout.Y_AXIS));
@@ -71,14 +75,18 @@ public class AddOptionsToPollScreen extends JFrame {
         return addOptionPanel;
     }
 
+    //TODO
     private JPanel addedOptionsPanel() {
         JPanel addedOptionsPanel = new JPanel();
         JLabel title = new JLabel("Added Options");
+        JButton nextButton = Components.nextButton();
+
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setBorder(BorderFactory.createEmptyBorder(10,0,10,0));
         addedOptionsPanel.setLayout(new BoxLayout(addedOptionsPanel, BoxLayout.Y_AXIS));
         addedOptionsPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        nextButton.addActionListener(new AddOptionsToPollHandler());
 
         JList<String> optionList = new JList<>(optionListModel);
         optionList.setVisibleRowCount(4);
@@ -93,6 +101,8 @@ public class AddOptionsToPollScreen extends JFrame {
         addedOptionsPanel.setMaximumSize(new Dimension(320, 110));
         addedOptionsPanel.add(title);
         addedOptionsPanel.add(scrollPane);
+        addedOptionsPanel.add(Box.createVerticalStrut(60));
+        addedOptionsPanel.add(nextButton);
 
         return addedOptionsPanel;
     }

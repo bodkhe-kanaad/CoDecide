@@ -19,6 +19,7 @@ public class SignupHandler implements ActionListener {
     private JFrame currentFrame;
     private JLabel statusLabel;
 
+    //TODO
     public SignupHandler(JTextField usernameField, JPasswordField passwordField, JTextField firstnameField,
             JTextField lastnameField, JLabel statusLabel, JFrame currentFrame) {
         this.usernameField = usernameField;
@@ -29,6 +30,7 @@ public class SignupHandler implements ActionListener {
         this.statusLabel = statusLabel;
     }
 
+    //TODO
     @Override
     public void actionPerformed(ActionEvent click) {
         String username = usernameField.getText().trim();

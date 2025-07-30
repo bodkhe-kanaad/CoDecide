@@ -9,10 +9,12 @@ import javax.swing.JFrame;
 public class ViewPastResultsHandler implements ActionListener {
     private JFrame currentFrame;
 
+    //TODO
     public ViewPastResultsHandler(JFrame currentFrame) {
         this.currentFrame = currentFrame;
     }
 
+    //TODO
     @Override
     public void actionPerformed(ActionEvent click) {
         currentFrame.dispose();
