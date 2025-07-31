@@ -21,7 +21,7 @@ import ui.gui.HeaderPanel;
 import ui.gui.handlers.LaunchCreatePollHandler;
 import ui.gui.handlers.QuitApplicationHandler;
 import ui.gui.handlers.SignOutHandler;
-import ui.gui.handlers.ViewPastResultsHandler;
+import ui.gui.handlers.ViewResultsHandler;
 
 public class PostLoginScreen extends JFrame {
 
@@ -58,9 +58,9 @@ public class PostLoginScreen extends JFrame {
         appFunctionButtonPanel.setBorder(BorderFactory.createEmptyBorder(20, 60, 10, 60));
 
         createPollButton.addActionListener(new LaunchCreatePollHandler(currentFrame));
-        viewPastResultsButton.addActionListener(new ViewPastResultsHandler(currentFrame));
+        viewPastResultsButton.addActionListener(new ViewResultsHandler(currentFrame));
 
-        appFunctionButtonPanel.add(Box.createVerticalStrut(60));
+        appFunctionButtonPanel.add(Box.createVerticalStrut(20));
         appFunctionButtonPanel.add(createPollButton);
         appFunctionButtonPanel.add(Box.createVerticalStrut(10));
         appFunctionButtonPanel.add(viewPastResultsButton);
@@ -75,15 +75,10 @@ public class PostLoginScreen extends JFrame {
 
 
         topPanel.add(new HeaderPanel());
-        topPanel.add(Box.createVerticalStrut(10));
+        topPanel.add(Box.createVerticalStrut(30));
 
-        JLabel displayMessage = new JLabel("What would you like to do today, "
-                + CoDecideAppGUI.getSession().getCurrentUserLoggedIn().getFirstName()
-                + "?");
-        displayMessage.setFont(new Font("SansSerif", Font.PLAIN, 20));
-        displayMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel displayMessage = Components.displayPostLogin();
         topPanel.add(displayMessage);
-
         return topPanel;
     }
 

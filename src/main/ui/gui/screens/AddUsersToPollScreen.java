@@ -23,6 +23,11 @@ import ui.gui.handlers.AddUsersToPollHandler;
 public class AddUsersToPollScreen extends JFrame {
 
     private DefaultListModel<String> usersListModel = new DefaultListModel<>();
+    private JPanel statusRow;
+    private JPanel userInputRow;
+    private JLabel addUserLabel;
+    private JTextField addUserField;
+    private JButton addUserButton;
 
     // TODO
     public AddUsersToPollScreen() {
@@ -81,6 +86,9 @@ public class AddUsersToPollScreen extends JFrame {
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         JButton nextButton = Components.nextButton();
 
+        nextButton.addActionListener(new AddUsersToPollHandler());
+
+        nextButton.addActionListener(new AddUsersToPollHandler(null, title, usersListModel));
         title.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         addedUsersPanel.setLayout(new BoxLayout(addedUsersPanel, BoxLayout.Y_AXIS));
         addedUsersPanel.setAlignmentX(Component.CENTER_ALIGNMENT);

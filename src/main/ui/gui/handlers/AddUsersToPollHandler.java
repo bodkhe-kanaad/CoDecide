@@ -21,6 +21,12 @@ public class AddUsersToPollHandler implements ActionListener {
         this.listModel = listModel;
     }
 
+    public AddUsersToPollHandler() {
+        this.inputField = null;
+        this.statusLabel = null;
+        this.listModel = null;
+    }
+    
     // TODO
     @Override
     public void actionPerformed(ActionEvent click) {
@@ -30,10 +36,13 @@ public class AddUsersToPollHandler implements ActionListener {
             case "ADD USER":
                 String input = inputField.getText().trim();
                 if (!input.isEmpty()) {
-                    PollServicesGUI.addUserToPoll(input);
-                    listModel.addElement(input);
-                    statusLabel.setText("User Added : " + input);
-                    inputField.setText("");
+                    if (PollServicesGUI.addUserToPoll(input)) {
+                        listModel.addElement(input);
+                        statusLabel.setText("User Added : " + input);
+                        inputField.setText("");
+                    } else {
+                        statusLabel.setText("User " + input + "not added try again or check Username");
+                    }
                 } else {
                     statusLabel.setText("Please enter an Username");
                 }

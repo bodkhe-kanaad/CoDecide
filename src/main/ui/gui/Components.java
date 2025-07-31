@@ -83,7 +83,24 @@ public class Components {
     public static JButton loginButton() {
         JButton loginButton = new JButton("Login");
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loginButton.setActionCommand("LOGIN");
         return loginButton;
+    }
+
+    // TODO
+    public static JButton votingLoginButton() {
+        JButton votingloginButton = new JButton("Login");
+        votingloginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        votingloginButton.setActionCommand("VOTING LOGIN");
+        return votingloginButton;
+    }
+
+    // TODO
+    public static JButton resultLoginButton() {
+        JButton resultLoginButton = new JButton("Login");
+        resultLoginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        resultLoginButton.setActionCommand("RESULT LOGIN");
+        return resultLoginButton;
     }
 
     // TODO
@@ -159,12 +176,46 @@ public class Components {
         return nextButton;
     }
 
+    // TODO
+    public static JButton submitButton() {
+        JButton submitButton = new JButton("Submit");
+        submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        submitButton.setActionCommand("SUBMIT");
+        return submitButton;
+    }
+
+    // TODO
+    public static JButton viewResultsButton() {
+        JButton viewResultsButton = new JButton("View Results");
+        viewResultsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        viewResultsButton.setActionCommand("RESULTS");
+        return viewResultsButton;
+    }
+
+    // TODO
+    public static JButton returnToHomeScreenButton() {
+        JButton returnToHomeScreenButton = new JButton("Home Screen");
+        returnToHomeScreenButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        returnToHomeScreenButton.setActionCommand("RETURN TO HOME");
+        return returnToHomeScreenButton;
+    }
+
+    // TODO
+    public static JButton logoutButton() {
+        JButton logoutButton = new JButton("LogOut");
+        logoutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        logoutButton.setActionCommand("LOGOUT");
+        return logoutButton;
+    }
+
+    // TODO
     public static JSlider optionVotingSlider() {
         JSlider slider = new JSlider(0, 100, 0);
-        slider.setMajorTickSpacing(5); 
+        slider.setMajorTickSpacing(5);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
-        slider.setSnapToTicks(true); 
+        slider.setSnapToTicks(true);
+        slider.setPreferredSize(new Dimension(500, 50));
         return slider;
     }
 
@@ -173,6 +224,27 @@ public class Components {
         JLabel usernameLabel = new JLabel("Username :");
         usernameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         return usernameLabel;
+    }
+
+    // TODO
+    public static JLabel displayPostLogin() {
+        JLabel displayMessage = new JLabel("What would you like to do today, "
+                + CoDecideAppGUI.getSession().getCurrentUserLoggedIn().getFirstName()
+                + "?");
+        displayMessage.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        displayMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        return displayMessage;
+    }
+
+    // TODO
+    public static JLabel resultLabel() {
+        JLabel resultMessage = new JLabel("You all should go with the option"
+                + PollServicesGUI.getResult());
+        resultMessage.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        resultMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        return resultMessage;
     }
 
     // TODO
@@ -213,6 +285,20 @@ public class Components {
         JLabel firstnameVotingDisplay = new JLabel("Please proceed to vote " + firstname);
         firstnameVotingDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
         return firstnameVotingDisplay;
+    }
+
+    // TODO
+    public static JLabel firstnameLoginDisplay(String firstname) {
+        JLabel firstnameVotingDisplay = new JLabel("Please proceed to Login " + firstname);
+        firstnameVotingDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return firstnameVotingDisplay;
+    }
+
+    // TODO
+    public static JLabel optionValueDisplayLabel(String value) {
+        JLabel optionDisplay = new JLabel(value);
+        optionDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return optionDisplay;
     }
 
     // TODO

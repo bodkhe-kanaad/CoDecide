@@ -1,5 +1,13 @@
 {"users": [
     {
+        "firstName": "r",
+        "lastName": "z",
+        "password": "rz",
+        "partOfPolls": [],
+        "userId": 2,
+        "username": "rz"
+    },
+    {
         "firstName": "k",
         "lastName": "m",
         "password": "T",
@@ -8,19 +16,35 @@
         "username": "y"
     },
     {
-        "firstName": "Kanaad",
-        "lastName": "Bodkhe",
-        "password": "Test@1234",
-        "partOfPolls": [1],
-        "userId": 2,
-        "username": "b.k"
-    },
-    {
         "firstName": "John",
         "lastName": "Doe",
         "password": "Test@1234",
-        "partOfPolls": [1],
+        "partOfPolls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
         "userId": 2,
         "username": "doe.john"
+    },
+    {
+        "firstName": "Kanaad",
+        "lastName": "Bodkhe",
+        "password": "Test@1234",
+        "partOfPolls": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "userId": 2,
+        "username": "b.k"
     }
 ]}

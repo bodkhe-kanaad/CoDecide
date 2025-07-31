@@ -19,6 +19,7 @@ import ui.gui.CoDecideAppGUI;
 import ui.gui.Components;
 import ui.gui.HeaderPanel;
 import ui.gui.PollServicesGUI;
+import ui.gui.handlers.VotingHandler;
 
 public class VotingScreen extends JFrame {
     private Poll currentPoll = PollServicesGUI.getCurrentPoll();
@@ -31,12 +32,12 @@ public class VotingScreen extends JFrame {
         setSize(600, 500);
         setLocationRelativeTo(null);
 
-        add(mainPanel());
+        add(mainPanel(this));
         setVisible(true);
     }
 
     // TODO
-    private JPanel mainPanel() {
+    private JPanel mainPanel(JFrame currentFrame) {
         JPanel mainPanel = new JPanel();
         JLabel firstnameDisplay = Components
                 .firstnameVotingDisplay(CoDecideAppGUI.getSession().getCurrentUserLoggedIn().getFirstName());
@@ -45,13 +46,13 @@ public class VotingScreen extends JFrame {
         mainPanel.add(Box.createVerticalStrut(30));
         mainPanel.add(firstnameDisplay);
         mainPanel.add(Box.createVerticalStrut(30));
-        mainPanel.add(Box.createVerticalStrut(10));
-        mainPanel.add(Box.createVerticalStrut(200));
+        mainPanel.add(optionsPanel(currentFrame));
+
         return mainPanel;
     }
 
     // TODO
-    private JPanel optionsPanel() {
+    private JScrollPane optionsPanel(JFrame currentFrame) {
         JPanel optionsPanel = new JPanel();
         optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
         JButton submitButton = Components.submitButton();
@@ -61,7 +62,13 @@ public class VotingScreen extends JFrame {
             optionsPanel.add(optionRow(o));
         }
 
+        submitButton.addActionListener(new VotingHandler(sliderMap, currentPoll,currentFrame));
+
+        optionsPanel.add(submitButton);
+
         JScrollPane optionsPanelScroll = new JScrollPane(optionsPanel);
+
+        return optionsPanelScroll;
     }
 
     private JPanel optionRow(Option o) {
