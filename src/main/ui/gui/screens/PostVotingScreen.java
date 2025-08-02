@@ -45,7 +45,7 @@ public class PostVotingScreen extends JFrame {
         mainPanel.add(Box.createVerticalStrut(10));
 
         viewResultsButton.addActionListener(new ViewResultsHandler(currentFrame));
-        returnToHomeScreenButton.addActionListener(new UserServiceHandler());
+        returnToHomeScreenButton.addActionListener(new UserServiceHandler(currentFrame));
         logOutButton.addActionListener(new LoginHandler());
         quitButton.addActionListener(new QuitApplicationHandler(currentFrame));
 

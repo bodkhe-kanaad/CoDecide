@@ -9,6 +9,9 @@ import javax.swing.JSlider;
 
 import model.Option;
 import model.poll.Poll;
+import model.user.User;
+import ui.cli.CoDecideAppCLI;
+import ui.gui.CoDecideAppGUI;
 import ui.gui.PollServicesGUI;
 import ui.gui.screens.PostVotingScreen;
 
@@ -26,18 +29,23 @@ public class VotingHandler implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent click) {
-
+        User justVotedUser = CoDecideAppGUI.getSession().getCurrentUserLoggedIn();
+    
         for (Option o : sliderMap.keySet()) {
             int voteValue = sliderMap.get(o).getValue();
-            PollServicesGUI.castVote(o,voteValue);
+            PollServicesGUI.castVote(o, voteValue);
         }
+    
+        currentPoll.getHasVoted().add(justVotedUser);
+        currentFrame.dispose();
+    
         if (currentPoll.getHasVoted().containsAll(currentPoll.getUsers())) {
-            currentFrame.dispose();
             new PostVotingScreen();
         } else {
-            currentFrame.dispose();
-            PollServicesGUI.hasVoted();
+            User next = PollServicesGUI.getNextVoter();
+            if (next != null) {
+                PollServicesGUI.relogin(next); 
+            }
         }
     }
-
 }

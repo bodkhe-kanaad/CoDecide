@@ -12,7 +12,7 @@ import model.user.User;
 public class Session {
     private static int NEXT_SESSION_ID = 1;
 
-    private model.user.User currentUserLoggedIn;
+    private User currentUserLoggedIn;
     private int sessionID;
     private boolean isRunning;
 

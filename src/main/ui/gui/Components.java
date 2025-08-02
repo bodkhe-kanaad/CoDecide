@@ -135,6 +135,7 @@ public class Components {
     public static JButton viewPastResultsButton() {
         JButton pastResultsButton = new JButton("Past Results");
         pastResultsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        pastResultsButton.setActionCommand("PAST RESULTS");
         return pastResultsButton;
     }
 

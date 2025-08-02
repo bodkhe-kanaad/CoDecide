@@ -11,10 +11,13 @@ import javax.swing.JTextField;
 
 import model.Session;
 import model.user.User;
+import persistence.DataStore;
 import ui.gui.CoDecideAppGUI;
 import ui.gui.UserServicesGUI;
 import ui.gui.screens.PostLoginScreen;
+import ui.gui.screens.ViewResultsScreen;
 import ui.gui.screens.VotingScreen;
+import ui.gui.screens.WelcomeScreen;
 
 public class LoginHandler implements ActionListener {
     private JTextField usernameField;
@@ -76,7 +79,9 @@ public class LoginHandler implements ActionListener {
                     statusLabel.setText(currentUser.getFirstName() + " please login");
                     return;
                 }
+                
                 Session session = UserServicesGUI.login(username, password);
+
                 if (session != null) {
                     currentFrame.dispose();
                     JOptionPane.showMessageDialog(null, "Login succssful!");
@@ -102,6 +107,12 @@ public class LoginHandler implements ActionListener {
                 } else {
                     statusLabel.setText("Incorrect Username or Password.");
                 }
+            case "LOGOUT":
+                DataStore.saveState();
+                currentFrame.dispose();
+                new WelcomeScreen();
+                break;
+
         }
     }
 

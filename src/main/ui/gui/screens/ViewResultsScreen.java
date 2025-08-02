@@ -8,11 +8,9 @@ import javax.swing.JPanel;
 
 import ui.gui.Components;
 import ui.gui.HeaderPanel;
-import ui.gui.PollServicesGUI;
 import ui.gui.handlers.LoginHandler;
 import ui.gui.handlers.QuitApplicationHandler;
 import ui.gui.handlers.UserServiceHandler;
-import ui.gui.handlers.ViewResultsHandler;
 
 public class ViewResultsScreen extends JFrame {
 
@@ -44,12 +42,11 @@ public class ViewResultsScreen extends JFrame {
         mainPanel.add(quitButton);
         mainPanel.add(Box.createVerticalStrut(10));
 
-        returnToHomeScreenButton.addActionListener(new UserServiceHandler());
+        returnToHomeScreenButton.addActionListener(new UserServiceHandler(currentFrame));
         logOutButton.addActionListener(new LoginHandler());
         quitButton.addActionListener(new QuitApplicationHandler(currentFrame));
 
         return mainPanel;
-
     }
 
 }

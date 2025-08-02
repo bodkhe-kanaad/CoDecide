@@ -1,17 +1,19 @@
 package ui.gui;
 
+import java.util.List;
+
 import javax.swing.DefaultListModel;
 
 import model.Option;
 import model.poll.Poll;
 import model.poll.PollAction;
 import model.user.User;
+import ui.gui.screens.PastResultScreen;
 import ui.gui.screens.VotingLoginScreen;
 
 public class PollServicesGUI {
 
     private static Poll currentPoll;
-    private static User currentUser = CoDecideAppGUI.getSession().getCurrentUserLoggedIn();
     private static String result = "";
 
     // TODO
@@ -33,25 +35,40 @@ public class PollServicesGUI {
         return PollAction.addingUserToPoll(username, currentPoll);
     }
 
+    public static void pastResults(User currentUser) {
+        List<Poll> polls = PollAction.ownershipForPollsAndCompleted(currentUser);
+        if (polls != null) {
+            new PastResultScreen();
+        } 
+
+    } 
+
     // TODO
 
     public static void castVote(Option o, int voteValue) {
+        User currentUser = CoDecideAppGUI.getSession().getCurrentUserLoggedIn();
+    
         PollAction.castVote(currentUser, o, voteValue);
     }
 
     // TODO
     public static User getNextVoter() {
+        User currentUser = CoDecideAppGUI.getSession().getCurrentUserLoggedIn();
+
         int index = currentPoll.getUsers().indexOf(currentUser);
-        index++;
-        if (index < currentPoll.getUsers().size()) {
-            return currentPoll.getUsers().get(index);
+        int nextIndex = index++;
+        nextIndex++;
+        if (nextIndex < currentPoll.getUsers().size()) {
+            return currentPoll.getUsers().get(nextIndex);
         } else {
-            return null;
+            return null; // no more voters
         }
     }
 
     // TODO
     public static void hasVoted() {
+        User currentUser = CoDecideAppGUI.getSession().getCurrentUserLoggedIn();
+
         currentPoll.getHasVoted().add(currentUser);
         User nextVoter = getNextVoter();
         if (nextVoter != null) {
@@ -92,4 +109,5 @@ public class PollServicesGUI {
     public static void setResult(String result) {
         PollServicesGUI.result = result;
     }
+
 }
