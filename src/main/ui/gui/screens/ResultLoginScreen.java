@@ -13,6 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import model.user.User;
+import ui.gui.Buttons;
 import ui.gui.Components;
 import ui.gui.HeaderPanel;
 import ui.gui.handlers.LoginHandler;
@@ -20,7 +21,7 @@ import ui.gui.handlers.LoginHandler;
 public class ResultLoginScreen extends JFrame {
     private User nextVoter;
 
-    // TODO
+    // EFFECTS login screen prompting the owner of the poll to view those results
     public ResultLoginScreen(User nextVoter) {
         this.nextVoter = nextVoter;
         setTitle("Login !! " + nextVoter.getFirstName());
@@ -33,7 +34,7 @@ public class ResultLoginScreen extends JFrame {
 
     }
 
-    // TODO
+    // EFFECTS makes a main panel with other components in it
     private JPanel mainPanel(JFrame loginFrame) {
         JPanel mainPanel = new JPanel();
         JLabel firsnameDisplay = Components.firstnameLoginDisplay(nextVoter.getFirstName());
@@ -48,10 +49,10 @@ public class ResultLoginScreen extends JFrame {
         return mainPanel;
     }
 
-    // TODO
+    // EFFECTS makes a panel with fields needed for logging in
     private JPanel votingLoginForm(JFrame loginFrame) {
         JPanel loginFormPanel = new JPanel();
-        JButton loginButton = Components.resultLoginButton();
+        JButton loginButton = Buttons.resultLoginButton();
         JLabel usernameLabel = Components.usernameLabel();
         JTextField usernameField = Components.usernameField();
         JLabel passwordLabel = Components.passwordLabel();

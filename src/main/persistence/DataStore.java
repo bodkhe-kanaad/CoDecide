@@ -6,7 +6,6 @@ import java.util.Map;
 
 import model.poll.Poll;
 import model.user.User;
-import ui.gui.CoDecideAppGUI;
 
 public class DataStore {
     private static final Map<String, User> allUsers = new HashMap<>();

@@ -13,8 +13,7 @@
         "password": "T",
         "partOfPolls": [
             1,
-            1,
-            2
+            1
         ],
         "userId": 2,
         "username": "y"
@@ -36,8 +35,7 @@
             1,
             1,
             1,
-            1,
-            2
+            1
         ],
         "userId": 2,
         "username": "doe.john"
@@ -60,8 +58,7 @@
             1,
             1,
             1,
-            1,
-            2
+            1
         ],
         "userId": 2,
         "username": "b.k"

@@ -10,12 +10,13 @@ import persistence.DataStore;
 public class QuitApplicationHandler implements ActionListener {
     private JFrame currentFrame;
 
-    //TODO
+    // REQUIRES currentFrame is not null
+    // EFFECTS constructor to act as the handler for Quitting the application
     public QuitApplicationHandler(JFrame currentFrame) {
         this.currentFrame = currentFrame;
     }
 
-    //TODO
+    // EFFECTS It saves the state and closes the app. 
     @Override
     public void actionPerformed(ActionEvent click) {
         DataStore.saveState();

@@ -15,6 +15,7 @@ import javax.swing.JSlider;
 
 import model.Option;
 import model.poll.Poll;
+import ui.gui.Buttons;
 import ui.gui.CoDecideAppGUI;
 import ui.gui.Components;
 import ui.gui.HeaderPanel;
@@ -25,7 +26,7 @@ public class VotingScreen extends JFrame {
     private Poll currentPoll = PollServicesGUI.getCurrentPoll();
     private Map<Option, JSlider> sliderMap = new HashMap<>();
 
-    // TODO
+    // EFFECTS makes a screen with User voting on options
     public VotingScreen() {
         setTitle("Voting for Poll");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +37,7 @@ public class VotingScreen extends JFrame {
         setVisible(true);
     }
 
-    // TODO
+    // EFFECTS makes a main panel with other components
     private JPanel mainPanel(JFrame currentFrame) {
         JPanel mainPanel = new JPanel();
         JLabel firstnameDisplay = Components
@@ -51,11 +52,11 @@ public class VotingScreen extends JFrame {
         return mainPanel;
     }
 
-    // TODO
+    // EFFECTS makes a scrollpane with all the options added to it
     private JScrollPane optionsPanel(JFrame currentFrame) {
         JPanel optionsPanel = new JPanel();
         optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
-        JButton submitButton = Components.submitButton();
+        JButton submitButton = Buttons.submitButton();
 
         for (Option o : currentPoll.getOptions()) {
             optionsPanel.add(Box.createVerticalStrut(10));
@@ -71,6 +72,7 @@ public class VotingScreen extends JFrame {
         return optionsPanelScroll;
     }
 
+    // EFFECTS makes a row with options label and a slider to vote on it
     private JPanel optionRow(Option o) {
         JPanel optionRow = new JPanel();
         optionRow.setLayout(new FlowLayout(FlowLayout.LEFT));

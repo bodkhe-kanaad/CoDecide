@@ -6,14 +6,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ui.gui.Buttons;
 import ui.gui.Components;
-import ui.gui.Constants;
 
 public class WelcomeScreen extends JFrame {
 
-    //TODO
+    // EFFECTS Makes the Welcome Screen
     public WelcomeScreen() {
-        setTitle("CoDecide " + Constants.versionNumber());
+        setTitle("CoDecide " + Components.versionNumber());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 500);
         setLocationRelativeTo(null);
@@ -21,7 +21,7 @@ public class WelcomeScreen extends JFrame {
         setVisible(true);
     }
     
-    //TODO
+    // EFFECTS makes a main panel with other components
     public JPanel mainPanel(JFrame currentFrame) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -33,9 +33,9 @@ public class WelcomeScreen extends JFrame {
         panel.add(Box.createVerticalStrut(5));
         panel.add(Components.largeSubTitle());
         panel.add(Box.createVerticalStrut(30));
-        panel.add(Components.loginChoiceButton(currentFrame));
+        panel.add(Buttons.loginChoiceButton(currentFrame));
         panel.add(Box.createVerticalStrut(10));
-        panel.add(Components.signupChoiceButton(currentFrame));
+        panel.add(Buttons.signupChoiceButton(currentFrame));
 
         return panel;
     }

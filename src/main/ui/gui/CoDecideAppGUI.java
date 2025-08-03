@@ -9,7 +9,7 @@ public class CoDecideAppGUI {
     
     private static Session session;
 
-    //TODO
+    // Constructor
     public CoDecideAppGUI() {
         DataStore.loadState();
     }
@@ -27,6 +27,7 @@ public class CoDecideAppGUI {
         DataStore.saveState();
     }
 
+    // EFFECTS getter
     public static Session getSession() {
         return session;
     }

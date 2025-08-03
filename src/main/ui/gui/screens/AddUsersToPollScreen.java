@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import ui.gui.Buttons;
 import ui.gui.Components;
 import ui.gui.HeaderPanel;
 import ui.gui.handlers.AddUsersToPollHandler;
@@ -29,7 +30,7 @@ public class AddUsersToPollScreen extends JFrame {
     private JTextField addUserField;
     private JButton addUserButton;
 
-    // TODO
+    // EFFECTS Constructor to make the screen to add users to Poll
     public AddUsersToPollScreen() {
         setTitle("Create Poll");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,7 +41,7 @@ public class AddUsersToPollScreen extends JFrame {
         setVisible(true);
     }
 
-    // TODO
+    // EFFECTS makes the main panel which has other components of the screen
     private JPanel mainPanel() {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -53,7 +54,8 @@ public class AddUsersToPollScreen extends JFrame {
         return mainPanel;
     }
 
-    // TODO
+    // EFFECTS makes the panel with field, label and button to add the usernames
+    // which will further add user
     private JPanel addUserPanel() {
         JPanel addUserPanel = new JPanel();
         addUserPanel.setLayout(new BoxLayout(addUserPanel, BoxLayout.Y_AXIS));
@@ -61,7 +63,7 @@ public class AddUsersToPollScreen extends JFrame {
         JPanel userInputRow = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JLabel addUserLabel = Components.addUserLabel();
         JTextField addUserField = Components.addUserField();
-        JButton addUserButton = Components.addUserButton();
+        JButton addUserButton = Buttons.addUserButton();
 
         JLabel statusLabel = Components.statusLabel();
 
@@ -79,12 +81,12 @@ public class AddUsersToPollScreen extends JFrame {
         return addUserPanel;
     }
 
-    // TODO
+    // EFFECTS makes the panel with a scroll pane to display added usernames
     private JPanel addedUsersPanel() {
         JPanel addedUsersPanel = new JPanel();
         JLabel title = new JLabel("Added Users");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JButton nextButton = Components.nextButton();
+        JButton nextButton = Buttons.nextButton();
 
         nextButton.addActionListener(new AddUsersToPollHandler());
 

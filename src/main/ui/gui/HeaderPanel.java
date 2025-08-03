@@ -11,9 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
 public class HeaderPanel extends JPanel {
-    private Color backgroundColor = Constants.backgroundColor();
+    private Color backgroundColor = Components.backgroundColor();
 
-    // TODO
+    // EFFECTS makes the header panel 
     public HeaderPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(backgroundColor);

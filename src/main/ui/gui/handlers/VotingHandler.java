@@ -10,7 +10,6 @@ import javax.swing.JSlider;
 import model.Option;
 import model.poll.Poll;
 import model.user.User;
-import ui.cli.CoDecideAppCLI;
 import ui.gui.CoDecideAppGUI;
 import ui.gui.PollServicesGUI;
 import ui.gui.screens.PostVotingScreen;
@@ -20,6 +19,8 @@ public class VotingHandler implements ActionListener {
     private Poll currentPoll;
     private JFrame currentFrame;
 
+    // REQUIRES sliderMap, currentPoll, currentFrame is not null
+    // EFFECTS Constructor to handle the voting 
     public VotingHandler(Map<Option, JSlider> sliderMap, Poll currentPoll, JFrame currentFrame) {
         this.sliderMap = sliderMap;
         this.currentPoll = currentPoll;
@@ -27,6 +28,7 @@ public class VotingHandler implements ActionListener {
 
     }
 
+    // EFFECTS it casts the votes to those options for each user.
     @Override
     public void actionPerformed(ActionEvent click) {
         User justVotedUser = CoDecideAppGUI.getSession().getCurrentUserLoggedIn();

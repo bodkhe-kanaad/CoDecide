@@ -9,16 +9,16 @@
         "optionsList": [
             {
                 "voteTotal": 0,
-                "optionId": 17,
+                "optionId": 1,
                 "value": "A"
             },
             {
                 "voteTotal": 0,
-                "optionId": 18,
+                "optionId": 2,
                 "value": "B"
             }
         ],
-        "pollId": 9,
+        "pollId": 1,
         "isCompleted": false
     },
     {
@@ -31,16 +31,16 @@
         "optionsList": [
             {
                 "voteTotal": 0,
-                "optionId": 19,
+                "optionId": 3,
                 "value": "A"
             },
             {
                 "voteTotal": 0,
-                "optionId": 20,
+                "optionId": 4,
                 "value": "B"
             }
         ],
-        "pollId": 10,
+        "pollId": 2,
         "isCompleted": false
     }
 ]}

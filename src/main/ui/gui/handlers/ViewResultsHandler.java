@@ -17,10 +17,13 @@ public class ViewResultsHandler implements ActionListener {
     private User currentUserLoggedIn = CoDecideAppGUI.getSession().getCurrentUserLoggedIn();
     private JFrame currentFrame;
 
+    // REQUIRES currentFrame is not null
+    // EFFECTS Constructor to handle the see the Results or current of Past Poll
     public ViewResultsHandler(JFrame currentFrame) {
         this.currentFrame = currentFrame;
     }
 
+    // EFFECTS Triggers methods to the see the Results or current of Past Poll
     @Override
     public void actionPerformed(ActionEvent click) {
         String action = click.getActionCommand();

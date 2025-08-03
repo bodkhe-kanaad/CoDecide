@@ -19,7 +19,9 @@ public class SignupHandler implements ActionListener {
     private JFrame currentFrame;
     private JLabel statusLabel;
 
-    //TODO
+    // REQUIRES usernameField, passwordField, firstnameField, lastnameField,
+    // statusLavel, currentFrame is not null
+    // EFFECTS Constructor to handle the Signup of Users
     public SignupHandler(JTextField usernameField, JPasswordField passwordField, JTextField firstnameField,
             JTextField lastnameField, JLabel statusLabel, JFrame currentFrame) {
         this.usernameField = usernameField;
@@ -30,7 +32,7 @@ public class SignupHandler implements ActionListener {
         this.statusLabel = statusLabel;
     }
 
-    //TODO
+    // EFFECTS handles the signup and proceeds to login screen
     @Override
     public void actionPerformed(ActionEvent click) {
         String username = usernameField.getText().trim();

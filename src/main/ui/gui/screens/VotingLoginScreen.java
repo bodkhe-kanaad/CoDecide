@@ -13,6 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import model.user.User;
+import ui.gui.Buttons;
 import ui.gui.Components;
 import ui.gui.HeaderPanel;
 import ui.gui.handlers.LoginHandler;
@@ -20,7 +21,7 @@ import ui.gui.handlers.LoginHandler;
 public class VotingLoginScreen extends JFrame {
     private User nextVoter;
 
-    // TODO
+    // EFFECTS Constructs the screen when user choses to relogin
     public VotingLoginScreen(User nextVoter) {
         this.nextVoter = nextVoter;
         setTitle("Login !! " + nextVoter.getFirstName());
@@ -33,7 +34,7 @@ public class VotingLoginScreen extends JFrame {
 
     }
 
-    // TODO
+    // EFFECTS makes a panel with other components
     private JPanel mainPanel(JFrame loginFrame) {
         JPanel mainPanel = new JPanel();
         JLabel firsnameDisplay = Components.firstnameLoginDisplay(nextVoter.getFirstName());
@@ -48,10 +49,10 @@ public class VotingLoginScreen extends JFrame {
         return mainPanel;
     }
 
-    // TODO
+    // EFFECTS makes a panel with labels and fields needed to login
     private JPanel votingLoginForm(JFrame loginFrame) {
         JPanel loginFormPanel = new JPanel();
-        JButton loginButton = Components.votingLoginButton();
+        JButton loginButton = Buttons.votingLoginButton();
         JLabel usernameLabel = Components.usernameLabel();
         JTextField usernameField = Components.usernameField();
         JLabel passwordLabel = Components.passwordLabel();

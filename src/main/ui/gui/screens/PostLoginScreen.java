@@ -1,10 +1,8 @@
 package ui.gui.screens;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -14,9 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ui.gui.CoDecideAppGUI;
+import ui.gui.Buttons;
 import ui.gui.Components;
-import ui.gui.Constants;
 import ui.gui.HeaderPanel;
 import ui.gui.handlers.LaunchCreatePollHandler;
 import ui.gui.handlers.QuitApplicationHandler;
@@ -25,9 +22,10 @@ import ui.gui.handlers.ViewResultsHandler;
 
 public class PostLoginScreen extends JFrame {
 
-    //TODO
+    // EFFECTS makes a screen with options to create a poll or view past results for
+    // that user
     public PostLoginScreen() {
-        setTitle("CoDecide " + Constants.versionNumber());
+        setTitle("CoDecide " + Components.versionNumber());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 500);
         setLocationRelativeTo(null);
@@ -35,7 +33,7 @@ public class PostLoginScreen extends JFrame {
         setVisible(true);
     }
 
-    // TODO
+    // EFFECTS makes a main panel with other components in it
     private JPanel mainPanel(JFrame currentFrame) {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
@@ -48,11 +46,12 @@ public class PostLoginScreen extends JFrame {
 
     }
 
-    // TODO
+    // EFFECTS makes a panel with buttons about creating a poll and viewing past
+    // results
     private JPanel centerPanel(JFrame currentFrame) {
         JPanel appFunctionButtonPanel = new JPanel();
-        JButton createPollButton = Components.createPollButton();
-        JButton viewPastResultsButton = Components.viewPastResultsButton();
+        JButton createPollButton = Buttons.createPollButton();
+        JButton viewPastResultsButton = Buttons.viewPastResultsButton();
 
         appFunctionButtonPanel.setLayout(new BoxLayout(appFunctionButtonPanel, BoxLayout.Y_AXIS));
         appFunctionButtonPanel.setBorder(BorderFactory.createEmptyBorder(20, 60, 10, 60));
@@ -68,11 +67,10 @@ public class PostLoginScreen extends JFrame {
         return appFunctionButtonPanel;
     }
 
-    // TODO
+    // EFFECTS makes a panel for the top of the screen
     private JPanel topPanel(JFrame currentFrame) {
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
-
 
         topPanel.add(new HeaderPanel());
         topPanel.add(Box.createVerticalStrut(30));
@@ -82,12 +80,12 @@ public class PostLoginScreen extends JFrame {
         return topPanel;
     }
 
-    // TODO
+   // EFFECTS makes a panel for the bottom of the screen
     private JPanel bottomPanel(JFrame currentFrame) {
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 15));
 
-        JButton quitApplicationButton = Components.quitApplicationButton();
-        JButton signOutButton = Components.signOutButton();
+        JButton quitApplicationButton = Buttons.quitApplicationButton();
+        JButton signOutButton = Buttons.signOutButton();
 
         signOutButton.setPreferredSize(new Dimension(100, 30));
         quitApplicationButton.setPreferredSize(new Dimension(100, 30));

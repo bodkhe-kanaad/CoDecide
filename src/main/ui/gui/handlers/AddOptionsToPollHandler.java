@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -14,25 +15,32 @@ public class AddOptionsToPollHandler implements ActionListener {
     private JTextField inputField;
     private JLabel statusLabel;
     private final DefaultListModel<String> listModel;
+    private JFrame currentFrame;
 
-    // TODO
-    public AddOptionsToPollHandler(JTextField inputField, JLabel statusLabel, DefaultListModel<String> listModel) {
+    // REQUIRES inputField, statusLabel, listModel
+    // EFFECTS Constructor
+    // CITATION https://stackoverflow.com/questions/2893052/java-jlist-model
+    public AddOptionsToPollHandler(JTextField inputField, JLabel statusLabel, DefaultListModel<String> listModel,
+            JFrame currentFrame) {
         this.inputField = inputField;
         this.statusLabel = statusLabel;
         this.listModel = listModel;
+        this.currentFrame = currentFrame;
     }
 
-    public AddOptionsToPollHandler() {
+    // EFFECTS Constructor
+    public AddOptionsToPollHandler(JFrame currentFrame) {
         this.inputField = null;
         this.statusLabel = null;
         this.listModel = null;
+        this.currentFrame = currentFrame;
     }
 
-    // TODO
+    // EFFECTS It triggers the method to add options to the Poll or trigger the
+    // method to move on to the next step
     @Override
     public void actionPerformed(ActionEvent click) {
         String action = click.getActionCommand();
-
         switch (action) {
             case "ADD OPTION":
                 String input = inputField.getText().trim();
@@ -47,6 +55,7 @@ public class AddOptionsToPollHandler implements ActionListener {
                 break;
 
             case "NEXT":
+                currentFrame.dispose();
                 new AddUsersToPollScreen();
                 break;
         }

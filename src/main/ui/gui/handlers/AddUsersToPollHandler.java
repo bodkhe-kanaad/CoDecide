@@ -14,20 +14,23 @@ public class AddUsersToPollHandler implements ActionListener {
     private JLabel statusLabel;
     private final DefaultListModel<String> listModel;
 
-    // TODO
+    // REQUIRES inputField, statusLabel, listModel
+    // EFFECTS Constructor
+    // CITATION https://stackoverflow.com/questions/2893052/java-jlist-model
     public AddUsersToPollHandler(JTextField inputField, JLabel statusLabel, DefaultListModel<String> listModel) {
         this.inputField = inputField;
         this.statusLabel = statusLabel;
         this.listModel = listModel;
     }
 
+    // EFFECTS Constructor
     public AddUsersToPollHandler() {
         this.inputField = null;
         this.statusLabel = null;
         this.listModel = null;
     }
     
-    // TODO
+    // EFFECTS Triggersthe methods to add user to the poll or move on to the next step in the poll.
     @Override
     public void actionPerformed(ActionEvent click) {
         String action = click.getActionCommand();

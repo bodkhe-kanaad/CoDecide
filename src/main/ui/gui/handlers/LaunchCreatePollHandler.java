@@ -12,12 +12,14 @@ import ui.gui.screens.AddOptionsToPollScreen;
 public class LaunchCreatePollHandler implements ActionListener {
     private JFrame currentFrame;
 
-    //TODO
+    // REQUIRES currentFrame is not null
+    // EFFECTS Constructor
     public LaunchCreatePollHandler(JFrame currentFrame) {
         this.currentFrame = currentFrame;
     }
 
-    //TODO
+    // EFFECTS it makes a new Poll and moves on to the next step in the poll which
+    // is adding options
     @Override
     public void actionPerformed(ActionEvent click) {
         new AddOptionsToPollScreen();

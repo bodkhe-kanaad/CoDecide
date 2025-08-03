@@ -1,6 +1,5 @@
 package model;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,7 +12,6 @@ import model.poll.Poll;
 import model.poll.PollAction;
 import model.user.User;
 import model.user.UserAction;
-import ui.cli.PollServicesCLI;
 
 public class PollActionTest {
 

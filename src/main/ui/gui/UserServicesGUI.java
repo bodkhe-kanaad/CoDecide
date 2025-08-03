@@ -10,7 +10,7 @@ import model.user.UserAction;
 
 public class UserServicesGUI {
 
-    // TODO
+    // EFFECTS logs in the user with given field inputs 
     public static Session login(String username, String password) {
         Session session = UserAction.login(username, password);
         if (session != null) {
@@ -21,7 +21,7 @@ public class UserServicesGUI {
         }
     }
 
-    //TODO
+    // EFFECTS calls method to signup the user with their fields 
     public static boolean signup(String firstName, String lastName, String userName, String password) {
         return UserAction.signUp(firstName, lastName, userName, password);
     }
