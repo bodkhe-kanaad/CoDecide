@@ -8,66 +8,66 @@ import model.*;
 
 public class InputPrompts {
 
-    public static final void optionInputs() {
+    public static void optionInputs() {
         System.out.println("Press (1) to add other option Or (2) To move on");
     }
 
-    public static final void userInputs() {
+    public static void userInputs() {
         System.out.println("Press (1) to add other user Or (2) To move on");
     }
 
-    public static final void adduserInput() {
+    public static void adduserInput() {
         System.out.println("Please give the Username for the User to be added");
     }
 
-    public static final void addoptionInput(int numChoices) {
+    public static void addoptionInput(int numChoices) {
         System.out.println("What should be Option" + " " + numChoices);
     }
 
-    public static final void voteInputs(Option option) {
+    public static void voteInputs(Option option) {
         System.out.println("Please select a value on a scale from 0 to 100");
         System.out.println("where 0 means 'least preferred' and 100 means 'most preferred'.");
         System.out.println("For the Option " + option.getValue());
     }
 
-    public static final void loginOptionsInputs() {
+    public static void loginOptionsInputs() {
         System.out.println("Press (1) Login or (2) Signup");
     }
 
-    public static final void usernameInput() {
+    public static void usernameInput() {
         System.out.println("What is your Username");
     }
 
-    public static final void passwordInput() {
+    public static void passwordInput() {
         System.out.println("What is your Password");
     }
 
-    public static final void firstNameInput() {
+    public static void firstNameInput() {
         System.out.println("What is your First Name");
     }
 
-    public static final void lastNameInput() {
+    public static void lastNameInput() {
         System.out.println("What is your Last Name");
     }
 
-    public static final void signupUsernameInput() {
+    public static void signupUsernameInput() {
         System.out.println("What would you like as your Username");
     }
 
-    public static final void signUpPasswordInput() {
+    public static void signUpPasswordInput() {
         System.out.println("What would you like as your Password");
     }
 
-    public static final void reEnterUsername() {
+    public static void reEnterUsername() {
         System.out.println("Please enter your Username Again");
     }
 
-    public static final void resultOption() {
+    public static void resultOption() {
         System.out.println("Do you want to calculate the result");
         System.out.println("Press (1) Calculate or (2) Quit Poll ");
     }
 
-    public static final void appFunctions() {
+    public static void appFunctions() {
         System.out.println("What would you like to do?");
         System.out.println("(1) Create a new poll");
         System.out.println("(2) Check results for past polls");

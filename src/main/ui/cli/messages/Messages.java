@@ -4,65 +4,65 @@ import model.user.User;
 
 public class Messages {
 
-    public static final void welcomeMessage() {
+    public static void welcomeMessage() {
         System.out.println("Welcome to CoDecide "
                 + ui.cli.CoDecideAppCLI.CURRENT_VERSION_NUMBER);
         System.out.println("The smarter way to find common ground");
     }
 
-    public static final void postAddingOptions() {
+    public static void postAddingOptions() {
         System.out.println("Thank you for adding the options");
         System.out.println("Lets get started with adding desired users to the Poll");
     }
 
-    public static final void postAddingUsers() {
+    public static void postAddingUsers() {
         System.out.println("Thank you for adding the User's");
         System.out.println("lets get to Voting");
     }
 
-    public static final void postAddingVotes() {
+    public static void postAddingVotes() {
         System.out.println("Thank you all for giving your votes");
     }
 
-    public static final void results(String resultOption) {
+    public static void results(String resultOption) {
         System.out.println(resultOption);
     }
 
-    public static final void afterEachUserVoting(User user) {
+    public static void afterEachUserVoting(User user) {
         System.out.println("Thank you " + user.getFirstName());
     }
 
-    public static final void userLoginSuccess() {
+    public static void userLoginSuccess() {
         System.out.println("Login Successful");
     }
     
-    public static final void userLoginSelected() {
+    public static void userLoginSelected() {
         System.out.println("Thank you for choosing to Login");
     }
 
-    public static final void userSignupSelected() {
+    public static void userSignupSelected() {
         System.out.println("Thank you for choosing to SignUp");
     }
 
-    public static final void userSignUpSuccess() {
+    public static void userSignUpSuccess() {
         System.out.println("SignUp Succesful");
     }
 
-    public static final void postSignUp() {
+    public static void postSignUp() {
         System.out.println("Please proceed to login");
     }
 
-    public static final void postLogin() {
+    public static void postLogin() {
         System.out.println("Thank you for Logging in");
         System.out.println("Lets get started with making the Poll");
     }
 
-    public static final void nextLogin(User user) {
+    public static void nextLogin(User user) {
         System.out.println("You " + user.getFirstName() + " are up next");
         System.out.println("Please proceed to login");
     }
 
-    public static final void printAllPollResults(String allPolls) {
+    public static void printAllPollResults(String allPolls) {
         System.out.println(allPolls);
     }
 

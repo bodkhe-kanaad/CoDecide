@@ -21,7 +21,7 @@ import ui.cli.messages.Messages;
 public class CoDecideAppCLI {
     public static final Scanner INPUT = new Scanner(System.in);
     public static final double CURRENT_VERSION_NUMBER = 2.0;
-    public static final JsonReader reader = new JsonReader("data/users.json", "data/polls.json");
+    public static final JsonReader READER = new JsonReader("data/users.json", "data/polls.json");
 
     private static Session session;
 
@@ -78,8 +78,8 @@ public class CoDecideAppCLI {
     // EFFECTS loads the App's past data after user relaunches the App
     private static void loadState() {
         try {
-            Map<String, User> users = reader.readUsers();
-            Map<Integer, Poll> polls = reader.readPolls(users);
+            Map<String, User> users = READER.readUsers();
+            Map<Integer, Poll> polls = READER.readPolls(users);
 
             DataStore.getAllUsers().clear();
             DataStore.getAllUsers().putAll(users);

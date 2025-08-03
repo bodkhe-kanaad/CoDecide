@@ -12,7 +12,7 @@ import ui.gui.screens.VotingScreen;
 public class AddUsersToPollHandler implements ActionListener {
     private JTextField inputField;
     private JLabel statusLabel;
-    private final DefaultListModel<String> listModel;
+    private DefaultListModel<String> listModel;
 
     // REQUIRES inputField, statusLabel, listModel
     // EFFECTS Constructor

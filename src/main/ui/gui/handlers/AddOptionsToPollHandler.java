@@ -14,7 +14,7 @@ import ui.gui.screens.AddUsersToPollScreen;
 public class AddOptionsToPollHandler implements ActionListener {
     private JTextField inputField;
     private JLabel statusLabel;
-    private final DefaultListModel<String> listModel;
+    private DefaultListModel<String> listModel;
     private JFrame currentFrame;
 
     // REQUIRES inputField, statusLabel, listModel

@@ -106,7 +106,7 @@ public class PollServicesGUI {
         return result;
     }
 
-    // EFFECTs setter
+    // EFFECTS setter
     public static void setResult(String result) {
         PollServicesGUI.result = result;
     }

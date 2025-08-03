@@ -109,7 +109,7 @@ public class LoginHandler implements ActionListener {
         }
     }
 
-    // logs in the user with given fields during voting or results phase of the poll
+    // EFFECTS logs in the user with given fields during voting or results phase of the poll
     private void votingOrResultLogin(String username, String password) {
         if (emptyLogin(username, password)) {
             return;
