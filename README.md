@@ -27,11 +27,11 @@ This project is my way of putting that insight into action. CoDecide lets people
 6. As a User I want to save my Poll for documentation and record purposes.
 
 ### End User Instructions
-On your welcome screen you can choose to Login or Signup.
+On your welcome screen you can choose to Login or Signup. You can also see my visual component the App logo in this screen.
 
 If you choose Signup you will have to fill in all your details and login again with your credentials.
 
-After login you can 
+After login you can
 create a new poll - you can add the option by filling in the field and then clicking the "Add Option" button. You can also see the added options in the scroll pane below.
 
 Once done adding options to your poll you can click the "Next" button - After which you can add your desired other users to the Poll by simply entering their usernames.You can also see the added usernames in the scroll pane below.
@@ -46,7 +46,7 @@ The current user logged in will get other buttons.
 - "Logout" which will log out the current user logged in but keep the app running for other user to use.
 - "Quit" which will log out the user save the required details and close the app.
 
-After Login you can 
+After Login you can
 View past results - you can view the results for polls which have been completed and you are the owner for. in the screen you will also get other buttons.
 
 - "Return to Home" which will keep the current logged in user and bring them to the home screen
