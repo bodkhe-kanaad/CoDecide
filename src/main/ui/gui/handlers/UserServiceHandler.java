@@ -29,6 +29,7 @@ public class UserServiceHandler implements ActionListener {
 
         switch (action) {
             case "RETURN TO HOME":
+                currentFrame.dispose();
                 new PostLoginScreen();
                 break;
             case "SWITCH TO LOGIN":

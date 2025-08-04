@@ -14,6 +14,7 @@ import model.user.User;
 import persistence.DataStore;
 import ui.gui.UserServicesGUI;
 import ui.gui.screens.PostLoginScreen;
+import ui.gui.screens.ViewResultsScreen;
 import ui.gui.screens.VotingScreen;
 import ui.gui.screens.WelcomeScreen;
 
@@ -63,13 +64,16 @@ public class LoginHandler implements ActionListener {
 
     // EFFECTS it triggers the method to login or logout the user in different
     // scenarios like during voting or seeing the results.
+    @Override
     public void actionPerformed(ActionEvent click) {
-        String username = usernameField.getText().trim();
-        String password = new String(passwordField.getPassword()).trim();
+        String username;
+        String password; 
         String action = click.getActionCommand();
 
         switch (action) {
             case "LOGIN":
+                username = usernameField.getText().trim();
+                password = new String(passwordField.getPassword()).trim();
                 if (emptyLogin(username, password)) {
                     return;
                 }
@@ -77,11 +81,17 @@ public class LoginHandler implements ActionListener {
                 break;
 
             case "VOTING LOGIN":
-                votingOrResultLogin(username, password);
+                username = usernameField.getText().trim();
+                password = new String(passwordField.getPassword()).trim();
+                votingLogin(username, password);
                 break;
 
             case "RESULT LOGIN":
-                votingOrResultLogin(username, password);
+                username = usernameField.getText().trim();
+                password = new String(passwordField.getPassword()).trim();
+                resultLogin(username, password);
+                break;
+
             case "LOGOUT":
                 DataStore.saveState();
                 currentFrame.dispose();
@@ -103,7 +113,7 @@ public class LoginHandler implements ActionListener {
         }
     }
 
-    // EFFECTS logs in the user with given  fields
+    // EFFECTS logs in the user with given fields
     private boolean emptyLogin(String username, String password) {
         if (username.isEmpty() || password.isEmpty()) {
             statusLabel.setText("Please enter both Username and Password");
@@ -113,8 +123,8 @@ public class LoginHandler implements ActionListener {
         }
     }
 
-    // EFFECTS logs in the user with given fields during voting or results phase of the poll
-    private void votingOrResultLogin(String username, String password) {
+    // EFFECTS logs in the user with given fields during voting phase of the poll
+    private void votingLogin(String username, String password) {
         if (emptyLogin(username, password)) {
             return;
         }
@@ -134,4 +144,23 @@ public class LoginHandler implements ActionListener {
         }
     }
 
+    // EFFECTS logs in the user with given fields during results phase of the poll
+    private void resultLogin(String username, String password) {
+        if (emptyLogin(username, password)) {
+            return;
+        }
+        if (!username.equals(currentUser.getUsername())) {
+            statusLabel.setText(currentUser.getFirstName() + " please login");
+            return;
+        }
+
+        Session session = UserServicesGUI.login(username, password);
+
+        if (session != null) {
+            currentFrame.dispose();
+            new ViewResultsScreen();
+        } else {
+            statusLabel.setText("Incorrect Username or Password.");
+        }
+    }
 }

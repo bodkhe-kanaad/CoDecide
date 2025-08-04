@@ -7,10 +7,9 @@ import java.awt.*;
 
 public class Components {
 
-
-    //EFFECTS background color of app
+    // EFFECTS background color of app
     public static Color backgroundColor() {
-        return new Color(240,240,240);
+        return new Color(240, 240, 240);
     }
 
     // EFFECTS version number of the app
@@ -18,11 +17,10 @@ public class Components {
         return "3.0";
     }
 
-    // EFFECTS color for the status labels 
+    // EFFECTS color for the status labels
     public static Color statusColor() {
         return Color.RED;
     }
-    
 
     // EFFECTS large logo for the welcome screen
     public static JLabel largeLogo() {
@@ -67,8 +65,6 @@ public class Components {
         return label;
     }
 
-   
-
     // EFFECTS slider for the voting
     public static JSlider optionVotingSlider() {
         JSlider slider = new JSlider(0, 100, 0);
@@ -98,10 +94,10 @@ public class Components {
         return displayMessage;
     }
 
-    // EFFECTS display for the result screen 
-    public static JLabel resultLabel() {
-        JLabel resultMessage = new JLabel("You all should go with the option "
-                + PollServicesGUI.getResult());
+    // EFFECTS display for the result screen
+    public static JLabel resultLabel(String result) {
+        JLabel resultMessage = new JLabel("You all should go with the option " + "\n"
+                + result);
         resultMessage.setFont(new Font("SansSerif", Font.PLAIN, 20));
         resultMessage.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -117,7 +113,7 @@ public class Components {
         return usernameField;
     }
 
-    // EFFECTS label for the password 
+    // EFFECTS label for the password
     public static JLabel passwordLabel() {
         JLabel passwordLabel = new JLabel("Password :");
         passwordLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -199,7 +195,6 @@ public class Components {
         return noResultsLabel;
     }
 
-
     // EFFECTS field for lastname input
     public static JTextField lastnameField() {
         JTextField lastnameField = new JTextField();
@@ -225,7 +220,7 @@ public class Components {
         return addOptionField;
     }
 
-    // EFFECTS label for username 
+    // EFFECTS label for username
     public static JLabel addUserLabel() {
         JLabel addUserLabel = new JLabel("Username :");
         addUserLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -240,7 +235,7 @@ public class Components {
         return addUserField;
     }
 
-    // EFFECTS status label 
+    // EFFECTS status label
     public static JLabel statusLabel() {
         JLabel statusLabel = new JLabel(" ");
         statusLabel.setForeground(Components.statusColor());

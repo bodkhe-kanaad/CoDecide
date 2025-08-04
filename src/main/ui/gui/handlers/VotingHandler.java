@@ -36,6 +36,7 @@ public class VotingHandler implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent click) {
         User justVotedUser = CoDecideAppGUI.getSession().getCurrentUserLoggedIn();
+        currentFrame.dispose();
     
         for (Option o : sliderMap.keySet()) {
             int voteValue = sliderMap.get(o).getValue();
@@ -43,7 +44,6 @@ public class VotingHandler implements ActionListener {
         }
     
         currentPoll.getHasVoted().add(justVotedUser);
-        currentFrame.dispose();
     
         if (currentPoll.getHasVoted().containsAll(currentPoll.getUsers())) {
             new PostVotingScreen();

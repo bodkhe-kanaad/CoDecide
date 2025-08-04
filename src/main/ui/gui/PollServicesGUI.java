@@ -8,6 +8,7 @@ import model.Option;
 import model.poll.Poll;
 import model.poll.PollAction;
 import model.user.User;
+import persistence.DataStore;
 import ui.gui.screens.PastResultScreen;
 import ui.gui.screens.VotingLoginScreen;
 
@@ -20,7 +21,9 @@ public class PollServicesGUI {
 
     // EFFECTS calls method to create poll with current user
     public static void createPollWithCurrentUser(User currentUser) {
-        setCurrentPoll(Poll.createPoll(currentUser));
+        Poll p = Poll.createPoll(currentUser);
+        setCurrentPoll(p);
+        DataStore.getAllPolls().put(p.getPollId(), p);
     }
 
     // EFFECTS calls method to add option to Poll

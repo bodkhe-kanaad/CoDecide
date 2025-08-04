@@ -1,14 +1,17 @@
 package ui.gui.screens;
 
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.gui.Buttons;
+import ui.gui.CoDecideAppGUI;
 import ui.gui.Components;
 import ui.gui.HeaderPanel;
+import ui.gui.PollServicesGUI;
 import ui.gui.handlers.LoginHandler;
 import ui.gui.handlers.QuitApplicationHandler;
 import ui.gui.handlers.UserServiceHandler;
@@ -31,7 +34,9 @@ public class ViewResultsScreen extends JFrame {
     public JPanel mainPanel(JFrame currentFrame) {
 
         JPanel mainPanel = new JPanel();
-        JLabel resultLabel = Components.resultLabel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        String result = PollServicesGUI.getCurrentPoll().pollResults();
+        JLabel resultLabel = Components.resultLabel(result);
         JButton returnToHomeScreenButton = Buttons.returnToHomeScreenButton();
         JButton logOutButton = Buttons.logoutButton();
         JButton quitButton = Buttons.quitApplicationButton();

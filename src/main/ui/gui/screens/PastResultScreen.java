@@ -56,7 +56,7 @@ public class PastResultScreen extends JFrame {
 
         quitButton.addActionListener(new QuitApplicationHandler(currentFrame));
         returnToHomeButton.addActionListener(new UserServiceHandler(currentFrame));
-        logOutButton.addActionListener(new LoginHandler(currentFrame));
+        logOutButton.addActionListener(new UserServiceHandler(currentFrame));
 
         results.add(resultsMaker());
         results.add(Box.createVerticalStrut(30));

@@ -11,10 +11,7 @@
         "firstName": "k",
         "lastName": "m",
         "password": "T",
-        "partOfPolls": [
-            1,
-            1
-        ],
+        "partOfPolls": [],
         "userId": 2,
         "username": "y"
     },
@@ -23,14 +20,6 @@
         "lastName": "Doe",
         "password": "Test@1234",
         "partOfPolls": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
             1,
             1,
             1,
@@ -45,14 +34,6 @@
         "lastName": "Bodkhe",
         "password": "Test@1234",
         "partOfPolls": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
             1,
             1,
             1,

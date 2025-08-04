@@ -41,19 +41,19 @@ public class AddUsersToPollScreen extends JFrame {
         setSize(600, 500);
         setLocationRelativeTo(null);
 
-        add(mainPanel());
+        add(mainPanel(this));
         setVisible(true);
     }
 
     // EFFECTS makes the main panel which has other components of the screen
-    private JPanel mainPanel() {
+    private JPanel mainPanel(JFrame currentFrame) {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.add(new HeaderPanel());
         mainPanel.add(Box.createVerticalStrut(30));
         mainPanel.add(addUserPanel());
         mainPanel.add(Box.createVerticalStrut(10));
-        mainPanel.add(addedUsersPanel());
+        mainPanel.add(addedUsersPanel(currentFrame));
         mainPanel.add(Box.createVerticalStrut(200));
         return mainPanel;
     }
@@ -86,15 +86,15 @@ public class AddUsersToPollScreen extends JFrame {
     }
 
     // EFFECTS makes the panel with a scroll pane to display added usernames
-    private JPanel addedUsersPanel() {
+    private JPanel addedUsersPanel(JFrame currentFrame) {
         JPanel addedUsersPanel = new JPanel();
         JLabel title = new JLabel("Added Users");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         JButton nextButton = Buttons.nextButton();
 
-        nextButton.addActionListener(new AddUsersToPollHandler());
+        nextButton.addActionListener(new AddUsersToPollHandler(currentFrame));
 
-        nextButton.addActionListener(new AddUsersToPollHandler(null, title, usersListModel));
+        nextButton.addActionListener(new AddUsersToPollHandler(null, title, usersListModel, currentFrame));
         title.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         addedUsersPanel.setLayout(new BoxLayout(addedUsersPanel, BoxLayout.Y_AXIS));
         addedUsersPanel.setAlignmentX(Component.CENTER_ALIGNMENT);

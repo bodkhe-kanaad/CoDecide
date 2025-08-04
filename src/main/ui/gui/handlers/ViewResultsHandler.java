@@ -34,11 +34,11 @@ public class ViewResultsHandler implements ActionListener {
 
         switch (action) {
             case "RESULTS":
+                currentFrame.dispose();
                 Poll currentPoll = PollServicesGUI.getCurrentPoll();
                 User owner = currentPoll.getOwner();
                 if (currentUserLoggedIn.equals(owner)) {
                     PollServicesGUI.calculateResult();
-                    currentFrame.dispose();
                     new ViewResultsScreen();
                 } else {
                     new ResultLoginScreen(owner);
@@ -46,6 +46,7 @@ public class ViewResultsHandler implements ActionListener {
                 break;
 
             case "PAST RESULTS":
+                currentFrame.dispose();
                 User currentUser = CoDecideAppGUI.getSession().getCurrentUserLoggedIn();
                 PollServicesGUI.pastResults(currentUser);
                 break;

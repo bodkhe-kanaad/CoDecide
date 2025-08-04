@@ -4,22 +4,19 @@
         "doe.john",
         "b.k"
     ],
-    "usersVotedList": [
-        "doe.john",
-        "b.k"
-    ],
+    "usersVotedList": ["doe.john"],
     "optionsList": [
         {
-            "voteTotal": 190,
+            "voteTotal": 85,
             "optionId": 1,
             "value": "A"
         },
         {
-            "voteTotal": 100,
+            "voteTotal": 80,
             "optionId": 2,
             "value": "B"
         }
     ],
     "pollId": 1,
-    "isCompleted": true
+    "isCompleted": false
 }]}

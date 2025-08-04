@@ -5,9 +5,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import persistence.DataStore;
 import ui.gui.Buttons;
 import ui.gui.Components;
 import ui.gui.HeaderPanel;
+import ui.gui.PollServicesGUI;
 import ui.gui.handlers.LoginHandler;
 import ui.gui.handlers.QuitApplicationHandler;
 import ui.gui.handlers.UserServiceHandler;
@@ -36,6 +38,9 @@ public class PostVotingScreen extends JFrame {
         JButton returnToHomeScreenButton = Buttons.returnToHomeScreenButton();
         JButton logOutButton = Buttons.logoutButton();
         JButton quitButton = Buttons.quitApplicationButton();
+
+        PollServicesGUI.getCurrentPoll().setCompleted(true);
+        DataStore.saveState();
 
         mainPanel.add(new HeaderPanel());
         mainPanel.add(Box.createVerticalStrut(30));
