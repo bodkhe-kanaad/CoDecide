@@ -9,6 +9,10 @@ import java.util.*;
 import model.poll.Poll;
 import model.user.User;
 
+/*
+ * JSON Reader
+ */
+
 public class JsonReader {
     private String userSourceFile;
     private String pollSourceFile;

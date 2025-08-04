@@ -22,6 +22,8 @@ import ui.gui.HeaderPanel;
 import ui.gui.PollServicesGUI;
 import ui.gui.handlers.VotingHandler;
 
+// Screen to vote for the options for each user
+
 public class VotingScreen extends JFrame {
     private Poll currentPoll = PollServicesGUI.getCurrentPoll();
     private Map<Option, JSlider> sliderMap = new HashMap<>();

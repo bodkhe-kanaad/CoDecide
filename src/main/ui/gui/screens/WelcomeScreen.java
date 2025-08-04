@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import ui.gui.Buttons;
 import ui.gui.Components;
 
+// Welcome screen 
+
 public class WelcomeScreen extends JFrame {
 
     // EFFECTS Makes the Welcome Screen

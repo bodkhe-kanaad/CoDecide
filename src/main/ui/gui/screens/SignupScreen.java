@@ -22,6 +22,8 @@ import ui.gui.HeaderPanel;
 import ui.gui.handlers.SignupHandler;
 import ui.gui.handlers.UserServiceHandler;
 
+// Signing up screen
+
 public class SignupScreen extends JFrame {
 
     private static JLabel usernameLabel = Components.usernameLabel();

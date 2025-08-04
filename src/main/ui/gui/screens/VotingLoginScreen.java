@@ -18,6 +18,7 @@ import ui.gui.Components;
 import ui.gui.HeaderPanel;
 import ui.gui.handlers.LoginHandler;
 
+// Login screen during voting 
 public class VotingLoginScreen extends JFrame {
     private User nextVoter;
 

@@ -13,6 +13,8 @@ import ui.gui.handlers.QuitApplicationHandler;
 import ui.gui.handlers.UserServiceHandler;
 import ui.gui.handlers.ViewResultsHandler;
 
+// After voting screen
+
 public class PostVotingScreen extends JFrame {
 
     // EFFECTS makes a Screen with options to quit, relogin, go back to homescreen,

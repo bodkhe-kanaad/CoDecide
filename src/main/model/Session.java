@@ -29,9 +29,9 @@ public class Session {
         return currentUserLoggedIn;
     }
 
-    public void setCurrentUserLoggedIn(model.user.User currentUserLoggedIn) {
-        this.currentUserLoggedIn = currentUserLoggedIn;
-    }
+    // public void setCurrentUserLoggedIn(model.user.User currentUserLoggedIn) {
+    //     this.currentUserLoggedIn = currentUserLoggedIn;
+    // }
 
     // Constructor for Session
     public Session(User currentUserLoggedIn, int sessionID, boolean isRunning) {
@@ -46,6 +46,7 @@ public class Session {
         int sessionID = NEXT_SESSION_ID;
         NEXT_SESSION_ID++;
         boolean isRunning = true;
+        EventLog.getInstance().logEvent(new Event("New session login by " + currentUserLoggedIn.getUsername()));
         return new Session(currentUserLoggedIn, sessionID, isRunning);
     }
 

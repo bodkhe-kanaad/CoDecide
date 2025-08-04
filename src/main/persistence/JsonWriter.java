@@ -10,6 +10,10 @@ import org.json.*;
 import model.poll.Poll;
 import model.user.User;
 
+/*
+ * JSON Writer
+ */
+
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

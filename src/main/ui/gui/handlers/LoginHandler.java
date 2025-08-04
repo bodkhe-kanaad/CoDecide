@@ -17,6 +17,10 @@ import ui.gui.screens.PostLoginScreen;
 import ui.gui.screens.VotingScreen;
 import ui.gui.screens.WelcomeScreen;
 
+/*
+ * Handler for login for the User
+ */
+
 public class LoginHandler implements ActionListener {
     private JTextField usernameField;
     private JPasswordField passwordField;

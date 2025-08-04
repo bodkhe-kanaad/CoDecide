@@ -1,13 +1,9 @@
 package ui.gui;
 
 import javax.swing.*;
-
-import ui.gui.screens.LoginScreen;
-import ui.gui.screens.SignupScreen;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+// Non button components used in the screen
 
 public class Components {
 

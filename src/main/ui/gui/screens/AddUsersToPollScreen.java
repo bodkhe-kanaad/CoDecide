@@ -21,6 +21,10 @@ import ui.gui.Components;
 import ui.gui.HeaderPanel;
 import ui.gui.handlers.AddUsersToPollHandler;
 
+/*
+ * Screen to add users to Poll
+ */
+
 public class AddUsersToPollScreen extends JFrame {
 
     private DefaultListModel<String> usersListModel = new DefaultListModel<>();

@@ -2,6 +2,8 @@ package model.user;
 
 import java.util.Map;
 
+import model.Event;
+import model.EventLog;
 import model.Session;
 import persistence.DataStore;
 
@@ -16,10 +18,12 @@ public class UserAction {
     // Map of ALL_USERS
     public static boolean signUp(String firstName, String lastName, String userName, String password) {
         if (ALL_USERS.containsKey(userName)) {
+            EventLog.getInstance().logEvent(new Event("New user could not be signed up - username already taken"));
             return false;
         } else {
             User newUser = User.createUser(firstName, lastName, userName, password);
             ALL_USERS.put(userName, newUser);
+            EventLog.getInstance().logEvent(new Event("New user signed up " + firstName + " " + lastName));
             return true;
         }
     }
@@ -29,12 +33,15 @@ public class UserAction {
     // EFFECTS checks for the username and password if correct then creates a new
     // Session with the
     public static Session login(String userName, String password) {
-        if (ALL_USERS.containsKey(userName) == false) {
+        if (!ALL_USERS.containsKey(userName)) {
+            EventLog.getInstance().logEvent(new Event("User: " + userName + " Login Unsuccessful! "));
             return null;
         }
         if (ALL_USERS.get(userName).getPassword().contentEquals(password)) {
+            EventLog.getInstance().logEvent(new Event("User: " + userName + " Login Successful! "));
             return Session.sessionInitializer(ALL_USERS.get(userName));
         } else {
+            EventLog.getInstance().logEvent(new Event("User: " + userName + " Login Unsuccessful! "));
             return null;
         }
     }

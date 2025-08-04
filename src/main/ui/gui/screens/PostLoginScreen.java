@@ -17,8 +17,10 @@ import ui.gui.Components;
 import ui.gui.HeaderPanel;
 import ui.gui.handlers.LaunchCreatePollHandler;
 import ui.gui.handlers.QuitApplicationHandler;
-import ui.gui.handlers.SignOutHandler;
+import ui.gui.handlers.UserServiceHandler;
 import ui.gui.handlers.ViewResultsHandler;
+
+// Post login / Home screen
 
 public class PostLoginScreen extends JFrame {
 
@@ -90,7 +92,7 @@ public class PostLoginScreen extends JFrame {
         signOutButton.setPreferredSize(new Dimension(100, 30));
         quitApplicationButton.setPreferredSize(new Dimension(100, 30));
 
-        signOutButton.addActionListener(new SignOutHandler(currentFrame));
+        signOutButton.addActionListener(new UserServiceHandler(currentFrame));
         quitApplicationButton.addActionListener(new QuitApplicationHandler(currentFrame));
 
         bottomPanel.add(signOutButton);

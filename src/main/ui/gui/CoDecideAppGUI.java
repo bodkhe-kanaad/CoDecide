@@ -5,6 +5,8 @@ import model.Session;
 import persistence.DataStore;
 import ui.gui.screens.WelcomeScreen;
 
+// App class
+
 public class CoDecideAppGUI {
     
     private static Session session;

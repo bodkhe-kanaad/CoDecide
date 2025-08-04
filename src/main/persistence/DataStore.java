@@ -7,6 +7,10 @@ import java.util.Map;
 import model.poll.Poll;
 import model.user.User;
 
+/*
+ * Responsible for the loading and saving of data
+ */
+
 public class DataStore {
     private static final Map<String, User> ALL_USERS = new HashMap<>();
     private static final Map<Integer, Poll> ALL_POLLS  = new HashMap<>();

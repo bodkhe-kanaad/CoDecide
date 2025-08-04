@@ -12,6 +12,10 @@ import ui.gui.PollServicesGUI;
 import ui.gui.screens.ResultLoginScreen;
 import ui.gui.screens.ViewResultsScreen;
 
+/*
+ * Handler to view result for current poll or past polls
+ */
+
 public class ViewResultsHandler implements ActionListener {
 
     private User currentUserLoggedIn = CoDecideAppGUI.getSession().getCurrentUserLoggedIn();

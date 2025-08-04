@@ -11,6 +11,8 @@ import model.user.User;
 import ui.gui.screens.PastResultScreen;
 import ui.gui.screens.VotingLoginScreen;
 
+// Utility class for services regarding polls
+
 public class PollServicesGUI {
 
     private static Poll currentPoll;

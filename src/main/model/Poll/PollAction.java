@@ -1,7 +1,7 @@
 package model.poll;
 
-import java.util.Map;
-
+import model.Event;
+import model.EventLog;
 import model.Option;
 import model.user.User;
 import model.user.UserAction;
@@ -22,12 +22,14 @@ public class PollAction {
     // EFFECTS adds the user to the Poll in which this was triggered
     // also then adds the Poll in which it was triggered to the user
     public static boolean addingUserToPoll(String username, Poll currentPoll) {
-        Map<String, User> allUsers = UserAction.getAllUsersMap();       // The global User details
+        Map<String, User> allUsers = UserAction.getAllUsersMap(); // The global User details
         if (allUsers.containsKey(username)) {
             User user = allUsers.get(username);
-            if (!currentPoll.getUsers().contains(user)) {           // Checks if user is already a part
+            if (!currentPoll.getUsers().contains(user)) { // Checks if user is already a part
                 currentPoll.addUserToPoll(user);
                 user.getPartOfPoll().add(currentPoll);
+                EventLog.getInstance().logEvent(
+                        new Event("User : " + user.getFirstName() + " added to Poll: " + currentPoll.getPollId()));
                 return true;
             }
         }
@@ -39,6 +41,8 @@ public class PollAction {
     // MODIEIS currentPoll.users and User.partOfPoll
     // EFFECTS adds the option to the Poll in which this was triggered
     public static void addingOptionToPoll(String option, Poll currentPoll) {
+        EventLog.getInstance()
+                .logEvent(new Event("New option: " + option + " " + "added to PollId: " + currentPoll.getPollId()));
         currentPoll.addOptionToPoll(option);
     }
 
@@ -50,7 +54,8 @@ public class PollAction {
             return false;
         }
         option.addVote(vote);
-        
+        EventLog.getInstance().logEvent(new Event("User " + user.getUsername()
+                + " voted " + vote + " for option: " + option.getValue()));
         return true;
     }
 
@@ -61,7 +66,8 @@ public class PollAction {
     }
 
     // REQUIRES User currentUser is not Null
-    // EFFECTS It returns the List<Poll> for which the given user is the Owner and Is Completed
+    // EFFECTS It returns the List<Poll> for which the given user is the Owner and
+    // Is Completed
     public static List<Poll> ownershipForPollsAndCompleted(User currentUser) {
         List<Poll> ownershipPolls = new ArrayList<>();
 

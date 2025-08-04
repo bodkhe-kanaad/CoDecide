@@ -10,6 +10,10 @@ import javax.swing.JTextField;
 
 import ui.gui.PollServicesGUI;
 import ui.gui.screens.AddUsersToPollScreen;
+ 
+/*
+ * Handler for all actions regarding adding options to poll 
+ */
 
 public class AddOptionsToPollHandler implements ActionListener {
     private JTextField inputField;

@@ -17,6 +17,8 @@ import ui.gui.HeaderPanel;
 import ui.gui.handlers.LoginHandler;
 import ui.gui.handlers.UserServiceHandler;
 
+// Login screen
+
 public class LoginScreen extends JFrame {
 
     private static JButton loginButton = Buttons.loginButton();

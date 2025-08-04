@@ -9,6 +9,10 @@ import ui.gui.CoDecideAppGUI;
 import ui.gui.PollServicesGUI;
 import ui.gui.screens.AddOptionsToPollScreen;
 
+/*
+ * Handler for actions regarding creating a poll
+ */
+
 public class LaunchCreatePollHandler implements ActionListener {
     private JFrame currentFrame;
 

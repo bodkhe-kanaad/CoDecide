@@ -20,6 +20,10 @@ import ui.gui.Buttons;
 import ui.gui.Components;
 import ui.gui.HeaderPanel;
 import ui.gui.handlers.AddOptionsToPollHandler;
+ 
+/*
+ * Screen to add options to Poll
+ */
 
 public class AddOptionsToPollScreen extends JFrame {
 

@@ -14,6 +14,10 @@ import ui.gui.CoDecideAppGUI;
 import ui.gui.PollServicesGUI;
 import ui.gui.screens.PostVotingScreen;
 
+/*
+ * Handler for voting on the options by the user
+ */
+
 public class VotingHandler implements ActionListener {
     private Map<Option, JSlider> sliderMap;
     private Poll currentPoll;

@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import ui.gui.screens.LoginScreen;
 import ui.gui.screens.SignupScreen;
 
+// Buttons used in all screens
+
 public class Buttons {
 
     // EFFECTS edits the button to look same
@@ -114,6 +116,7 @@ public class Buttons {
     public static JButton signOutButton() {
         JButton signOut = new JButton("Sign Out");
         signOut.setAlignmentX(Component.CENTER_ALIGNMENT);
+        signOut.setActionCommand("SIGN OUT");
         return signOut;
     }
 

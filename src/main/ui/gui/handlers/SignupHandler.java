@@ -11,6 +11,10 @@ import javax.swing.JTextField;
 import ui.gui.UserServicesGUI;
 import ui.gui.screens.LoginScreen;
 
+/*
+ * Handler for user signing up
+ */
+
 public class SignupHandler implements ActionListener {
     private JTextField usernameField;
     private JPasswordField passwordField;

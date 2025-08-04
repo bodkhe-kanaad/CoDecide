@@ -19,6 +19,8 @@ import ui.gui.handlers.LoginHandler;
 import ui.gui.handlers.QuitApplicationHandler;
 import ui.gui.handlers.UserServiceHandler;
 
+// Past result screen
+
 public class PastResultScreen extends JFrame {
     private List<Poll> polls;
 

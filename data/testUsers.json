@@ -5,11 +5,9 @@
         "password": "T",
         "partOfPolls": [
             1,
-            2,
-            3,
-            4
+            2
         ],
-        "userId": 4,
+        "userId": 2,
         "username": "doe.john"
     },
     {
@@ -18,11 +16,9 @@
         "password": "T",
         "partOfPolls": [
             1,
-            2,
-            3,
-            4
+            2
         ],
-        "userId": 5,
+        "userId": 3,
         "username": "eve.adam"
     }
 ]}

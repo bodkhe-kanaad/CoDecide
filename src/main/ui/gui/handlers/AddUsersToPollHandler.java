@@ -9,6 +9,10 @@ import javax.swing.JTextField;
 import ui.gui.PollServicesGUI;
 import ui.gui.screens.VotingScreen;
 
+/*
+  * Handler for all actions regarding adding users to poll 
+ */
+
 public class AddUsersToPollHandler implements ActionListener {
     private JTextField inputField;
     private JLabel statusLabel;

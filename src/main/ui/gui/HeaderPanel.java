@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
+// Header panel in the screens
+
 public class HeaderPanel extends JPanel {
     private Color backgroundColor = Components.backgroundColor();
 

@@ -8,6 +8,8 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import model.Event;
+import model.EventLog;
 import model.Option;
 import model.user.User;
 
@@ -167,7 +169,6 @@ public class Poll {
         return pollJson;
     }
 
-
     // EFFECTS converts the JSON stored data into Poll object
     public static Poll reconstructPoll(JSONObject pollJson, Map<String, User> allUsers) {
         int pollId;
@@ -201,7 +202,8 @@ public class Poll {
         return "Poll ID : " + pollId + "\n" + "Owner : " + owner + "\n" + "Result : " + result;
     }
 
-    // EFFECTS Returns the All Users for the Poll by finding them using their Usernames
+    // EFFECTS Returns the All Users for the Poll by finding them using their
+    // Usernames
     private static List<User> userNamesToUsers(Map<String, User> allUsers, List<Object> usersUsernames) {
         List<User> userList = new ArrayList<>();
         for (Object obj : usersUsernames) {
@@ -214,7 +216,8 @@ public class Poll {
         return userList;
     }
 
-    // EFFECTS Returns the Users Who have Voted for the Poll by finding them using their Usernames
+    // EFFECTS Returns the Users Who have Voted for the Poll by finding them using
+    // their Usernames
     private static List<User> hasVotedUserNamesToUsers(Map<String, User> allUsers, List<Object> hasVotedUsernames) {
         List<User> hasVotedList = new ArrayList<>();
         for (Object obj : hasVotedUsernames) {
@@ -227,7 +230,8 @@ public class Poll {
         return hasVotedList;
     }
 
-    // EFFECTS Returns the Options for the Poll by reconstructing them using a Helper method
+    // EFFECTS Returns the Options for the Poll by reconstructing them using a
+    // Helper method
     private static List<Option> optionsListToOption(JSONArray optionsListJson) {
         List<Option> optionsList = new ArrayList<>();
         for (int i = 0; i < optionsListJson.length(); i++) {

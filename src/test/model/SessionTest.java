@@ -24,12 +24,12 @@ public class SessionTest {
         assertSame(testSession.getCurrentUserLoggedIn(), testUser);
     }
 
-    @Test
-    public void testsetCurrentUserLoggedIn() {
-        Session testSession2 = Session.sessionInitializer(null);
-        testSession2.setCurrentUserLoggedIn(testUser);
-        assertSame(testSession2.getCurrentUserLoggedIn(), testUser);
-    }
+    // @Test
+    // public void testsetCurrentUserLoggedIn() {
+    //     Session testSession2 = Session.sessionInitializer(null);
+    //     testSession2.setCurrentUserLoggedIn(testUser);
+    //     assertSame(testSession2.getCurrentUserLoggedIn(), testUser);
+    // }
 
     @Test
     public void testisRunning() {

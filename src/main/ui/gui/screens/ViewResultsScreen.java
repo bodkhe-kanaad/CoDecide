@@ -13,6 +13,8 @@ import ui.gui.handlers.LoginHandler;
 import ui.gui.handlers.QuitApplicationHandler;
 import ui.gui.handlers.UserServiceHandler;
 
+// Viewing results for the Current Poll screen
+
 public class ViewResultsScreen extends JFrame {
 
     // EFFECTS Makes the screen to view results of that poll
