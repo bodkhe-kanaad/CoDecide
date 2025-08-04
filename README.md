@@ -25,3 +25,33 @@ This project is my way of putting that insight into action. CoDecide lets people
 4. As a User I want to get the result of my Poll.
 5. As a User I want to save my details once after signup for login and not have to signup multiple times
 6. As a User I want to save my Poll for documentation and record purposes.
+
+### End User Instructions
+On your welcome screen you can choose to Login or Signup.
+
+If you choose Signup you will have to fill in all your details and login again with your credentials.
+
+After login you can 
+create a new poll - you can add the option by filling in the field and then clicking the "Add Option" button. You can also see the added options in the scroll pane below.
+
+Once done adding options to your poll you can click the "Next" button - After which you can add your desired other users to the Poll by simply entering their usernames.You can also see the added usernames in the scroll pane below.
+
+Once done adding users to your poll you can click the "Next" button - After which the current person logged in will vote for the options. Once voted using the slider on the scale of 0-100 you can click the "Submit" button.
+
+After the "Submit" button next user in the list will login and do the same until the last user clicks the "Submit" button.
+
+The current user logged in will get other buttons.
+- "View Results" which will prompt the Owner of the Poll to Login Only.
+- "Return to Home" which will keep the current logged in user and bring them to the home screen
+- "Logout" which will log out the current user logged in but keep the app running for other user to use.
+- "Quit" which will log out the user save the required details and close the app.
+
+After Login you can 
+View past results - you can view the results for polls which have been completed and you are the owner for. in the screen you will also get other buttons.
+
+- "Return to Home" which will keep the current logged in user and bring them to the home screen
+- "Logout" which will log out the current user logged in but keep the app running for other user to use.
+- "Quit" which will log out the user save the required details and close the app.
+
+
+User does not need to manually save or load anything in the App. All of those are already taken care of.
