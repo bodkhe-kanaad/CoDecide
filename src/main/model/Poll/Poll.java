@@ -7,9 +7,6 @@ import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import model.Event;
-import model.EventLog;
 import model.Option;
 import model.user.User;
 

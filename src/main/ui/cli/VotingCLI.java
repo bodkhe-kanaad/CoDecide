@@ -13,7 +13,7 @@ import ui.cli.messages.*;
  * This class contains the method for the user to register the vote
  */
 
-public class Voting {
+public class VotingCLI {
 
     // REQUIRES curretPoll is not Null
     // MODIFIES the poll

@@ -116,9 +116,9 @@ public class CoDecideAppCLI {
         Messages.postAddingOptions(); // Post adding options messages
         PollServicesCLI.userAdder(currentPoll); // Adding other users to the Poll if needed
         Messages.postAddingUsers(); // Post adding users messages
-        Voting.addingVote(currentPoll); // Casting votes to the Poll
+        VotingCLI.addingVote(currentPoll); // Casting votes to the Poll
         Messages.postAddingVotes(); // Post voting
-        Messages.results(Voting.calculateResult(currentPoll)); // Option to view the result or quit Poll
+        Messages.results(VotingCLI.calculateResult(currentPoll)); // Option to view the result or quit Poll
         DataStore.getAllPolls().put(currentPoll.getPollId(), currentPoll);
         saveState();
     }
