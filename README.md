@@ -82,3 +82,9 @@ Mon Aug 04 13:11:29 PDT 2025
 User doe.john voted 85 for option: A
 Mon Aug 04 13:11:29 PDT 2025
 User doe.john voted 75 for option: B
+
+
+### Phase 4 Task 3
+If I had more time to work on the project, I would refactor to improve separation of concerns and reduce coupling between classes in the model package. Right now, classes like PollAction and UserAction contain a mix of coordination logic and direct data manipulation, which means they sometimes duplicate responsibilities already present in Poll, User, and Option. Moving more of the business logic into the entity classes (Poll, Option, User) would make the design cleaner and reduce the risk of inconsistent state updates.
+
+I would also restructure the package layout so that action/manager classes (like PollAction, UserAction) live in a service or controller package instead of model. This would make the model package purely about domain objects and their state, while the service/controller layer would handle workflows and user-initiated actions. Additionally, I would reduce reliance on static state (such as in Session and action classes) by passing dependencies explicitly or using dependency injection. This would make the application easier to test, more flexible for different UIs (e.g., web vs. Swing), and more maintainable in the long term.
